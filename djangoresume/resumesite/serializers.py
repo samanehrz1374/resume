@@ -3,7 +3,7 @@ from django.db.models import fields
 from rest_framework import serializers
 from .models import aboutmeModel
 
-class aboutmeModelSerializers(serializers.ModelSerializer):
+class aboutmeModelSerializers(serializers.HyperlinkedModelSerializer.ModelSerializer):
     class Meta:
         model=aboutmeModel
-        fields=('id','Name','LastName','Email')
+        fields=('id','url','Name','LastName','Email')
