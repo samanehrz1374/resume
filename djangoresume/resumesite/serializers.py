@@ -7,4 +7,3 @@ class aboutmeModelSerializers(serializers.ModelSerializer):
     class Meta:
         model=aboutmeModel
         fields=('id','Name','LastName','Email')
-        
