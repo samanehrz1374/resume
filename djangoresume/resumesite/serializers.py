@@ -4,6 +4,9 @@ from rest_framework import serializers
 from .models import aboutmeModel
 
 class aboutmeModelSerializers(serializers.HyperlinkedModelSerializer):
+    owner = serializers.ReadOnlyField(source='owner.username')
+    LastName = serializers.CharField(read_only=True)
     class Meta:
+        
         model=aboutmeModel
-        fields=('id','url','Name','LastName','Email')
+        fields=('id','url','Name','LastName','owner','Email')

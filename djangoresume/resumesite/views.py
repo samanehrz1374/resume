@@ -1,6 +1,6 @@
 from django.db.models import query
 from django.shortcuts import render
-from rest_framework import serializers, viewsets
+from rest_framework import serializers, viewsets, permissions
 from .models import aboutmeModel
 from .serializers import aboutmeModelSerializers
 # Create your views here.
@@ -15,3 +15,7 @@ def fahome(request):
 class aboutmeview(viewsets.ModelViewSet):
     queryset=aboutmeModel.objects.all()
     serializer_class=aboutmeModelSerializers
+    permission_classes = [permissions.IsAuthenticated]
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
+        
