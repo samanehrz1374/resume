@@ -68,6 +68,7 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  padding: 0px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -4031,7 +4032,7 @@ textarea.form-control-lg {
 
 .navbar {
   position: relative;
-    display: flex;
+  display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
@@ -4045,7 +4046,7 @@ textarea.form-control-lg {
 .navbar > .container-lg,
 .navbar > .container-xl,
 .navbar > .container-xxl {
-  /* display: flex; */
+  display: flex;
   flex-wrap: inherit;
   align-items: center;
   justify-content: space-between;
@@ -4131,7 +4132,7 @@ textarea.form-control-lg {
     flex-direction: row;
   }
   .navbar-expand-sm .navbar-nav .dropdown-menu {
-    /* position: absolute; */
+    position: absolute;
   }
   .navbar-expand-sm .navbar-nav .nav-link {
     padding-right: 0.5rem;
