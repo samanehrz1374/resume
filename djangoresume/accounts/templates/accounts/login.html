@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'css/styless.css'%}" rel="stylesheet" />
+    <title>Document</title>
+</head>
+<body dir="rtl">
+    <div class="container">
+        <div class="box1" >
+            <h1>خوش آمدید</h1>
+        </div>
+        
+        <form action="" method="post" class="form">
+            
+            <input type="text" id=username name="username" placeholder="نام کاربری" class="form-control"><br>
+            
+            <input type="password" id=password name="password" placeholder="زمر عبور" class="form-control">
+            <label class="checkboxx">مرا به خاطر بسپار
+                <input type="checkbox">
+                <span class="checkmark"></span>
+            </label>
+            <input type="submit" value="ورود" class="btn">
+        </form>
+        
+
+    </div>
+</body>
+</html>
