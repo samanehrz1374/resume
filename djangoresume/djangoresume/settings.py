@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'resumesite.apps.ResumesiteConfig',
     'rest_framework',
-    'admin_honeypot'
+    'admin_honeypot',
+    'acounts.apps.AccountsConfig'
     
 ]
 
