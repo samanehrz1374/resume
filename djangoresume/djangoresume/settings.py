@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'resumesite.apps.ResumesiteConfig',
     'rest_framework',
     'admin_honeypot',
-    'acounts.apps.AccountsConfig'
+    'accounts.apps.AccountsConfig'
     
 ]
 

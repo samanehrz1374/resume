@@ -1,8 +1,8 @@
 from django.urls import path
-from account import views
+from accounts import views
 
 
 urlpatterns = [
     path('login/',views.loginVeiw),
-    path('logout/',views.logoutVeiw)
+    # path('logout/',views.logoutVeiw)
 ]
