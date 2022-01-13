@@ -86,7 +86,8 @@ form {
 .checkboxx {
     display: block;
     position: relative;
-    padding-left: 35px;
+    padding-left:24px;
+    /* margin-left: 10px; */
     margin-bottom: 12px;
     cursor: pointer;
     font-size: 10px;
@@ -151,4 +152,9 @@ form {
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
+  }
+
+
+  p{
+    color: red; text-align: right; margin: 10px;
   }
