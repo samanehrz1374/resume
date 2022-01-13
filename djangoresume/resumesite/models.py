@@ -7,6 +7,6 @@ class aboutmeModel(models.Model):
     LastName=models.CharField(max_length=100)
     Email=models.EmailField()
     owner = models.ForeignKey('auth.User', related_name='snippets', on_delete=models.CASCADE,null=True)
-    
+
     def __str__(self):
         return self.Name
