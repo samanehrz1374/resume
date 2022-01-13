@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-*igi&o69v$@c#q#@8e%evhtgen83&b(nzw)t++f8!imm-z^afp
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['rzdjango.pythonanywhere.com','127.0.0.1']
 
 
 # Application definition
@@ -42,8 +42,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'admin_honeypot',
     'accounts.apps.AccountsConfig'
-    
-]
+                    ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -126,6 +125,8 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS=[
     os.path.join(BASE_DIR,'static')
 ]
+
+static_Root='/home/rzdjango/resume/djangoresume'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
