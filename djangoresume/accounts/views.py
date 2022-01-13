@@ -21,3 +21,7 @@ def loginVeiw(request):
             return render(request,"accounts/login.html",context)
     else:
          return render(request,"accounts/login.html",{})
+
+
+def loginpanelview(request):
+    return render(request,"accounts/loginpanel.html",{})
