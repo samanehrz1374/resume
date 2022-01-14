@@ -109,6 +109,15 @@ bodyy{
   background-color: rgb(231, 229, 229);
 
 }
+.boxxrtl {
+  padding: 0;
+  margin-right: 130px;
+  padding-top: 10px;
+  padding-left: 20px;
+  text-align: center;
+  background-color: rgb(231, 229, 229);
+
+}
 
 .shadoww{
   width: 130px;
