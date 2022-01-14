@@ -1,8 +1,7 @@
 *{
-    margin: 0px;
-    padding: 0px;
-    border: 0px;
-    
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
 }
 
 @font-face {
@@ -30,6 +29,9 @@ body{
     margin: 0 auto;
     background-color: rgb(255, 255, 255);
 }
+*, :after, :before {
+  box-sizing: border-box;
+}
 .box1{
     width:20%;
     /* margin-top: 40px; */
@@ -37,43 +39,87 @@ body{
     text-align: center; 
 }
 
-.box2{
-  /* width: 20%; */
-  background-color: rgb(4, 83, 125);
-  margin: 0 auto;
+.navbar {
+  position: relative;
+  min-height: 50px;
+  margin-bottom: 0px;
+  border: 1px solid transparent;
+}
+.nav-md {
+  min-height: 100%;
+  width: 130px;
+  padding: 0px;
   position: absolute;
-  top: 0px;
-  left: 0%;
-  bottom: 0px;
-  right: 85%;
+  display: -ms-flexbox;
+  display: flex;
+  z-index: 1;
+}
+.nav_title {
+  width: 130px;
+  float: left;
+  background: #ffffff;
+  border-radius: 0;
+  height: 57px;
+}
+
+bodyy{
+  background-color: rgb(4, 83, 125);
+}
+
+.sidebarmenu{
+  background-color: rgb(4, 83, 125);
+  padding: 0px;
+  width: 130px;
+  float: left;
+  height: 550px;
+}
+
+
+.sidbarmenu-contain{
+  border-bottom: 1px solid rgb(4, 78, 117);
+  /* margin: 10px; */
   text-align: center;
-  /* border-radius: 3.25rem; */
+  /* text-decoration: none; */
+}
+
+.side-menu{
+  width: 130px;
+  height: 30px;
+  padding: 10px;
+  text-align: center;
+  
+  /* text-decoration: none; */
+}
+
+
+
+
+.sidebar-bottom {
+    margin-top: 460px;
+    width: 130px;
+    background: rgb(4, 61, 92);
+}
+
+.boxx {
+  padding: 0;
+  margin-left: 130px;
+  padding-top: 10px;
+  padding-left: 20px;
+  text-align: center;
+  background-color: rgb(231, 229, 229);
+
+}
+
+.shadoww{
+  width: 130px;
+  height: 550px;
   box-shadow: 0 10px 45px 0 rgb(0 0 0 / 40%), 0 5px 15px 0 rgb(0 0 0 / 29%);
-  
-}
-.box3{
-  
-  background-color: rgb(226, 226, 226);
-  position: fixed;
-  left: 15%;
-  top: 0px;
-  bottom: 0px;
-  right: 1.3%;
-  text-align: center;
-  background-color: rgb(243, 242, 242);
-  z-index: -1;
 }
 
 
-.profile{
-  width: 100%;
-  height: 15%;
-  background-color:white;
-  text-align: center;
-  /* background-attachment: inherit; */
 
-  
-}
+
+
 
 img {
   width: 100%; /* or any custom size */
