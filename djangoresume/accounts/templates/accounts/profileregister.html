@@ -1,0 +1,59 @@
+{% load static %}
+{% load widget_tweaks %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'css/styless.css'%}" rel="stylesheet" />
+    <title>Login</title>
+</head>
+<body dir="rtl">
+    
+    <div class="container">
+        <div class="box1" >
+            <h1>خوش آمدید</h1>
+        </div>
+        
+        <form action="" method="post" class="form" enctype="multipart/form-data">
+            {% csrf_token %}
+            <p style="font-size:medium;padding-bottom:25px;">
+             <label>نام :</label>
+             {{ formData.first_name|add_class:"formm" }}</p>
+             <p style="font-size:medium;padding-bottom:25px;">
+             <label >نام خانوادگی :</label>
+             {{ formData.last_name|add_class:"formm"  }}</p>
+
+             <p style="font-size:medium;padding-bottom:25px;">
+                <label >نام کاربری :</label>
+                {{ formData.username|add_class:"formm"  }}</p>
+
+
+             <p style="font-size:medium;padding-bottom:25px;">
+                <label >رمزعبور :</label>
+                {{ formData.password|add_class:"formm"  }}</p>
+
+             <p style="font-size:medium;padding-bottom:25px;">
+                <label >ایمیل :</label>
+                {{ formData.email|add_class:"formm"  }}</p>
+
+             <p style="font-size:medium;padding-bottom:25px;">
+                <label >جنسیت :</label>
+                {{ formData.gender |add_class:"formm" }}</p>
+            
+            
+    
+            
+            <label style="font-size:medium;">تصویر پروفایل :</label>
+            {{ formData.profileimage }}
+            <input type="submit" value="ورود" class="btn">
+        </form>
+        
+        
+        
+
+    </div>
+</body>
+</html>

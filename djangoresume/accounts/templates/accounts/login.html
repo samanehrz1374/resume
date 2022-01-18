@@ -20,14 +20,20 @@
             
             <input type="text" id=username name="username" placeholder="نام کاربری" class="form-control"><br>
             
-            <input type="password" id=password name="password" placeholder="زمر عبور" class="form-control">
+            <input type="password" id=password name="password" placeholder="رمز عبور" class="form-control">
             <label class="checkboxx">مرا به خاطر بسپار
                 <input type="checkbox">
                 <span class="checkmark"></span>
             </label>
             <input type="submit" value="ورود" class="btn">
-            <p >{{username}}:{{errormassage}}</p>
+            <p style="color: red; text-align: right; margin: 10px;">{{username}}:{{errormassage}}</p>
+            
         </form>
+        <div style="width: 20%; margin: 5px 450px;">
+            <p style="color: rgb(36, 4, 110);">حساب کاربری ندارید؟<a href="/accounts/profileregister">     ثبت نام</a></p>
+            
+        </div>
+        
         
 
     </div>

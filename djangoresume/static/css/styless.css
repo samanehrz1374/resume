@@ -39,6 +39,7 @@ body{
     text-align: center; 
 }
 
+
 .navbar {
   position: relative;
   min-height: 50px;
@@ -163,7 +164,28 @@ form {
     
     
   }
-
+.formm {
+    /* display: block; */
+    
+    width: 80%;
+    float: left;
+    padding: 0.375rem 0.5rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 3rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    text-align: center;
+    box-shadow: 0 2px 3px 0 rgb(0 0 0 / 20%), 0 1px 1px 0 rgb(0 0 0 / 19%);
+    /* margin-bottom:10px ; */
+  }
 .btn{
     width: 30%;
     background-color: #2bbfcaf6 ;
@@ -251,9 +273,6 @@ form {
   }
 
 
-  p{
-    color: red; text-align: right; margin: 10px;
-  }
 
 
   .footer{
@@ -265,3 +284,9 @@ form {
     right: 0px;
     
   }
+
+
+.form__field{
+  border-bottom: 2px solid gray;
+
+}
