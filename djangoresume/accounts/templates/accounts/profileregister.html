@@ -19,7 +19,7 @@
         
         <form action="" method="post" class="form" enctype="multipart/form-data">
         {% csrf_token %}
-            <p style="font-size:medium;padding-bottom:25px;">
+            <!-- <p style="font-size:medium;padding-bottom:25px;">
              <label>نام :</label>
              {{ formData.first_name|add_class:"formm" }}</p>
              <p style="font-size:medium;padding-bottom:25px;">
@@ -48,7 +48,35 @@
             
             <label style="font-size:medium;">تصویر پروفایل :</label>
             {{ formData.profileimage }}
-            <input type="submit" value="ورود" class="btn">
+            <input type="submit" value="ثبت نام" class="btn"> -->
+
+
+
+             <p style="font-size: medium;">
+             نام :{{ formData.first_name|add_class:"formm" }}</p>
+             <p style="font-size: medium;">
+             نام خانوادگی :{{ formData.last_name|add_class:"formm"  }}</p>
+
+             <p style="font-size: medium;">
+                نام کاربری : {{ formData.username|add_class:"formm"  }}</p>
+
+
+            <p style="font-size: medium;">
+                رمزعبور :{{ formData.password|add_class:"formm"  }}</p>
+
+            <p style="font-size: medium;">
+                ایمیل :{{ formData.email|add_class:"formm"  }}</p>
+
+            <p style="font-size: medium;">
+               جنسیت :{{ formData.gender |add_class:"formm" }}</p>
+            
+            
+    
+            
+            <label style="font-size:medium;">تصویر پروفایل :</label>
+            {{ formData.profileimage }}
+    
+            <input type="submit"  value="ثبت نام" class="profilebtn">
         </form>
         
         
