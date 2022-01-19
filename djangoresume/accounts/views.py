@@ -64,7 +64,7 @@ def profileRegisterView(request):
 
             profileModel.save()
 
-            return HttpResponse('o')
+            return render(request,"accounts/loginpanelFa.html",{})
     else:
         profileRegisterForm=ProfileRegisterForm()
 
