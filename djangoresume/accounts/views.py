@@ -44,7 +44,7 @@ def logoutVeiw(request):
     return render(request,"accounts/login.html",{})
 
 def profileRegisterView(request):
-    
+
     if request.method=="POST":
         profileRegisterForm=ProfileRegisterForm(request.POST,request.FILES)
         if profileRegisterForm.is_valid():
@@ -64,11 +64,11 @@ def profileRegisterView(request):
 
             profileModel.save()
 
-            return HttpResponse('o')
+            return render(request,"accounts/loginpanelFa.html",{})
     else:
         profileRegisterForm=ProfileRegisterForm()
 
-  
+
     context={
         "formData":profileRegisterForm
     }
@@ -77,4 +77,4 @@ def profileRegisterView(request):
 
 
 
-    
+
