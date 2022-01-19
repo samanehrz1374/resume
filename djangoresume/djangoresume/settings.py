@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'resumesite.apps.ResumesiteConfig',
     'rest_framework',
     'admin_honeypot',
-    'accounts.apps.AccountsConfig'
+    'accounts.apps.AccountsConfig',
+    'widget_tweaks',
                     ]
 
 MIDDLEWARE = [
@@ -135,3 +136,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_URL='/accounts/login/'
 LOGIN_REDIRECT_URL='/accounts/loginpanel/'
+
+MEDIA_URL="/media/"
+MEDIA_ROOT=os.path.join(BASE_DIR,"media")
