@@ -51,7 +51,7 @@ def logoutVeiw(request):
     return HttpResponseRedirect(reverse(loginVeiw))
 
 def profileRegisterView(request):
-    
+
     if request.method=="POST":
         profileRegisterForm=ProfileRegisterForm(request.POST,request.FILES)
         if profileRegisterForm.is_valid():
@@ -75,7 +75,7 @@ def profileRegisterView(request):
     else:
         profileRegisterForm=ProfileRegisterForm()
 
-  
+
     context={
         "formData":profileRegisterForm
     }
@@ -84,4 +84,4 @@ def profileRegisterView(request):
 
 
 
-    
+
