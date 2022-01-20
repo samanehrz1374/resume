@@ -1,4 +1,6 @@
-from audioop import reverse
+from tabnanny import check
+from urllib import response
+from django.urls import reverse
 from django.shortcuts import render
 from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib.auth import authenticate,login,logout
@@ -21,9 +23,14 @@ def loginVeiw(request):
         user=authenticate(request,username=username,password=password)
         if user is not None:
             login(request,user)
+            # if request.GET.get("chk"):
+            #     response=HttpResponse('cokke')
+            #     response.set.Cookie('cid',request.Post["username"])
+            #     response.set.Cookie('cid2',request.Post["password"])
             if request.GET.get('next'):
                 return HttpResponseRedirect(request.GET.get('next'))
             return HttpResponseRedirect(settings.LOGIN_REDIRECT_URL)
+            
 
         else:
             context={
@@ -41,7 +48,7 @@ def loginpanelview(request):
 
 def logoutVeiw(request):
     logout(request)
-    return render(request,"accounts/login.html",{})
+    return HttpResponseRedirect(reverse(loginVeiw))
 
 def profileRegisterView(request):
     
