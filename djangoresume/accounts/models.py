@@ -27,7 +27,7 @@ class ProfileModel(models.Model):
     intrested_job=models.CharField(max_length=100,verbose_name="شغل مورد علاقه",null=True)
     profileimage=models.ImageField(upload_to='profileimages/',null=True)
 
-    def __str__(Self):
-        return Self.user
+    # def __str__(Self):
+    #     return Self.user
 
     
