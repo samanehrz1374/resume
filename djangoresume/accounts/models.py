@@ -28,6 +28,6 @@ class ProfileModel(models.Model):
     profileimage=models.ImageField(upload_to='profileimages/',null=True)
 
     def __str__(Self):
-        return Self.name
+        return Self.user
 
     
