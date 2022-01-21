@@ -67,11 +67,22 @@ def profileRegisterView(request):
             profileModel=ProfileModel(user=user,
                                        profileimage=profileRegisterForm.cleaned_data['profileimage'],
                                        gender=profileRegisterForm.cleaned_data['gender'])
-                                        # birthday=profileRegisterForm.cleaned_data['birthday'])
 
             profileModel.save()
 
             return render(request,"accounts/loginpanelFa.html",{})
+            
+        else:
+            print(ProfileRegisterForm.errors)
+            # context={
+            # "formData":profileRegisterForm,
+            # "username_err":'این نام کاربری قبلا ساخته شده است',
+            # "email_error":'ایمیل وارد شده صحیح نیست',
+            # "password_error":'رمز عبور باید از 8 کاراکتر بیشتر باشد',
+            # "confirm_err":'تکرار رمز عبور صحیح نیست'
+            # }
+            # return render(request,"accounts/profileregister.html",context)
+            
     else:
         profileRegisterForm=ProfileRegisterForm()
 
