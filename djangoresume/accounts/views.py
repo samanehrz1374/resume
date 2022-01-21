@@ -1,4 +1,6 @@
-from audioop import reverse
+from tabnanny import check
+from urllib import response
+from django.urls import reverse
 from django.shortcuts import render
 from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib.auth import authenticate,login,logout
@@ -21,9 +23,14 @@ def loginVeiw(request):
         user=authenticate(request,username=username,password=password)
         if user is not None:
             login(request,user)
+            # if request.GET.get("chk"):
+            #     response=HttpResponse('cokke')
+            #     response.set.Cookie('cid',request.Post["username"])
+            #     response.set.Cookie('cid2',request.Post["password"])
             if request.GET.get('next'):
                 return HttpResponseRedirect(request.GET.get('next'))
             return HttpResponseRedirect(settings.LOGIN_REDIRECT_URL)
+            
 
         else:
             context={
@@ -41,7 +48,7 @@ def loginpanelview(request):
 
 def logoutVeiw(request):
     logout(request)
-    return render(request,"accounts/login.html",{})
+    return HttpResponseRedirect(reverse(loginVeiw))
 
 def profileRegisterView(request):
 
@@ -60,11 +67,22 @@ def profileRegisterView(request):
             profileModel=ProfileModel(user=user,
                                        profileimage=profileRegisterForm.cleaned_data['profileimage'],
                                        gender=profileRegisterForm.cleaned_data['gender'])
-                                        # birthday=profileRegisterForm.cleaned_data['birthday'])
 
             profileModel.save()
 
             return render(request,"accounts/loginpanelFa.html",{})
+            
+        else:
+            print(ProfileRegisterForm.errors)
+            # context={
+            # "formData":profileRegisterForm,
+            # "username_err":'این نام کاربری قبلا ساخته شده است',
+            # "email_error":'ایمیل وارد شده صحیح نیست',
+            # "password_error":'رمز عبور باید از 8 کاراکتر بیشتر باشد',
+            # "confirm_err":'تکرار رمز عبور صحیح نیست'
+            # }
+            # return render(request,"accounts/profileregister.html",context)
+            
     else:
         profileRegisterForm=ProfileRegisterForm()
 

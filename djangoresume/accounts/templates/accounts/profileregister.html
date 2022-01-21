@@ -19,39 +19,10 @@
         
         <form action="" method="post" class="form" enctype="multipart/form-data">
         {% csrf_token %}
-            <!-- <p style="font-size:medium;padding-bottom:25px;">
-             <label>نام :</label>
-             {{ formData.first_name|add_class:"formm" }}</p>
-             <p style="font-size:medium;padding-bottom:25px;">
-             <label >نام خانوادگی :</label>
-             {{ formData.last_name|add_class:"formm"  }}</p>
-
-             <p style="font-size:medium;padding-bottom:25px;">
-                <label >نام کاربری :</label>
-                {{ formData.username|add_class:"formm"  }}</p>
-
-
-             <p style="font-size:medium;padding-bottom:25px;">
-                <label >رمزعبور :</label>
-                {{ formData.password|add_class:"formm"  }}</p>
-
-             <p style="font-size:medium;padding-bottom:25px;">
-                <label >ایمیل :</label>
-                {{ formData.email|add_class:"formm"  }}</p>
-
-             <p style="font-size:medium;padding-bottom:25px;">
-                <label >جنسیت :</label>
-                {{ formData.gender |add_class:"formm" }}</p>
-            
-            
-    
-            
-            <label style="font-size:medium;">تصویر پروفایل :</label>
-            {{ formData.profileimage }}
-            <input type="submit" value="ثبت نام" class="btn"> -->
-
-
-
+            {{ form.non_field_errors }}
+            {{ form.errors }}
+        
+            {{ form.first_name.errors }}
              <p style="font-size: medium;">
              نام :{{ formData.first_name|add_class:"formm" }}</p>
              <p style="font-size: medium;">
@@ -63,6 +34,12 @@
 
             <p style="font-size: medium;">
                 رمزعبور :{{ formData.password|add_class:"formm"  }}</p>
+            <p style="font-size: medium;">
+                تکراررمزعبور :{{ formData.confirm_password|add_class:"formm"  }}</p>
+            <!-- <p style="color: red; text-align: right; margin: 10px;">{{err}}</p> -->
+
+
+                
 
             <p style="font-size: medium;">
                 ایمیل :{{ formData.email|add_class:"formm"  }}</p>
