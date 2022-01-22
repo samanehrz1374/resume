@@ -33,23 +33,28 @@
                     </div>
             </div>
             <div class="boxxrtl"  style="min-height: 607px;">
-                <div class="imgbox">
-                    <img src="{{ profile.ProfileImage.url  }}" style="width: 100%;align-items: right;">
-                </div>
-                <p class="profil">نام و نام خانوادگی:</span>{{ profile.user.get_full_name }}</p>
-                <!-- <p>نام خانوادگی:{{profile.user.get_last_name}}</p> -->
-                <p class="profil">وضعیت تاهل:{{ profile.get_marital_status_display }}</p>
-                <p class="profil"> شهر:{{ profile.city }}</p>
-                <p class="profil">آدرس:{{ profile.address }}</p>
-                <p class="profil">تاریخ تولد:{{ profile.birthday }}</p>
-                <!-- <p class="profil">حقوق درخواستی:{{ profile.Expected_Salary }}</p> -->
-                <p class="profil">شغل مورد علاقه:{{ profile.intrested_job }}</p>
-                <p class="profil">جنسیت:</span> {{ profile.get_gender_display }}</p>
-                
-                <a class="editsubmit" a href="/accounts/profileEdit"> ویرایش پروفایل</a>
-                
-                
+                <form action="" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
                     
+                    <div class="imgbox">
+                        <img src="{{ ProfileImage.url  }}" style="width: 100%;align-items: right;">
+                    </div>
+                    {{ profileeditform.ProfileImage }}
+                    <p class="profil">نام و نام خانوادگی:{{usereditform.first_name}} {{usereditform.last_name}}</p>
+                    
+                    <p class="profil">وضعیت تاهل:{{ profileeditform.marital_status }}</p>
+                    <p class="profil"> شهر:{{ profileeditform.city }}</p>
+                    <p class="profil">آدرس:{{ profileeditform.address }}</p>
+                    <p class="profil">تاریخ تولد:{{ profileeditform.birthday }}</p>
+                   
+                    <p class="profil">شغل مورد علاقه:{{ profileeditform.intrested_job }}</p>
+                    <p class="profil">جنسیت:</span> {{ profileeditform.gender }}</p>
+                    
+                    
+                    
+                    <button type="submit" class="btn btn-success">ذخیره</button>
+                </form>
+                        
     
             </div>
             
