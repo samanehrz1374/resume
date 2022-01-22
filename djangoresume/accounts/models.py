@@ -1,7 +1,5 @@
-from ast import mod
-from pyexpat import model
-from tkinter import CASCADE
 from django.db import models
+from django.db.models.deletion import CASCADE
 from django.contrib.auth.models import User
 
 # Create your models here.
@@ -9,7 +7,7 @@ class ProfileModel(models.Model):
     class Meta:
         verbose_name="پروفایل"
         verbose_name_plural="پروفایل"
-    user=models.OneToOneField(User,on_delete=models.CASCADE,verbose_name="کاربری",related_name="profile",null=True)
+    user=models.OneToOneField(User,on_delete=CASCADE,verbose_name="کاربری",related_name="profile")
     # firstname=models.CharField(max_length=100,verbose_name="نام")
     # lastname=models.CharField(max_length=100,verbose_name="نام خانوادگی")
     male=1
