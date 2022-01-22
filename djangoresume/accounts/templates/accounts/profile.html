@@ -32,17 +32,22 @@
                         </div>                 
                     </div>
             </div>
-            <div class="boxxrtl" role="main" style="min-height: 607px;">
-                
-                <p>نام و نام خانوادگی:</span>{{ profile.user.get_full_name }}</p>
-                <!-- <p>نام خانوادگی:{{profile.user.get_last_name}}</p> -->
-                <!-- <p>ایمیل:{{profile.user.get_email}}</p> -->
-                <p>جنسیت:</span> {{ profile.get_gender_display }}</p>
+            <div class="boxxrtl"  style="min-height: 607px;">
                 <div >
-                    <img src="{{ profile.profileimage.url }}" style="width:100%;height:auto">
+                    <img src="{{ profile.ProfileImage.url }}" >
                 </div>
+                <p style="font-size: 20px; text-align: right; padding-right: 15px; margin-bottom: 20px;">نام و نام خانوادگی:</span>{{ profile.user.get_full_name }}</p>
+                <!-- <p>نام خانوادگی:{{profile.user.get_last_name}}</p> -->
+                <p style="font-size: 20px; text-align: right; padding-right: 15px; margin-bottom: 20px;">وضعیت تاهل:{{ profile.get_marital_status_display }}</p>
+                <p style="font-size: 20px; text-align: right; padding-right: 15px; margin-bottom: 20px;"> شهر:{{ profile.city }}</p>
+                <p style="font-size: 20px; text-align: right; padding-right: 15px; margin-bottom: 20px;">آدرس:{{ profile.address }}</p>
+                <p style="font-size: 20px; text-align: right; padding-right: 15px; margin-bottom: 20px;">تاریخ تولد:{{ profile.birthday }}</p>
+                <p style="font-size: 20px; text-align: right; padding-right: 15px; margin-bottom: 20px;">حقوق درخواستی:{{ profile.Expected_Salary }}</p>
+                <p style="font-size: 20px; text-align: right; padding-right: 15px; margin-bottom: 20px;">شغل مورد علاقه:{{ profile.intrested_job }}</p>
+                <p style="font-size: 20px; text-align: right; padding-right: 15px; margin-bottom: 20px;">جنسیت:</span> {{ profile.get_gender_display }}</p>
+                
                 <ul >
-                    <li><a href="/accounts/profileEdit"> ویرایش پروفایل</a></li>
+                    <li style="font-size: 20px; text-align: right; padding-right: 15px; margin-bottom: 20px;"><a href="/accounts/profileEdit"> ویرایش پروفایل</a></li>
                 </ul>
                 
                     

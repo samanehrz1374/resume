@@ -13,10 +13,10 @@ class ProfileRegisterForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput)
     confirm_password = forms.CharField(widget=forms.PasswordInput) 
     email = forms.CharField(widget=forms.EmailInput)
-    profileimage=forms.ImageField(required=False)
+    ProfileImage=forms.ImageField(required=False)
     class Meta:
         model=ProfileModel
-        fields=['profileimage','gender']
+        fields=['ProfileImage','gender']
     def clean(self):
         cleaned_data = super(ProfileRegisterForm, self).clean()
         password = cleaned_data.get("password")

@@ -23,7 +23,7 @@ class ProfileModel(models.Model):
     birthday=models.DateField(verbose_name="تاریخ تولد",null=True)
     Expected_Salary=models.IntegerField(verbose_name="حقوق درخواستی",null=True)
     intrested_job=models.CharField(max_length=100,verbose_name="شغل مورد علاقه",null=True)
-    profileimage=models.ImageField(upload_to='profileimages/',null=True)
+    ProfileImage=models.ImageField(upload_to='profileimages/',verbose_name="عکس")
 
     # def __str__(Self):
     #     return Self.user

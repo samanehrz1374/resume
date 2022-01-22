@@ -64,7 +64,7 @@ def profileRegisterView(request):
             user.save()
 
             profileModel=ProfileModel(user=user,
-                                       profileimage=profileRegisterForm.cleaned_data['profileimage'],
+                                       ProfileImage=profileRegisterForm.cleaned_data['profileimage'],
                                        gender=profileRegisterForm.cleaned_data['gender'])
 
             profileModel.save()
