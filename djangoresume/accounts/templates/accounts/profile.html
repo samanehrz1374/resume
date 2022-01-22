@@ -1,0 +1,64 @@
+{%load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'css/styless.css'%}">
+    <title>Document</title>
+</head>
+<body>
+    <body dir="rtl">
+        <div class="container bodyy">
+            <div class="main_container">
+                <div class="nav-md">
+                    <div class="shadoww">
+                        <div class="navbar nav_title">
+                            <img src="{% static 'images/profile.jpg'%}" alt="...">
+                        </div>
+                        
+                        <div class="clearfix">
+                        </div>
+                        <div class="sidebarmenu">
+                            <div >
+                               <div class="side-menu sidbarmenu-contain"><a href="#"  style="text-decoration: none;color:white;">پروفایل</a></div>
+                               <div class="side-menu sidbarmenu-contain"><a href="#" style="text-decoration: none;color:white;">ساخت رزومه</a></div>
+                               <div class="side-menu sidbarmenu-contain sidebar-bottom"><a href="/accounts/logout" style="text-decoration: none;color:white;">خروج</a></div>
+                            </div>
+                            
+    
+                        </div>                 
+                    </div>
+            </div>
+            <div class="boxxrtl"  style="min-height: 607px;">
+                <div >
+                    <img src="{{ profile.ProfileImage.url }}" >
+                </div>
+                <p style="font-size: 20px; text-align: right; padding-right: 15px; margin-bottom: 20px;">نام و نام خانوادگی:</span>{{ profile.user.get_full_name }}</p>
+                <!-- <p>نام خانوادگی:{{profile.user.get_last_name}}</p> -->
+                <p style="font-size: 20px; text-align: right; padding-right: 15px; margin-bottom: 20px;">وضعیت تاهل:{{ profile.get_marital_status_display }}</p>
+                <p style="font-size: 20px; text-align: right; padding-right: 15px; margin-bottom: 20px;"> شهر:{{ profile.city }}</p>
+                <p style="font-size: 20px; text-align: right; padding-right: 15px; margin-bottom: 20px;">آدرس:{{ profile.address }}</p>
+                <p style="font-size: 20px; text-align: right; padding-right: 15px; margin-bottom: 20px;">تاریخ تولد:{{ profile.birthday }}</p>
+                <p style="font-size: 20px; text-align: right; padding-right: 15px; margin-bottom: 20px;">حقوق درخواستی:{{ profile.Expected_Salary }}</p>
+                <p style="font-size: 20px; text-align: right; padding-right: 15px; margin-bottom: 20px;">شغل مورد علاقه:{{ profile.intrested_job }}</p>
+                <p style="font-size: 20px; text-align: right; padding-right: 15px; margin-bottom: 20px;">جنسیت:</span> {{ profile.get_gender_display }}</p>
+                
+                <ul >
+                    <li style="font-size: 20px; text-align: right; padding-right: 15px; margin-bottom: 20px;"><a href="/accounts/profileEdit"> ویرایش پروفایل</a></li>
+                </ul>
+                
+                    
+    
+            </div>
+            
+            
+               
+        </div>
+        
+        
+</body>
+</html>
+    

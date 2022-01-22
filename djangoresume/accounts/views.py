@@ -1,5 +1,3 @@
-from tabnanny import check
-from urllib import response
 from django.urls import reverse
 from django.shortcuts import render
 from django.http import HttpResponse,HttpResponseRedirect
@@ -13,6 +11,7 @@ from accounts.forms import ProfileRegisterForm
 from django.contrib.auth.models import User
 from accounts.models import ProfileModel
 from django.contrib import messages
+
 
 
 # Create your views here.
@@ -65,7 +64,7 @@ def profileRegisterView(request):
             user.save()
 
             profileModel=ProfileModel(user=user,
-                                       profileimage=profileRegisterForm.cleaned_data['profileimage'],
+                                       ProfileImage=profileRegisterForm.cleaned_data['profileimage'],
                                        gender=profileRegisterForm.cleaned_data['gender'])
 
             profileModel.save()
@@ -91,7 +90,13 @@ def profileRegisterView(request):
         "formData":profileRegisterForm
     }
     return render(request,"accounts/profileregister.html",context)
-
+@login_required
+def profileView(request):
+    profile=request.user.profile
+    context={
+        "profile":profile
+    }
+    return render(request,"accounts/profile.html",context)
 
 
 
