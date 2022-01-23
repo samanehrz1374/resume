@@ -32,6 +32,7 @@ class ProfileRegisterForm(forms.ModelForm):
 
 
 class ProfileEditForm(forms.ModelForm):
+    ProfileImage=forms.ImageField(widget=forms.FileInput,)
     class Meta:
         model=ProfileModel
         fields=['ProfileImage','gender','marital_status','city','address','birthday','intrested_job']          
