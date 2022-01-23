@@ -7,10 +7,10 @@ from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from resumesite import views
 import resumesite
-from accounts.forms import ProfileRegisterForm
+from accounts.forms import ProfileRegisterForm,ProfileEditForm,UserEditForm
 from django.contrib.auth.models import User
 from accounts.models import ProfileModel
-from django.contrib import messages
+
 
 
 
@@ -64,15 +64,16 @@ def profileRegisterView(request):
             user.save()
 
             profileModel=ProfileModel(user=user,
-                                       ProfileImage=profileRegisterForm.cleaned_data['profileimage'],
+                                       ProfileImage=profileRegisterForm.cleaned_data['ProfileImage'],
                                        gender=profileRegisterForm.cleaned_data['gender'])
 
             profileModel.save()
 
             return render(request,"accounts/loginpanelFa.html",{})
             
-        else:
-            print(ProfileRegisterForm.errors)
+        # else:
+        #     print()
+            # profileRegisterForm=ProfileRegisterForm()
             # context={
             # "formData":profileRegisterForm,
             # "username_err":'این نام کاربری قبلا ساخته شده است',
@@ -97,6 +98,27 @@ def profileView(request):
         "profile":profile
     }
     return render(request,"accounts/profile.html",context)
+
+
+def ProfileEditView(request):
+    if request.method=="POST":
+        profileeditform=ProfileEditForm(request.POST,request.FILES,instance=request.user.profile)
+        usereditform=UserEditForm(request.POST,instance=request.user)
+        if profileeditform.is_valid() and usereditform.is_valid():
+            profileeditform.save()
+            usereditform.save()
+            return HttpResponseRedirect(reverse(accounts.views.profileView))
+
+    else:
+        profileeditform=ProfileEditForm(instance=request.user.profile)
+        usereditform=UserEditForm(instance=request.user)
+
+    context={
+        "profileeditform":profileeditform,
+        "usereditform":usereditform,
+        "ProfileImage":request.user.profile.ProfileImage,
+    }
+    return render(request,"accounts/profileEdit.html",context)
 
 
 

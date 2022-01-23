@@ -1,7 +1,7 @@
 from django.urls import path
 from accounts import views
-from djangoresume import  settings
-from django.contrib.staticfiles.urls import static
+from django.conf import  settings
+from django.conf.urls.static import static
 
 
 urlpatterns = [
@@ -9,8 +9,9 @@ urlpatterns = [
     path('loginpanel/',views.loginpanelview),
     path('logout/',views.logoutVeiw),
     path('profileregister/',views.profileRegisterView),
-    path('profile/',views.profileView)
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('profile/',views.profileView),
+    path('profileEdit/',views.ProfileEditView)
+]
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

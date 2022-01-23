@@ -33,22 +33,29 @@
                     </div>
             </div>
             <div class="boxxrtl"  style="min-height: 607px;">
-                <div >
-                    <img src="{{ profile.ProfileImage.url }}" >
+                <div style="width: 30%;float: right; margin-left: 10%; margin-right: 3%;" >
+                <div class="imgbox">
+                    <img src="{{ profile.ProfileImage.url  }}" style="width: 100%;align-items: right;">
                 </div>
-                <p style="font-size: 20px; text-align: right; padding-right: 15px; margin-bottom: 20px;">نام و نام خانوادگی:</span>{{ profile.user.get_full_name }}</p>
+                 
+                <p class="profil">نام و نام خانوادگی:&nbsp;{{ profile.user.get_full_name }}</p>
                 <!-- <p>نام خانوادگی:{{profile.user.get_last_name}}</p> -->
-                <p style="font-size: 20px; text-align: right; padding-right: 15px; margin-bottom: 20px;">وضعیت تاهل:{{ profile.get_marital_status_display }}</p>
-                <p style="font-size: 20px; text-align: right; padding-right: 15px; margin-bottom: 20px;"> شهر:{{ profile.city }}</p>
-                <p style="font-size: 20px; text-align: right; padding-right: 15px; margin-bottom: 20px;">آدرس:{{ profile.address }}</p>
-                <p style="font-size: 20px; text-align: right; padding-right: 15px; margin-bottom: 20px;">تاریخ تولد:{{ profile.birthday }}</p>
-                <p style="font-size: 20px; text-align: right; padding-right: 15px; margin-bottom: 20px;">حقوق درخواستی:{{ profile.Expected_Salary }}</p>
-                <p style="font-size: 20px; text-align: right; padding-right: 15px; margin-bottom: 20px;">شغل مورد علاقه:{{ profile.intrested_job }}</p>
-                <p style="font-size: 20px; text-align: right; padding-right: 15px; margin-bottom: 20px;">جنسیت:</span> {{ profile.get_gender_display }}</p>
-                
-                <ul >
-                    <li style="font-size: 20px; text-align: right; padding-right: 15px; margin-bottom: 20px;"><a href="/accounts/profileEdit"> ویرایش پروفایل</a></li>
-                </ul>
+                <p class="profil">وضعیت تاهل:&nbsp;{{ profile.get_marital_status_display }}</p>
+                <p class="profil"> شهر:&nbsp;{{ profile.city }}</p>
+                <p class="profil">آدرس:&nbsp;{{ profile.address }}</p>
+                </div>
+                <div style="width: 30%; float: right;margin-left: 24%;height: 532px ; margin-right: 3%; padding-top: 15%;" >
+                <p class="profil">تاریخ تولد:&nbsp;{{ profile.birthday }}</p>
+                <!-- <p class="profil">حقوق درخواستی:{{ profile.Expected_Salary }}</p> -->
+                <p class="profil">شغل مورد علاقه:&nbsp;{{ profile.intrested_job }}</p>
+                <p class="profil">جنسیت:&nbsp;{{ profile.get_gender_display }}</p>
+                </div>
+                <div style=" display:block; align-content: center;">
+                    <a href="/accounts/profileEdit">
+                        <input type="button" value="ویرایش پروفایل" class="btn editsubmit" />
+                     </a>
+               
+                </div>
                 
                     
     
