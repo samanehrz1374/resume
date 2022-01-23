@@ -15,7 +15,7 @@ class ProfileRegisterForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput)
     confirm_password = forms.CharField(widget=forms.PasswordInput) 
     email = forms.CharField(widget=forms.EmailInput)
-    ProfileImage=forms.ImageField(required=False)
+    # ProfileImage=forms.ImageField(required=True)
     class Meta:
         model=ProfileModel
         fields=['ProfileImage','gender']
