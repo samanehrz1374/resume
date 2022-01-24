@@ -1,7 +1,8 @@
+from calendar import month_name
 from django.db import models
 from django.db.models.deletion import CASCADE
 from django.contrib.auth.models import User
-
+from jalali_date import date2jalali
 # Create your models here.
 class ProfileModel(models.Model):
     class Meta:
@@ -27,5 +28,7 @@ class ProfileModel(models.Model):
 
     # def __str__(Self):
     #     return Self.user
+    # def get_jalali_date(self):
+    #     return date2jalali(self.birthday)
 
     

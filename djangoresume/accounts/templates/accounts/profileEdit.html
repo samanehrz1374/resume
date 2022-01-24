@@ -1,5 +1,6 @@
 {%load static%}
 {% load widget_tweaks %}
+{% load jalali_tags %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -8,9 +9,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{%static 'css/styless.css'%}">
+    
     <title>Document</title>
 </head>
 <body>
+    
     <body dir="rtl">
         <div class="container bodyy">
             <div class="main_container">
@@ -53,7 +56,7 @@
                     </div>
                     <div style="width: 30%; float: right;margin-left: 10%; margin-right: 3%; padding-top: 19%;" >
                     <p class="profil">آدرس:{{ profileeditform.address |add_class:"formedit"}}</p>
-                    <p class="profil">تاریخ تولد:{{ profileeditform.birthday|add_class:"formedit" }}</p>
+                    <p class="profil">تاریخ تولد:{{ profileeditform.birthday|add_class:"formeditdate" }}</p>
                    
                     <p class="profil">شغل مورد علاقه:{{ profileeditform.intrested_job |add_class:"formedit"}}</p>
                     <p class="profil">جنسیت:</span> {{ profileeditform.gender |add_class:"formedit"}}</p>
@@ -73,5 +76,7 @@
         
         
 </body>
+    <!-- <link rel="stylesheet" href="{% static 'admin/jquery.ui.datepicker.jalali/themes/base/jquery-ui.min.css' %}">
+    <script src="{% static 'admin/js/django_jalali.min.js' %}"></script> -->
 </html>
     
