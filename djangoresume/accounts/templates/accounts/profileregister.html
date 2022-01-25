@@ -8,6 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="{% static 'css/styless.css'%}" rel="stylesheet" />
+    <!-- <link href="{% static 'css/bootstrap.css'%}" rel="stylesheet" /> -->
     <title>Login</title>
 </head>
 <body dir="rtl">
@@ -19,52 +20,59 @@
         
         <form action="" method="post" class="form" enctype="multipart/form-data">
         {% csrf_token %}
-            <!-- {{ form.non_field_errors }} -->
+            <!-- {{ formData.non_field_errors }} -->
             <!-- {{ form.errors }} -->
             
             <!-- {{ form.first_name.errors }} -->
-            {% if form.errors %}
-                {% for field in form %}
+            {{ formData.non_field_errors }}
+            
+            {% if formData.errors %}
+                {% for field in formData %}
                     {% for error in field.errors %}
                         <div class="alert alert-danger">
                         <strong>{{ error|escape }}</strong>
                         </div>
                     {% endfor %}
                  {% endfor %}
-                {% for error in form.non_field_errors %}
+                {% for error in formData.non_field_errors %}
                     <div class="alert alert-danger">
                     <strong>{{ error|escape }}</strong>
                     </div>
                 {% endfor %}
             {% endif %}
+            
+            <!-- {{formData.as_p}} -->
              <p style="font-size: medium;">
-             نام :{{ formData.first_name|add_class:"formm" }}</p>
+            {{formData.first_name.label_tag}}{{ formData.first_name|add_class:"formm" }}
+             
+             
+            </p>
              <p style="font-size: medium;">
-             نام خانوادگی :{{ formData.last_name|add_class:"formm"  }}</p>
+            {{formData.last_name.label_tag}}{{ formData.last_name|add_class:"formm"  }}</p>
 
-             <p style="font-size: medium;">
-                نام کاربری : {{ formData.username|add_class:"formm"  }}</p>
+             <p style="font-size: medium; display: inline;">
+                {{formData.username.label_tag}}&nbsp;<p style="display: inline; color: red;">( {{ formData.username.help_text }}) </p> {{ formData.username|add_class:"formm"  }}</p>
+               
 
 
+            <p style="font-size: medium; display: inline;">
+                {{formData.password.label_tag}}&nbsp;<p style="display: inline; color: red;">( {{ formData.password.help_text }}){{ formData.password|add_class:"formm"  }}</p>
             <p style="font-size: medium;">
-                رمزعبور :{{ formData.password|add_class:"formm"  }}</p>
-            <p style="font-size: medium;">
-                تکراررمزعبور :{{ formData.confirm_password|add_class:"formm"  }}</p>
-            <!-- <p style="color: red; text-align: right; margin: 10px;">{{err}}</p> -->
-
-
+                {{formData.confirm_password.label_tag}}{{ formData.confirm_password|add_class:"formm"  }}</p>
+                <!-- {{formData.confirm_password.errors}} -->
+            
                 
 
             <p style="font-size: medium;">
-                ایمیل :{{ formData.email|add_class:"formm"  }}</p>
+            {{formData.email.label_tag}}{{ formData.email|add_class:"formm"  }}</p>
 
             <p style="font-size: medium;">
-               جنسیت :{{ formData.gender |add_class:"formm" }}</p>
+            {{formData.gender.label_tag}}{{ formData.gender |add_class:"formm" }}</p>
             
             
     
             
-            <label style="font-size:medium;">تصویر پروفایل :</label>
+            <label style="font-size:medium;">{{formData.ProfileImage.label_tag}}</label>
             {{ formData.ProfileImage }}
     
             <input type="submit"  value="ثبت نام" class="profilebtn">

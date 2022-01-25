@@ -50,7 +50,7 @@ def logoutVeiw(request):
     return HttpResponseRedirect(reverse(loginVeiw))
 
 def profileRegisterView(request):
-
+    profileRegisterForm=ProfileRegisterForm()
     if request.method=="POST":
         profileRegisterForm=ProfileRegisterForm(request.POST,request.FILES)
         if profileRegisterForm.is_valid():
@@ -68,7 +68,6 @@ def profileRegisterView(request):
                                        gender=profileRegisterForm.cleaned_data['gender'])
 
             profileModel.save()
-
             return render(request,"accounts/loginpanelFa.html",{})
             
         # else:
@@ -82,10 +81,6 @@ def profileRegisterView(request):
             # "confirm_err":'تکرار رمز عبور صحیح نیست'
             # }
             # return render(request,"accounts/profileregister.html",context)
-            
-    else:
-        profileRegisterForm=ProfileRegisterForm()
-
 
     context={
         "formData":profileRegisterForm

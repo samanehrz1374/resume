@@ -14,23 +14,25 @@ from jalali_date.widgets import AdminJalaliDateWidget
 
 
 class ProfileRegisterForm(forms.ModelForm):
-    first_name = forms.CharField(max_length=100,error_messages={'required':"enter"})
-    last_name = forms.CharField(max_length=100)
-    username = forms.CharField(max_length=100)
-    password = forms.CharField(widget=forms.PasswordInput)
-    confirm_password = forms.CharField(widget=forms.PasswordInput) 
-    email = forms.CharField(widget=forms.EmailInput)
-    # ProfileImage=forms.ImageField(required=True)
+    first_name = forms.CharField(max_length=10,required=True,label="نام")
+    last_name = forms.CharField(max_length=10,required=True,label=" نام خانوادگی")
+    username = forms.CharField(max_length=10,min_length=3,help_text="نام کاربری باید 3 تا 10 کلمه باشد و از علامت های _ @ - استفاده نشود",required=True,label=" نام کاربری")
+    password = forms.CharField(widget=forms.PasswordInput,help_text="رمز عبور شامل حروف بزرگ و کوچک و اعداد باشد",required=True,label="رمز عبور")
+    confirm_password = forms.CharField(widget=forms.PasswordInput,required=True,label="تکرار رمز عبور") 
+    email = forms.CharField(widget=forms.EmailInput,required=True,label="ایمیل")
+    ProfileImage=forms.ImageField(required=False, label="تصویر پروفایل")
+    required_css_class = 'required'
     class Meta:
         model=ProfileModel
         fields=['ProfileImage','gender']
-    def clean(self):
-        cleaned_data = super(ProfileRegisterForm, self).clean()
-        password = cleaned_data.get("password")
-        confirm = cleaned_data.get("confirm_password")
+    def clean(self,*args, **kwargs):
+        
+        password = self.cleaned_data.get("password")
+        confirm = self.cleaned_data.get("confirm_password")
 
         if password != confirm:
-            raise forms.ValidationError("raise an error")
+           self.add_error('confirm_password', "!تکرار کلمه عبود با کلمه عبور برابر نیست")
+        
            
 
 
