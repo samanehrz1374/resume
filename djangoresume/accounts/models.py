@@ -26,9 +26,59 @@ class ProfileModel(models.Model):
     intrested_job=models.CharField(max_length=100,verbose_name="شغل مورد علاقه",null=True)
     ProfileImage=models.ImageField(upload_to='profileimages/',verbose_name="عکس")
 
-    # def __str__(Self):
-    #     return Self.user
-    # def get_jalali_date(self):
-    #     return date2jalali(self.birthday)
+    Associate=1
+    Bachelor=2
+    Master=3
+    phD=4
+    status_choices2=((Associate,"کاردانی"),
+                    (Bachelor,"کارشناسی"),
+                    (Master,"کارشناسی ارشد"),
+                    (phD,"دکترا"))
+    degree_level=models.IntegerField(choices=status_choices2,verbose_name="مقطع تحصیلی",null=True)
+    major=models.CharField(max_length=100,verbose_name="رشته تحصیلی",null=True)
+    university=models.CharField(max_length=100,verbose_name="دانشگاه",null=True)
+    gpa=models.FloatField(verbose_name="معدل",null=True)
+    from_year=models.DateField(verbose_name="سال شروع",null=True)
+    to_year=models.DateField(verbose_name="سال پایان",null=True)
+    job_title=models.CharField(max_length=100,verbose_name="عنوان شغل",null=True)
+    company_name=models.CharField(max_length=100,verbose_name="نام شرکت",null=True)
+    start_time=models.TimeField(verbose_name="تاریخ شروع",null=True)
+    end_time=models.TimeField(verbose_name="تاریخ پایان",null=True)
+    job_title=models.CharField(max_length=100,verbose_name="عنوان شغل",null=True)
+    company_name=models.CharField(max_length=100,verbose_name="نام شرکت",null=True)
+    start_time=models.TimeField(verbose_name="تاریخ شروع",null=True)
+    end_time=models.TimeField(verbose_name="تاریخ پایان",null=True)
+    language=models.CharField(max_length=100,verbose_name="زبان",null=True)
+    Basic=1
+    preintermidiate=2
+    intermidiate=3
+    upperintermidiate=4
+    advanced=5
+    native=6
+    status_choices3=((Basic,"مقدماتی"),
+                    (preintermidiate,"پایین تر از متوسط"),
+                    (intermidiate,"متوسط"),
+                    (upperintermidiate,"بالاتر از متوسط"),
+                    (advanced,"پیشرفته"),
+                    (native,"زبان مادری"),
+                    )
+    leveloflanguage=models.IntegerField(choices=status_choices3,verbose_name="سطح مهارت",null=True)
+    skillname=models.CharField(max_length=100,verbose_name="مهارت",null=True)
+    Basic=1
+    intermidiate=2
+    advanced=3
+    status_choices4=((Basic,"مقدماتی"),
+                    (intermidiate,"متوسط"),
+                    (advanced,"پیشرفته"))
+    levelofskill=models.IntegerField(choices=status_choices4,verbose_name="سطح مهارت",null=True)
+    coursesname=models.CharField(max_length=300,verbose_name="نام دوره آموزشی",null=True)
+    institute=models.CharField(max_length=300,verbose_name="نام آموزشگاه",null=True)
+    award_title=models.CharField(max_length=300,verbose_name="عنوان",null=True)
+    dateofaward=models.TimeField(verbose_name="سال",null=True)
+    project_title=models.CharField(max_length=300,verbose_name="عنوان",null=True)
+    dateofproject=models.TimeField(verbose_name="سال",null=True)
+    article_title=models.CharField(max_length=500,verbose_name="عنوان",null=True)
+    dateofarticle=models.TimeField(verbose_name="سال",null=True)
+
 
     

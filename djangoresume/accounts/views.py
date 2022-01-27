@@ -10,6 +10,7 @@ import resumesite
 from accounts.forms import ProfileRegisterForm,ProfileEditForm,UserEditForm
 from django.contrib.auth.models import User
 from accounts.models import ProfileModel
+from resumesite.models import aducationModel
 
 
 
@@ -117,4 +118,12 @@ def ProfileEditView(request):
 
 
 
-
+@login_required
+def resumeprofileview(request):
+    resumeprofile=request.user.profile
+    
+    context={
+        "resumeprofile":resumeprofile
+        
+    }
+    return render(request,"accounts/resumeprofile.html",context)

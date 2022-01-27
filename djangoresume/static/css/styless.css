@@ -17,10 +17,16 @@
          url('../fonts/IranianSans.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
          url('../fonts/IranianSans.ttf') format('truetype');  /* Saf3—5, Chrome4+, FF3.5, Opera 10+ */
   }
-  
+
+@font-face {
+    font-family: 'Yekan';
+    src: url('../fonts/Yekan.eot?#') format('eot'),  /* IE6–8 */
+         url('../fonts/Yekan.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+         url('../fonts/Yekan.ttf') format('truetype');  /* Saf3—5, Chrome4+, FF3.5, Opera 10+ */
+  }
 
 body{
-      font-family: Bnazanin;
+      font-family: Yekan,IranianSans,Bnazanin;
       font-size: 10px;
       }
 
@@ -119,6 +125,7 @@ bodyy{
   padding-left: 20px;
   text-align: center;
   background-color: rgb(231, 229, 229);
+  overflow-y: scroll;
 
 }
 
@@ -318,10 +325,14 @@ img {
 
 
 .profil{
-  font-size: 20px; 
+  font-size: 15px; 
   text-align: right; 
-  padding-right: 15px;
-   margin-bottom: 20px;
+  padding-right: 0px;
+  margin-bottom: 20px;
+  color: rgb(11 72 104);
+  border-bottom:1px solid rgb(223, 226, 226);
+  
+  
 }
 
 .imgbox{
@@ -346,7 +357,7 @@ img {
   /* font-size: 20px;  */
   /* text-align: right;  */
   padding-right: 15px;
-   margin-bottom: 20px;
+  margin-bottom: 20px;
 
 }
 .formedit {
@@ -357,7 +368,8 @@ img {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1;
-  color: #212529;
+  color: rgb(11 72 104);
+  /* color: #212529; */
   background-color: rgb(238, 234, 234);
   background-clip: padding-box;
   border-bottom:1px solid rgb(191, 196, 195);
@@ -394,4 +406,59 @@ img {
 label.required::after {
   content: ' *';
   color: red;
+}
+
+.formresume {
+  /* width:30%; */
+  /* margin: 10px auto; */
+  background: rgba(247, 241, 241, 0.233);
+  box-shadow: 0 0px 10px rgb(95 95 95 / 10%);
+  padding: 20px;
+  
+  /* box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 5px 0 rgba(0, 0, 0, 0.19); */
+}
+
+
+.resumesectiontitle{
+  font-size: 18px; 
+  text-align: right; 
+  padding-right: 5px;
+  margin-top: 10px;
+  color: rgb(6, 62, 92)
+}
+
+.profilecontentbox{
+  background: rgba(247, 241, 241, 0.233);
+  box-shadow: 0 0px 10px rgb(95 95 95 / 10%);
+  padding: 20px;
+  height: 300px;
+  margin-left: 5%; 
+  margin-right: 5%; 
+  
+}
+
+
+.formeditdate {
+  display: block;
+  width: 25%;
+  float: left;
+  padding: 0.375rem 0.5rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1;
+  color: rgb(11 72 104);
+  background-color: rgb(238, 234, 234);
+  background-clip: padding-box;
+  border-bottom:1px solid rgb(191, 196, 195);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0.3rem;
+  margin-left: 5px; 
+  
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  text-align: center;
+  margin-bottom: 10px;
+  /* box-shadow: 0 2px 3px 0 rgb(0 0 0 / 20%), 0 1px 1px 0 rgb(0 0 0 / 19%); */
+  /* margin-bottom:10px ; */
 }

@@ -10,7 +10,8 @@ urlpatterns = [
     path('logout/',views.logoutVeiw),
     path('profileregister/',views.profileRegisterView),
     path('profile/',views.profileView),
-    path('profileEdit/',views.ProfileEditView)
+    path('profileEdit/',views.ProfileEditView),
+    path('resumeprofile/',views.resumeprofileview)
 ]
 
 if settings.DEBUG:

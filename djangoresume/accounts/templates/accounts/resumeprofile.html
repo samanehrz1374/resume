@@ -1,0 +1,132 @@
+{%load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'css/styless.css'%}">
+    <title>Document</title>
+</head>
+<body>
+    <body dir="rtl">
+        <div class="container bodyy">
+            <div class="main_container">
+                <div class="nav-md">
+                    <div class="shadoww">
+                        <div class="navbar nav_title">
+                            <img src="{% static 'images/profile.jpg'%}" alt="...">
+                        </div>
+                        
+                        <div class="clearfix">
+                        </div>
+                        <div class="sidebarmenu">
+                            <div >
+                               <div class="side-menu sidbarmenu-contain"><a href="#"  style="text-decoration: none;color:white;">پروفایل</a></div>
+                               <div class="side-menu sidbarmenu-contain"><a href="#" style="text-decoration: none;color:white;">ساخت رزومه</a></div>
+                               <div class="side-menu sidbarmenu-contain sidebar-bottom"><a href="/accounts/logout" style="text-decoration: none;color:white;">خروج</a></div>
+                            </div>
+                            
+    
+                        </div>                 
+                    </div>
+                </div>
+            <div class="boxxrtl"  style="min-height: 607px;">
+                    <div class="imgbox">
+                        <img src="{{ resumeprofile.ProfileImage.url }}" style="width: 100%;align-items: right;">
+                    </div>
+                    <div  style="width: 40%;float: right;height: 420px ; margin-left: 5%; margin-right: 5%;" >
+                       
+                        
+                        <p class="resumesectiontitle">اطلاعات شخصی</p> 
+                        <div class="formresume">
+                        <p class="profil">نام و نام خانوادگی:&nbsp;{{ resumeprofile.user.get_full_name |default:""}}</p>
+                        <p class="profil">تاریخ تولد:&nbsp;{{ resumeprofile.birthday|date:'Y/m/d' }}</p>
+                        <p class="profil">جنسیت:&nbsp;{{ resumeprofile.get_gender_display |default:""}}</p>
+                        <p class="profil">وضعیت تاهل:&nbsp;{{ resumeprofile.get_marital_status_display|default:"" }}</p>
+                        <p class="profil"> شهر:&nbsp;{{ resumeprofile.city |default:""}}</p>
+                        <p class="profil">آدرس:&nbsp;{{ resumeprofile.address|default:"" }}</p>
+                        <p class="profil">شغل مورد علاقه:&nbsp;{{ resumeprofile.intrested_job |default:""}}</p>
+                        </div>
+                        <p class="resumesectiontitle">سوابق تحصیلی</p> 
+                        <div class="formresume">
+                        <p class="profil">مقطع تحصیلی:&nbsp;{{ resumeprofile.get_degree_level_display|default:"" }}</p>
+                        <p class="profil">رشته تحصیلی:&nbsp;{{ resumeprofile.major|default:"" }}</p>
+                        <p class="profil">دانشگاه:&nbsp;{{ resumeprofile.university|default:"" }}</p>
+                        <p class="profil">معدل:&nbsp;{{ resumeprofile.gpa|default:"" }}</p>
+                        <p class="profil">سال شروع:&nbsp;{{ resumeprofile.from_year|default:"" }}</p>
+                        <p class="profil">سال پایان:&nbsp;{{ resumeprofile.to_year |default:""}}</p>
+                        </div>
+                        <p class="resumesectiontitle">سوابق شغلی</p> 
+                        <div class="formresume">
+                        <p class="profil">عنوان شغل:&nbsp;{{ resumeprofile.job_title |default:""}}</p>
+                        <p class="profil">نام شرکت:&nbsp;{{ resumeprofile.company_name |default:""}}</p>
+                        <p class="profil">سال شروع:&nbsp;{{ resumeprofile.start_time |default:""}}</p>
+                        <p class="profil">سال پایان:&nbsp;{{ resumeprofile.end_time|default:"" }}</p>
+                        </div>
+                    </div> 
+                    
+                    
+
+                    <div style="width: 40%; float: right;height: 420px ; margin-left: 5%; margin-right: 5%;" >
+                        
+                        
+                        <p class="resumesectiontitle">مهارت ها</p>
+                        <div class="formresume" > 
+                        <p class="profil">مهارت:&nbsp;{{ resumeprofile.skillname|default:""  }}</p>
+                        <p class="profil">سطح مهارت:&nbsp;{{ resumeprofile.get_levelofskill_display|default:"" }}</p>
+                        </div>
+
+                        <p class="resumesectiontitle">دوره های آموزشی</p>
+                        <div class="formresume"> 
+                        <p class="profil">نام دوره آموزشی:&nbsp;{{ resumeprofile.coursesname|default:"" }}</p>
+                        <p class="profil">نام آموزشگاه:&nbsp;{{ resumeprofile.institute|default:"" }}</p>
+                        </div>
+
+                        <p class="resumesectiontitle">جوایز و افتخارات</p>
+                        <div class="formresume"> 
+                        <p class="profil">عنوان:&nbsp;{{ resumeprofile.award_title |default:""}}</p>
+                        <p class="profil">سال:&nbsp;{{ resumeprofile.dateofaward|default:"" }}</p>
+                        </div>     
+
+                        <p class="resumesectiontitle">پروژه ها و تجربیات آکادمیک</p> 
+                        <div class="formresume"> 
+                        <p class="profil">عنوان:&nbsp;{{ resumeprofile.project_title |default:""}}</p>
+                        <p class="profil">سال:&nbsp;{{ resumeprofile.dateofproject|default:"" }}</p>
+                        </div>
+
+                        <p class="resumesectiontitle">کتاب ها و مقالات</p> 
+                        <div class="formresume"> 
+                        <p class="profil">عنوان:&nbsp;{{ resumeprofile.article_title |default:""}}</p>
+                        <p class="profil">سال:&nbsp;{{ resumeprofile.dateofarticle|default:"" }}</p>
+                        </div> 
+                        
+                        <p class="resumesectiontitle">زبان ها</p> 
+                        <div class="formresume"> 
+                        <p class="profil">زبان:&nbsp;{{ resumeprofile.language|default:"" }}</p>
+                        <p class="profil">سطح مهارت:&nbsp;{{ resumeprofile.get_leveloflanguage_display|default:"" }}</p>
+                        </div>
+                        <div style=" display:block; align-content: center;">
+                            <a href="/accounts/profileEdit" >
+                                <input type="button" value="ویرایش رزومه" class="btn editsubmit" style="margin-top: 55px;"  />
+                             </a>
+                       
+                        </div>
+                        
+                        
+                      
+                    </div>
+                   
+ 
+    
+            </div>
+            
+            
+               
+        </div>
+        
+        
+</body>
+</html>
+    

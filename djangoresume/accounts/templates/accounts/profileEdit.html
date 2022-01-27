@@ -39,12 +39,13 @@
             <div class="boxxrtl"  style="min-height: 607px;">
                 <form action="" method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
-                    <div style="width: 30%;float: right; margin-left: 10%; margin-right: 3%;" >
+                    <div class="imgbox">
+                        <img src="{{ ProfileImage.url  }}" style="width: 100%;align-items: right;">
+                        
+                    </div>
+                    <div style="width: 30%;float: right; margin-left: 15%; margin-right: 5%;" >
                     
-                        <div class="imgbox">
-                            <img src="{{ ProfileImage.url  }}" style="width: 100%;align-items: right;">
-                            
-                        </div>
+                        
                     
                     
                     {{ profileeditform.ProfileImage|add_class:"profilchoose" }}
@@ -54,7 +55,7 @@
                     <p class="profil">وضعیت تاهل:{{ profileeditform.marital_status|add_class:"formedit" }}</p>
                     <p class="profil"> شهر:{{ profileeditform.city |add_class:"formedit"}}</p>
                     </div>
-                    <div style="width: 30%; float: right;margin-left: 10%; margin-right: 3%; padding-top: 19%;" >
+                    <div style="width: 30%; float: right;margin-left: 0%; margin-right: 5%; padding-top: 3.5%;" >
                     <p class="profil">آدرس:{{ profileeditform.address |add_class:"formedit"}}</p>
                     <p class="profil">تاریخ تولد:{{ profileeditform.birthday|add_class:"formeditdate" }}</p>
                    
