@@ -55,15 +55,15 @@
                         <p class="profil">رشته تحصیلی:&nbsp;{{ resumeprofile.major|default:"" }}</p>
                         <p class="profil">دانشگاه:&nbsp;{{ resumeprofile.university|default:"" }}</p>
                         <p class="profil">معدل:&nbsp;{{ resumeprofile.gpa|default:"" }}</p>
-                        <p class="profil">سال شروع:&nbsp;{{ resumeprofile.from_year|default:"" }}</p>
-                        <p class="profil">سال پایان:&nbsp;{{ resumeprofile.to_year |default:""}}</p>
+                        <p class="profil">سال شروع:&nbsp;{{ resumeprofile.from_year|default:""|date:'Y' }}</p>
+                        <p class="profil">سال پایان:&nbsp;{{ resumeprofile.to_year |default:""|date:'Y'}}</p>
                         </div>
                         <p class="resumesectiontitle">سوابق شغلی</p> 
                         <div class="formresume">
                         <p class="profil">عنوان شغل:&nbsp;{{ resumeprofile.job_title |default:""}}</p>
                         <p class="profil">نام شرکت:&nbsp;{{ resumeprofile.company_name |default:""}}</p>
-                        <p class="profil">سال شروع:&nbsp;{{ resumeprofile.start_time |default:""}}</p>
-                        <p class="profil">سال پایان:&nbsp;{{ resumeprofile.end_time|default:"" }}</p>
+                        <p class="profil">سال شروع:&nbsp;{{ resumeprofile.start_time |default:""|date:'Y'}}</p>
+                        <p class="profil">سال پایان:&nbsp;{{ resumeprofile.end_time|default:""|date:'Y' }}</p>
                         </div>
                     </div> 
                     
@@ -87,19 +87,19 @@
                         <p class="resumesectiontitle">جوایز و افتخارات</p>
                         <div class="formresume"> 
                         <p class="profil">عنوان:&nbsp;{{ resumeprofile.award_title |default:""}}</p>
-                        <p class="profil">سال:&nbsp;{{ resumeprofile.dateofaward|default:"" }}</p>
+                        <p class="profil">سال:&nbsp;{{ resumeprofile.dateofaward|default:""|date:'Y' }}</p>
                         </div>     
 
                         <p class="resumesectiontitle">پروژه ها و تجربیات آکادمیک</p> 
                         <div class="formresume"> 
                         <p class="profil">عنوان:&nbsp;{{ resumeprofile.project_title |default:""}}</p>
-                        <p class="profil">سال:&nbsp;{{ resumeprofile.dateofproject|default:"" }}</p>
+                        <p class="profil">سال:&nbsp;{{ resumeprofile.dateofproject|default:"" |date:'Y'}}</p>
                         </div>
 
                         <p class="resumesectiontitle">کتاب ها و مقالات</p> 
                         <div class="formresume"> 
                         <p class="profil">عنوان:&nbsp;{{ resumeprofile.article_title |default:""}}</p>
-                        <p class="profil">سال:&nbsp;{{ resumeprofile.dateofarticle|default:"" }}</p>
+                        <p class="profil">سال:&nbsp;{{ resumeprofile.dateofarticle|default:"" |date:'Y'}}</p>
                         </div> 
                         
                         <p class="resumesectiontitle">زبان ها</p> 
