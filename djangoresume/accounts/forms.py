@@ -55,12 +55,9 @@ class ProfileEditForm(forms.ModelForm):
     #         # there's a `fields` property now
         for key in a:
             self.fields[key].required = False  
-    def __init__(self, *args, **kwargs):
-        super(ProfileEditForm, self).__init__(*args, **kwargs)
-        self.fields["birthday"] = forms.DateField(required=False, widget=forms.SelectDateWidget(empty_label=['سال', 'ماه', 'روز'], years=YEAR_CHOICES, months=MONTH_CHOICES))
-
-
         
+        self.fields["birthday"] = forms.DateField(required=False, widget=forms.SelectDateWidget(empty_label=['سال', 'ماه', 'روز'], years=YEAR_CHOICES, months=MONTH_CHOICES))
+      
 
 
 class UserEditForm(UserChangeForm):
@@ -85,14 +82,22 @@ class ResumeEditForm(forms.ModelForm):
         'language','leveloflanguage']          
     
     def __init__(self, *args, **kwargs):
-    #         # first call parent's constructor
+    
         super(ResumeEditForm, self).__init__(*args, **kwargs)
-        a=['ProfileImage','gender','marital_status','city','address','birthday',
+        nonRequriedFields=['ProfileImage','gender','marital_status','city','address','birthday',
         'intrested_job','degree_level','major','university',
         'gpa','from_year','to_year','job_title','company_name','start_time','end_time',
         'skillname','levelofskill','coursesname','institute',
         'award_title','dateofaward','project_title','dateofproject','article_title','dateofarticle',
-        'language','leveloflanguage']     
-    #         # there's a `fields` property now
-        for key in a:
+        'language','leveloflanguage']   
+
+        # datefields=['birthday',]
+   
+        self.fields["birthday"] = forms.DateField(widget=forms.SelectDateWidget(empty_label=['سال', 'ماه', 'روز'], years=YEAR_CHOICES, months=MONTH_CHOICES))
+
+        for key in nonRequriedFields:
             self.fields[key].required = False
+        
+        
+
+

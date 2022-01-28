@@ -39,35 +39,36 @@
             <div class="boxxrtl"  style="min-height: 607px;">
                 <form action="" method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
+                
                     <div class="imgbox">
                         <img src="{{ ProfileImage.url  }}" style="width: 100%;align-items: right;">
-                        
                     </div>
-                    <div style="width: 30%;float: right; margin-left: 15%; margin-right: 5%;" >
-                    
-                        
-                    
-                    
                     {{ profileeditform.ProfileImage|add_class:"profilchoose" }}
-                    
-                    <p class="profil">نام و نام خانوادگی:{{usereditform.first_name|add_class:"formedit"}} {{usereditform.last_name|add_class:"formedit"}}</p>
-                    
-                    <p class="profil">وضعیت تاهل:{{ profileeditform.marital_status|add_class:"formedit" }}</p>
-                    <p class="profil"> شهر:{{ profileeditform.city |add_class:"formedit"}}</p>
+                    <div style="width: 100%;margin-left: 0%; margin-right: 0%; height: 335px;" >
+                        <div class="profilecontentbox">
+                            <div style="width: 40%;float: right; margin-left: 10%; margin-right: 0%;" >
+                            
+                                
+                                <p class="profil">نام و نام خانوادگی:{{usereditform.first_name|add_class:"formedit"}} {{usereditform.last_name|add_class:"formedit"}}</p>                            
+                                <p class="profil">وضعیت تاهل:{{ profileeditform.marital_status|add_class:"formedit" }}</p>
+                                <p class="profil"> شهر:{{ profileeditform.city |add_class:"formedit"}}</p>
+                            </div>
+                            <div style="width: 40%;float: right; margin-left: 10%; margin-right: 0%;" >
+                                <p class="profil">آدرس:{{ profileeditform.address |add_class:"formedit"}}</p>
+                                <p class="profil">تاریخ تولد:{{ profileeditform.birthday|add_class:"formeditdate" }}</p>
+                                <p class="profil">شغل مورد علاقه:{{ profileeditform.intrested_job |add_class:"formedit"}}</p>
+                                <p class="profil">جنسیت:{{ profileeditform.gender |add_class:"formedit"}}</p>
+                            </div>
+                        </div>
                     </div>
-                    <div style="width: 30%; float: right;margin-left: 0%; margin-right: 5%; padding-top: 3.5%;" >
-                    <p class="profil">آدرس:{{ profileeditform.address |add_class:"formedit"}}</p>
-                    <p class="profil">تاریخ تولد:{{ profileeditform.birthday|add_class:"formeditdate" }}</p>
-                   
-                    <p class="profil">شغل مورد علاقه:{{ profileeditform.intrested_job |add_class:"formedit"}}</p>
-                    <p class="profil">جنسیت:</span> {{ profileeditform.gender |add_class:"formedit"}}</p>
-                    </div>
+
+                    <div style=" display:block; align-items: center;margin-top: 10px;" >
+                        <button type="submit"  class="btn editsubmit">ذخیره</button>
+                    </div>  
+
                     
-                    <div>
-                    <button type="submit" class="btn editsubmit">ذخیره</button>
-                    </div>
                 </form>
-                        
+                      
     
             </div>
             

@@ -41,29 +41,31 @@
                         
                         <p class="resumesectiontitle">اطلاعات شخصی</p> 
                         <div class="formresume">
-                        <p class="profil">نام و نام خانوادگی:&nbsp;{{ resumeprofile.user.get_full_name |default:""}}</p>
-                        <p class="profil">تاریخ تولد:&nbsp;{{ resumeprofile.birthday|date:'Y/m/d' }}</p>
-                        <p class="profil">جنسیت:&nbsp;{{ resumeprofile.get_gender_display |default:""}}</p>
-                        <p class="profil">وضعیت تاهل:&nbsp;{{ resumeprofile.get_marital_status_display|default:"" }}</p>
-                        <p class="profil"> شهر:&nbsp;{{ resumeprofile.city |default:""}}</p>
-                        <p class="profil">آدرس:&nbsp;{{ resumeprofile.address|default:"" }}</p>
-                        <p class="profil">شغل مورد علاقه:&nbsp;{{ resumeprofile.intrested_job |default:""}}</p>
+                            <p class="profil">نام و نام خانوادگی:&nbsp;{{ resumeprofile.user.get_full_name |default:""}}</p>
+                            <p class="profil">تاریخ تولد:&nbsp;{{ resumeprofile.birthday|date:'Y/m/d' }}</p>
+                            <p class="profil">جنسیت:&nbsp;{{ resumeprofile.get_gender_display |default:""}}</p>
+                            <p class="profil">وضعیت تاهل:&nbsp;{{ resumeprofile.get_marital_status_display|default:"" }}</p>
+                            <p class="profil"> شهر:&nbsp;{{ resumeprofile.city |default:""}}</p>
+                            <p class="profil">آدرس:&nbsp;{{ resumeprofile.address|default:"" }}</p>
+                            <p class="profil">شغل مورد علاقه:&nbsp;{{ resumeprofile.intrested_job |default:""}}</p>
                         </div>
+
                         <p class="resumesectiontitle">سوابق تحصیلی</p> 
                         <div class="formresume">
-                        <p class="profil">مقطع تحصیلی:&nbsp;{{ resumeprofile.get_degree_level_display|default:"" }}</p>
-                        <p class="profil">رشته تحصیلی:&nbsp;{{ resumeprofile.major|default:"" }}</p>
-                        <p class="profil">دانشگاه:&nbsp;{{ resumeprofile.university|default:"" }}</p>
-                        <p class="profil">معدل:&nbsp;{{ resumeprofile.gpa|default:"" }}</p>
-                        <p class="profil">سال شروع:&nbsp;{{ resumeprofile.from_year|default:""|date:'Y' }}</p>
-                        <p class="profil">سال پایان:&nbsp;{{ resumeprofile.to_year |default:""|date:'Y'}}</p>
+                            <p class="profil">مقطع تحصیلی:&nbsp;{{ resumeprofile.get_degree_level_display|default:"" }}</p>
+                            <p class="profil">رشته تحصیلی:&nbsp;{{ resumeprofile.major|default:"" }}</p>
+                            <p class="profil">دانشگاه:&nbsp;{{ resumeprofile.university|default:"" }}</p>
+                            <p class="profil">معدل:&nbsp;{{ resumeprofile.gpa|default:"" }}</p>
+                            <p class="profil">سال شروع:&nbsp;{{ resumeprofile.from_year|default:""|date:'Y' }}</p>
+                            <p class="profil">سال پایان:&nbsp;{{ resumeprofile.to_year |default:""|date:'Y'}}</p>
                         </div>
+
                         <p class="resumesectiontitle">سوابق شغلی</p> 
                         <div class="formresume">
-                        <p class="profil">عنوان شغل:&nbsp;{{ resumeprofile.job_title |default:""}}</p>
-                        <p class="profil">نام شرکت:&nbsp;{{ resumeprofile.company_name |default:""}}</p>
-                        <p class="profil">سال شروع:&nbsp;{{ resumeprofile.start_time |default:""|date:'Y'}}</p>
-                        <p class="profil">سال پایان:&nbsp;{{ resumeprofile.end_time|default:""|date:'Y' }}</p>
+                            <p class="profil">عنوان شغل:&nbsp;{{ resumeprofile.job_title |default:""}}</p>
+                            <p class="profil">نام شرکت:&nbsp;{{ resumeprofile.company_name |default:""}}</p>
+                            <p class="profil">سال شروع:&nbsp;{{ resumeprofile.start_time |default:""|date:'Y'}}</p>
+                            <p class="profil">سال پایان:&nbsp;{{ resumeprofile.end_time|default:""|date:'Y' }}</p>
                         </div>
                     </div> 
                     
@@ -74,14 +76,14 @@
                         
                         <p class="resumesectiontitle">مهارت ها</p>
                         <div class="formresume" > 
-                        <p class="profil">مهارت:&nbsp;{{ resumeprofile.skillname|default:""  }}</p>
-                        <p class="profil">سطح مهارت:&nbsp;{{ resumeprofile.get_levelofskill_display|default:"" }}</p>
+                            <p class="profil">مهارت:&nbsp;{{ resumeprofile.skillname|default:""  }}</p>
+                            <p class="profil">سطح مهارت:&nbsp;{{ resumeprofile.get_levelofskill_display|default:"" }}</p>
                         </div>
 
                         <p class="resumesectiontitle">دوره های آموزشی</p>
                         <div class="formresume"> 
-                        <p class="profil">نام دوره آموزشی:&nbsp;{{ resumeprofile.coursesname|default:"" }}</p>
-                        <p class="profil">نام آموزشگاه:&nbsp;{{ resumeprofile.institute|default:"" }}</p>
+                            <p class="profil">نام دوره آموزشی:&nbsp;{{ resumeprofile.coursesname|default:"" }}</p>
+                            <p class="profil">نام آموزشگاه:&nbsp;{{ resumeprofile.institute|default:"" }}</p>
                         </div>
 
                         <p class="resumesectiontitle">جوایز و افتخارات</p>
