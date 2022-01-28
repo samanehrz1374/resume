@@ -39,17 +39,17 @@
                 <div style="width: 100%;margin-left: 0%; margin-right: 0%; height: 335px;" >
                     <div class="profilecontentbox">
                         <div style="width: 40%;float: right; margin-left: 10%; margin-right: 0%;" >
-                            <p class="profil">نام و نام خانوادگی:&nbsp;{{ profile.user.get_full_name }}</p>
+                            <p class="profil">نام و نام خانوادگی:&nbsp;{{ profile.user.get_full_name|default:"" }}</p>
                             <!-- <p>نام خانوادگی:{{profile.user.get_last_name}}</p> -->
                             <p class="profil">وضعیت تاهل:&nbsp;{{ profile.get_marital_status_display }}</p>
-                            <p class="profil"> شهر:&nbsp;{{ profile.city }}</p>
-                            <p class="profil">آدرس:&nbsp;{{ profile.address }}</p>
+                            <p class="profil"> شهر:&nbsp;{{ profile.city|default:""}}</p>
+                            <p class="profil">آدرس:&nbsp;{{ profile.address|default:"" }}</p>
                         </div>
                         <div style="width: 40%;float: right; margin-left: 10%; margin-right: 0%;" >
-                            <p class="profil">تاریخ تولد:&nbsp;{{ profile.birthday|date:'Y/m/d' }}</p>
+                            <p class="profil">تاریخ تولد:&nbsp;{{ profile.birthday|date:'Y/m/d' |default:""}}</p>
                             <!-- <p class="profil">حقوق درخواستی:{{ profile.Expected_Salary }}</p> -->
-                            <p class="profil">شغل مورد علاقه:&nbsp;{{ profile.intrested_job }}</p>
-                            <p class="profil">جنسیت:&nbsp;{{ profile.get_gender_display }}</p>
+                            <p class="profil">شغل مورد علاقه:&nbsp;{{ profile.intrested_job |default:""}}</p>
+                            <p class="profil">جنسیت:&nbsp;{{ profile.get_gender_display|default:"" }}</p>
                         </div>
                     </div>
                 </div>

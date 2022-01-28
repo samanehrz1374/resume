@@ -7,10 +7,9 @@ from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from resumesite import views
 import resumesite
-from accounts.forms import ProfileRegisterForm,ProfileEditForm,UserEditForm
+from accounts.forms import ProfileRegisterForm,ProfileEditForm,UserEditForm,ResumeEditForm
 from django.contrib.auth.models import User
 from accounts.models import ProfileModel
-from resumesite.models import aducationModel
 
 
 
@@ -127,3 +126,24 @@ def resumeprofileview(request):
         
     }
     return render(request,"accounts/resumeprofile.html",context)
+
+@login_required
+def ResumeEditView(request):
+    if request.method=="POST":
+        resumeeditform=ResumeEditForm(request.POST,request.FILES,instance=request.user.profile)
+        usereditform=UserEditForm(request.POST,instance=request.user)
+        if resumeeditform.is_valid() and usereditform.is_valid():
+            resumeeditform.save()
+            usereditform.save()
+            return HttpResponseRedirect(reverse(accounts.views.resumeprofileview))
+
+    else:
+        resumeeditform=ResumeEditForm(instance=request.user.profile)
+        usereditform=UserEditForm(instance=request.user)
+
+    context={
+        "resumeeditform":resumeeditform,
+        "usereditform":usereditform,
+        "ProfileImage":request.user.profile.ProfileImage,
+    }
+    return render(request,"accounts/resumeEdit.html",context)

@@ -11,7 +11,8 @@ urlpatterns = [
     path('profileregister/',views.profileRegisterView),
     path('profile/',views.profileView),
     path('profileEdit/',views.ProfileEditView),
-    path('resumeprofile/',views.resumeprofileview)
+    path('resumeprofile/',views.resumeprofileview),
+    path('resumeEdit/',views.ResumeEditView),
 ]
 
 if settings.DEBUG:

@@ -41,16 +41,24 @@ MONTH_CHOICES = {1: 'فروردین',2: 'اردیبهشت',3: 'خرداد',4: '�
 
 
 class ProfileEditForm(forms.ModelForm):
-    ProfileImage=forms.ImageField(widget=forms.FileInput,)
+    ProfileImage=forms.ImageField(widget=forms.FileInput)
     # birthday=forms.DateField(widget=forms.SelectDateWidget)
     class Meta:
         model=ProfileModel
         fields=['ProfileImage','gender','marital_status','city','address','birthday','intrested_job']          
     
+    
+    def __init__(self, *args, **kwargs):
+    #         # first call parent's constructor
+        super(ProfileEditForm, self).__init__(*args, **kwargs)
+        a=['ProfileImage','gender','marital_status','city','address','birthday','intrested_job']
+    #         # there's a `fields` property now
+        for key in a:
+            self.fields[key].required = False  
     def __init__(self, *args, **kwargs):
         super(ProfileEditForm, self).__init__(*args, **kwargs)
         self.fields["birthday"] = forms.DateField(required=False, widget=forms.SelectDateWidget(empty_label=['سال', 'ماه', 'روز'], years=YEAR_CHOICES, months=MONTH_CHOICES))
-        
+
 
         
 
@@ -59,3 +67,32 @@ class UserEditForm(UserChangeForm):
     class Meta(UserChangeForm.Meta):
         fields=['first_name','last_name','email']
     password=None
+
+
+
+
+class ResumeEditForm(forms.ModelForm):
+    ProfileImage=forms.ImageField(widget=forms.FileInput)
+   
+    class Meta:
+        model=ProfileModel
+        # fields = '__all__'
+        fields=['ProfileImage','gender','marital_status','city','address','birthday',
+        'intrested_job','degree_level','major','university',
+        'gpa','from_year','to_year','job_title','company_name','start_time','end_time',
+        'skillname','levelofskill','coursesname','institute',
+        'award_title','dateofaward','project_title','dateofproject','article_title','dateofarticle',
+        'language','leveloflanguage']          
+    
+    def __init__(self, *args, **kwargs):
+    #         # first call parent's constructor
+        super(ResumeEditForm, self).__init__(*args, **kwargs)
+        a=['ProfileImage','gender','marital_status','city','address','birthday',
+        'intrested_job','degree_level','major','university',
+        'gpa','from_year','to_year','job_title','company_name','start_time','end_time',
+        'skillname','levelofskill','coursesname','institute',
+        'award_title','dateofaward','project_title','dateofproject','article_title','dateofarticle',
+        'language','leveloflanguage']     
+    #         # there's a `fields` property now
+        for key in a:
+            self.fields[key].required = False

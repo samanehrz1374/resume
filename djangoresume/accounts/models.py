@@ -18,12 +18,12 @@ class ProfileModel(models.Model):
     single=1
     married=2
     status_choices1=((single,"مجرد"),(married,"متاهل"))
-    marital_status=models.IntegerField(choices=status_choices1,verbose_name="وضعیت تاهل",null=True)
-    city=models.CharField(max_length=100,verbose_name="شهر محل سکونت",null=True)
-    address=models.CharField(max_length=300,verbose_name="آدرس",null=True)
-    birthday=models.DateField(verbose_name="تاریخ تولد",null=True)
-    Expected_Salary=models.IntegerField(verbose_name="حقوق درخواستی",null=True)
-    intrested_job=models.CharField(max_length=100,verbose_name="شغل مورد علاقه",null=True)
+    marital_status=models.IntegerField(choices=status_choices1,verbose_name="وضعیت تاهل",null=True,blank=False)
+    city=models.CharField(max_length=100,verbose_name="شهر محل سکونت",null=True,blank=False)
+    address=models.CharField(max_length=300,verbose_name="آدرس",null=True,blank=False)
+    birthday=models.DateField(verbose_name="تاریخ تولد",null=True,blank=False)
+    Expected_Salary=models.IntegerField(verbose_name="حقوق درخواستی",null=True,blank=False)
+    intrested_job=models.CharField(max_length=100,verbose_name="شغل مورد علاقه",null=True,blank=False)
     ProfileImage=models.ImageField(upload_to='profileimages/',verbose_name="عکس")
 
     Associate=1
@@ -42,12 +42,8 @@ class ProfileModel(models.Model):
     to_year=models.DateField(verbose_name="سال پایان",null=True)
     job_title=models.CharField(max_length=100,verbose_name="عنوان شغل",null=True)
     company_name=models.CharField(max_length=100,verbose_name="نام شرکت",null=True)
-    start_time=models.TimeField(verbose_name="تاریخ شروع",null=True)
-    end_time=models.TimeField(verbose_name="تاریخ پایان",null=True)
-    job_title=models.CharField(max_length=100,verbose_name="عنوان شغل",null=True)
-    company_name=models.CharField(max_length=100,verbose_name="نام شرکت",null=True)
-    start_time=models.TimeField(verbose_name="تاریخ شروع",null=True)
-    end_time=models.TimeField(verbose_name="تاریخ پایان",null=True)
+    start_time=models.DateField(verbose_name="تاریخ شروع",null=True)
+    end_time=models.DateField(verbose_name="تاریخ پایان",null=True)
     language=models.CharField(max_length=100,verbose_name="زبان",null=True)
     Basic=1
     preintermidiate=2
@@ -74,11 +70,11 @@ class ProfileModel(models.Model):
     coursesname=models.CharField(max_length=300,verbose_name="نام دوره آموزشی",null=True)
     institute=models.CharField(max_length=300,verbose_name="نام آموزشگاه",null=True)
     award_title=models.CharField(max_length=300,verbose_name="عنوان",null=True)
-    dateofaward=models.TimeField(verbose_name="سال",null=True)
+    dateofaward=models.DateField(verbose_name="سال",null=True)
     project_title=models.CharField(max_length=300,verbose_name="عنوان",null=True)
-    dateofproject=models.TimeField(verbose_name="سال",null=True)
+    dateofproject=models.DateField(verbose_name="سال",null=True)
     article_title=models.CharField(max_length=500,verbose_name="عنوان",null=True)
-    dateofarticle=models.TimeField(verbose_name="سال",null=True)
+    dateofarticle=models.DateField(verbose_name="سال",null=True)
 
 
     

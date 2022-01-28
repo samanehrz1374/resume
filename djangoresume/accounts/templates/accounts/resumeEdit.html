@@ -1,0 +1,111 @@
+{%load static%}
+{% load widget_tweaks %}
+{% load jalali_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'css/styless.css'%}">
+    
+    <title>Document</title>
+</head>
+<body>
+    
+    <body dir="rtl">
+        <div class="container bodyy">
+            <div class="main_container">
+                <div class="nav-md">
+                    <div class="shadoww">
+                        <div class="navbar nav_title">
+                            <img src="{% static 'images/profile.jpg'%}" alt="...">
+                        </div>
+                        
+                        <div class="clearfix">
+                        </div>
+                        <div class="sidebarmenu">
+                            <div >
+                               <div class="side-menu sidbarmenu-contain"><a href="/accounts/profile"  style="text-decoration: none;color:white;">پروفایل</a></div>
+                               <div class="side-menu sidbarmenu-contain"><a href="/accounts/resumeprofile" style="text-decoration: none;color:white;">ساخت رزومه</a></div>
+                               <div class="side-menu sidbarmenu-contain sidebar-bottom"><a href="/accounts/logout" style="text-decoration: none;color:white;">خروج</a></div>
+                            </div>
+                            
+    
+                        </div>                 
+                    </div>
+            </div>
+            <div class="boxxrtl"  style="min-height: 607px;">
+                <form action="" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="imgbox">
+                        <img src="{{ ProfileImage.url  }}" style="width: 100%;align-items: right;">
+                        
+                    </div>
+                    <div style="width: 30%;float: right; margin-left: 15%; margin-right: 5%;" >
+                    
+                        
+                    
+                    
+                    {{ resumeeditform.ProfileImage|add_class:"profilchoose" }}
+                    
+                    <p class="profil">نام و نام خانوادگی:{{usereditform.first_name|add_class:"formedit"}} {{usereditform.last_name|add_class:"formedit"}}</p>
+                    <p class="profil">تاریخ تولد:{{ resumeeditform.birthday|add_class:"formeditdate" }}</p>
+                    <p class="profil">جنسیت:</span> {{ resumeeditform.gender |add_class:"formedit"}}</p>
+                    <p class="profil">وضعیت تاهل:{{ resumeeditform.marital_status|add_class:"formedit" }}</p>
+                    <p class="profil"> شهر:{{ resumeeditform.city |add_class:"formedit"}}</p>
+                    <p class="profil">آدرس:{{ resumeeditform.address |add_class:"formedit"}}</p>
+                    <p class="profil">شغل مورد علاقه:{{ resumeeditform.intrested_job |add_class:"formedit"}}</p>
+                    <p class="profil">مقطع تحصیلی:{{ resumeeditform.degree_level |add_class:"formedit"}}</p>
+                        <p class="profil">رشته تحصیلی:{{ resumeeditform.major|add_class:"formedit" }}</p>
+                            
+                        <p class="profil">دانشگاه:{{ resumeeditform.university |add_class:"formedit"}}</p>
+                        <p class="profil">معدل:</span> {{ resumeeditform.gpa |add_class:"formedit"}}</p>
+                        <p class="profil">سال شروع:{{ resumeeditform.from_year|add_class:"formedit"}}</p>
+                        <p class="profil">سال پایان:{{ resumeeditform.to_year |add_class:"formedit"}}</p>
+                        <p class="profil">عنوان شغل:</span> {{ resumeeditform.job_title |add_class:"formedit"}}</p>
+                        <p class="profil">نام شرکت:{{ resumeeditform.company_name |add_class:"formedit"}}</p>
+                        <p class="profil">تاریخ شروع:{{ resumeeditform.start_time|add_class:"formedit" }}</p>
+                        <p class="profil">تاریخ پایان:{{ resumeeditform.end_time |add_class:"formedit"}}</p> -->
+                    </div>
+                    <div style="width: 30%; float: right;margin-left: 0%; margin-right: 5%; padding-top: 3.5%;" >
+                        <p class="profil">مهارت:</span> {{ resumeeditform.skillname |add_class:"formedit"}}</p>
+                        <p class="profil">سطح مهارت:{{ resumeeditform.levelofskill|add_class:"formedit" }}</p>
+                    
+                        <p class="profil">نام دوره آموزشی:{{ resumeeditform.coursesname |add_class:"formedit"}}</p>
+                        <p class="profil">نام آموزشگاه:</span> {{ resumeeditform.institute |add_class:"formedit"}}</p>
+
+                        <p class="profil">عنوان:{{ resumeeditform.award_title |add_class:"formedit"}}</p>
+                        <p class="profil">سال:</span> {{ resumeeditform.dateofaward |add_class:"formedit"}}</p>
+
+
+                        <p class="profil">عنوان:{{ resumeeditform.project_title |add_class:"formedit"}}</p>
+                        <p class="profil">سال:</span> {{ resumeeditform.dateofproject |add_class:"formedit"}}</p>
+
+                        <p class="profil">عنوان:{{ resumeeditform.article_title |add_class:"formedit"}}</p>
+                        <p class="profil">سال:</span> {{ resumeeditform.dateofarticle |add_class:"formedit"}}</p>
+
+                        <p class="profil">زبان:{{ resumeeditform.language |add_class:"formedit"}}</p>
+                        <p class="profil">سطح:</span> {{ resumeeditform.leveloflanguage |add_class:"formedit"}}</p>
+                    
+                    </div>
+                    
+                    <div>
+                    <button type="submit" class="btn editsubmit">ذخیره</button>
+                    </div>
+                </form>
+                        
+    
+            </div>
+            
+            
+               
+        </div>
+        
+        
+</body>
+    <!-- <link rel="stylesheet" href="{% static 'admin/jquery.ui.datepicker.jalali/themes/base/jquery-ui.min.css' %}">
+    <script src="{% static 'admin/js/django_jalali.min.js' %}"></script> -->
+</html>
+    
