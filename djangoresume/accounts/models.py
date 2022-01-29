@@ -38,12 +38,12 @@ class ProfileModel(models.Model):
     major=models.CharField(max_length=100,verbose_name="رشته تحصیلی",null=True)
     university=models.CharField(max_length=100,verbose_name="دانشگاه",null=True)
     gpa=models.FloatField(verbose_name="معدل",null=True)
-    from_year=models.DateField(verbose_name="سال شروع",null=True)
-    to_year=models.DateField(verbose_name="سال پایان",null=True)
+    from_year=models.IntegerField(verbose_name="سال شروع",null=True)
+    to_year=models.IntegerField(verbose_name="سال پایان",null=True)
     job_title=models.CharField(max_length=100,verbose_name="عنوان شغل",null=True)
     company_name=models.CharField(max_length=100,verbose_name="نام شرکت",null=True)
-    start_time=models.DateField(verbose_name="تاریخ شروع",null=True)
-    end_time=models.DateField(verbose_name="تاریخ پایان",null=True)
+    start_time=models.IntegerField(verbose_name="تاریخ شروع",null=True)
+    end_time=models.IntegerField(verbose_name="تاریخ پایان",null=True)
     language=models.CharField(max_length=100,verbose_name="زبان",null=True)
     Basic=1
     preintermidiate=2
@@ -70,11 +70,11 @@ class ProfileModel(models.Model):
     coursesname=models.CharField(max_length=300,verbose_name="نام دوره آموزشی",null=True)
     institute=models.CharField(max_length=300,verbose_name="نام آموزشگاه",null=True)
     award_title=models.CharField(max_length=300,verbose_name="عنوان",null=True)
-    dateofaward=models.DateField(verbose_name="سال",null=True)
+    dateofaward=models.IntegerField(verbose_name="سال",null=True)
     project_title=models.CharField(max_length=300,verbose_name="عنوان",null=True)
-    dateofproject=models.DateField(verbose_name="سال",null=True)
+    dateofproject=models.IntegerField(verbose_name="سال",null=True)
     article_title=models.CharField(max_length=500,verbose_name="عنوان",null=True)
-    dateofarticle=models.DateField(verbose_name="سال",null=True)
+    dateofarticle=models.IntegerField(verbose_name="سال",null=True)
 
 
     

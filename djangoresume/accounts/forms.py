@@ -70,7 +70,7 @@ class UserEditForm(UserChangeForm):
 
 class ResumeEditForm(forms.ModelForm):
     ProfileImage=forms.ImageField(widget=forms.FileInput)
-   
+    
     class Meta:
         model=ProfileModel
         # fields = '__all__'
