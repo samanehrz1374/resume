@@ -9,6 +9,8 @@ class aboutmeModel(models.Model):
         verbose_name_plural="درباره من"
     Name=models.CharField(max_length=100)
     LastName=models.CharField(max_length=100)
+    address=models.CharField(max_length=300,null=True)
+    phone_number=models.IntegerField(null=True)
     Email=models.EmailField()
     owner = models.ForeignKey('auth.User', related_name='snippets', on_delete=models.CASCADE,null=True)
 
@@ -23,25 +25,26 @@ class aducationModel(models.Model):
     Bachelor=2
     Master=3
     phD=4
-    status_choices=((Associate,"کاردانی"),
-                    (Bachelor,"کارشناسی"),
-                    (Master,"کارشناسی ارشد"),
-                    (phD,"دکترا"))
+    status_choices=((Associate,"Associate"),
+                    (Bachelor,"Bachelor of science"),
+                    (Master,"Master of science "),
+                    (phD,"phD"))
     degree_level=models.IntegerField(choices=status_choices,verbose_name="مقطع تحصیلی")
-    major=models.CharField(max_length=100,verbose_name="مقطع تحصیلی")
+    major=models.CharField(max_length=100,verbose_name="رشته تحصیلی")
     university=models.CharField(max_length=100,verbose_name="دانشگاه")
     gpa=models.FloatField(verbose_name="معدل")
     from_year=models.DateField(verbose_name="سال شروع")
     to_year=models.DateField(verbose_name="سال پایان")
 
     def __str__(self):
-        return self.degree_level
+        return self.university
 
 
 class workexperience(models.Model):
     class Meta:
         verbose_name="سوابق شغلی"
         verbose_name_plural="سوابق شغلی"
+    job_area=models.CharField(max_length=100,null=True,blank=True)
     job_title=models.CharField(max_length=100,verbose_name="عنوان شغل")
     company_name=models.CharField(max_length=100,verbose_name="نام شرکت")
     start_time=models.TimeField(verbose_name="تاریخ شروع")
@@ -78,6 +81,7 @@ class skillsModel(models.Model):
     class Meta:
         verbose_name="مهارت ها"
         verbose_name_plural="مهارت ها"
+    skill_area=models.CharField(max_length=100,null=True,verbose_name="حوزه کاری")
     skillname=models.CharField(max_length=100,verbose_name="مهارت")
     Basic=1
     intermidiate=2
@@ -96,6 +100,7 @@ class coursesModel(models.Model):
         verbose_name_plural="دوره های آموزشی"
     coursesname=models.CharField(max_length=300,verbose_name="نام دوره آموزشی")
     institute=models.CharField(max_length=300,verbose_name="نام آموزشگاه")
+    certificate=models.URLField(null=True,blank=True)
 
 
     def __str__(self):
