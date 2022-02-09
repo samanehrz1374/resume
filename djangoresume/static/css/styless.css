@@ -28,7 +28,7 @@
 body{
       font-family: Yekan,IranianSans,Bnazanin;
       font-size: 10px;
-      overflow: hidden;
+      /* overflow: hidden; */
       }
 
 .container{

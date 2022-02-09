@@ -72,7 +72,7 @@ def profileRegisterView(request):
                                        gender=profileRegisterForm.cleaned_data['gender'])
 
             profileModel.save()
-            return render(request,"accounts/loginpanelFa.html",{})
+            return render(request,"accounts/login.html",{})
 
     context={
         "formData":profileRegisterForm
