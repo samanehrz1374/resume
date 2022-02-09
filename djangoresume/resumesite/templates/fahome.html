@@ -51,7 +51,7 @@
                     <div class="subheading mb-5">
                          متولد  1374تهران -ساکن کرج<br> 
                          وضعیت نظام وظیفه: معافیت تحصیلی     
-                        <a style="font-family: serif;" href="mailto:name@email.com">m.n.irib@gmail.com</a>
+                        <a style="font-family: serif;" href="mailto: samaneh.rezaie74@gmail.com">m.n.irib@gmail.com</a>
                     </div>
                     <p class="lead mb-5">کارشناس ارشد الکترونیک دیجیتال و علاقه مند به حوزه هوش مصنوعی به خصوص در زمینه پردازش زبان طبیعی(NLP) و برنامه نویسی با پایتون</p>
                     <div class="social-icons">
@@ -74,7 +74,7 @@
                             <p>آشنایی با لینوکس</p>
                         </div>
                         <div class=" mb-3">
-                            <p>تجربه انجام پروژه با My</p>
+                            <p>تجربه انجام پروژه با MySQL</p>
                         </div>
 
                         <div class=" mb-3">
@@ -88,7 +88,7 @@
 
                    
                         <div class="mb-3">
-                            <p>پیاده سازی پروژه تشخیص احساسات متون فارسی (بعنوان پروژه پایان ترم درس هوش مصنوعی کارشناسی ارشد)</p>
+                            <p>پیاده سازی پروژه تشخیص احساسات متون فارسی (به عنوان پروژه پایان ترم درس هوش مصنوعی کارشناسی ارشد)</p>
                         </div>
                        
 
@@ -100,17 +100,17 @@
                        
 
                         <div class=" mb-3">
-                            <p>طراحی برنامه ( NobitexMarketWatchدر ارتباط با بازار کریپتوکارنسی)به زبان پایتون دارای رابط کاربری مبتنی
-                                PyQt5 بر</p>
+                            <p>طراحی برنامه ( NobitexMarketWatch در ارتباط با بازار کریپتوکارنسی) به زبان پایتون دارای رابط کاربری مبتنی بر
+                                PyQt5 </p>
                         </div>
 
                         <div class=" mb-3">
-                            <p>فعالیت در ساخت ربات های سرخطی کارگزاری های مبتنی بر رایان هم افزا و تدبیرپرداز در سال 139</p>
+                            <p>فعالیت در ساخت ربات های سرخطی کارگزاری های مبتنی بر رایان هم افزا و تدبیرپرداز در سال 1399</p>
                         </div>
 
                     
                         <div class="mb-3">
-                            <p>ساخت وب سرویس ( )APIو نرم افزار پردازش داده های معاملاتی شرکت های عضو بورس اوراق بهادار تهران به
+                            <p>ساخت وب سرویس (API)و نرم افزار پردازش داده های معاملاتی شرکت های عضو بورس اوراق بهادار تهران به
                                 زبان پایتون</p>
                         </div>
                         
@@ -123,7 +123,7 @@
 
                     
                         <div class="mb-3">
-                            <p>)1393  به زبان فارسی (سالEngineering Economics and Project Management </p>
+                            <p> ترجمه کتاب (Engineering Economics and Project Management) به زبان فارسی(سال 1393)    </p>
                         </div>
                        
                 </div>
@@ -138,15 +138,16 @@
                             <h3 class="mb-0">دانشگاه آزاد کرج</h3>
                             <div class="subheading mb-3">کارشناسی</div>
                             <div>مهندسی برق الکترونیک</div>
-                            <p>GPA: 3.23</p>
+                            
                         </div>
                         <div class="flex-shrink-0"><span class="text-primary">1392-1396</span></div>
                     </div>
                     <div class="d-flex flex-column flex-md-row justify-content-between">
                         <div class="flex-grow-1">
                             <h3 class="mb-0">دانشگاه زنجان</h3>
-                            <div class="subheading mb-3">برق الکترونیک گرایش سیستم های الکترونیک دیجیتال</div>
-                            <p>GPA: 3.56</p>
+                            <div class="subheading mb-3">کارشناسی ارشد</div>
+                            <div >برق الکترونیک گرایش سیستم های الکترونیک دیجیتال</div>
+                            
                         </div>
                         <div class="flex-shrink-0"><span class="text-primary">1397-در حین دفاع</span></div>
                     </div>
@@ -160,32 +161,38 @@
                     
                     <div class="subheading mb-3">نرم افزار ها</div>
                     <ul class="fa-ul mb-0" dir="ltr">
+                        <h4 class="mb-2">-&nbsp; Python Programming:</h4>
                         <li>
-                            <span class="fa-li"><i class="fas fa-check"></i></span>
-                            Python programming<br>
-                            (Pandas – Matplotlib – NumPy)
+                           <ul> {% for skillsModel in SkillsModel%}
+                            {%if skillsModel.skill_area == "Python Programming"%}
+                            <li style="list-style: circle;"> {{skillsModel.skillname}}<br></li>
+                                {% endif %}
+                            {% endfor%}</ul>
                         </li>
-                        <li>
-                            <span class="fa-li"><i class="fas fa-check"></i></span>
-                            PyQt5
+                        
+                        <h4 class="mb-2">
+                            {% for skillsModel in SkillsModel%}
+                            {%if skillsModel.skill_area == "a"%}
+                                    -&nbsp;{{skillsModel.skillname}}<br>
+                                {% endif %}
+                            {% endfor%}</h4>
+                        <h4 class="mb-2">-&nbsp;Web Scraping:</h4>
+                        <li >
+                            <ul>{% for skillsModel in SkillsModel%}
+                            {%if skillsModel.skill_area == "Web Scraping"%}
+                            <li style="list-style: circle;">{{skillsModel.skillname}}<br></li>
+                                {% endif %}
+                            {% endfor%}</ul>
                         </li>
-                        <li>
-                            <span class="fa-li"><i class="fas fa-check"></i></span>
-                            MySQL Database
+                        <h4 class="mb-2">-Familar with:</h4>
+                        <li >
+                            <ul>{% for skillsModel in SkillsModel%}
+                            {%if skillsModel.skill_area == "Familar with"%}
+                            <li style="list-style: circle;"> {{skillsModel.skillname}}<br></li>
+                                {% endif %}
+                            {% endfor%}</ul>
                         </li>
-                        <li>
-                            <span class="fa-li"><i class="fas fa-check"></i></span>
-                            Tensorflow.Keras
-                        </li>
-                        <li>
-                            <span class="fa-li"><i class="fas fa-check"></i></span>
-                            Git
-                        </li>
-                        <ul class="list-inline dev-icons">
-                            <li class="list-inline-item"><i class="fab fa-python"></i></li>
-                            <li class="list-inline-item"><i class="fab fa-git"></i></li>
-                           
-                        </ul>
+                        
                     </ul>
                 </div>
             </section>
@@ -196,7 +203,7 @@
                     <h2 class="mb-5">علاقه مندی ها</h2>
                     <p>فعالیت در حوزه هوش مصنوعی</p>
                     <p>استخراج و کار با داده ها مخصوصا حل چالش های کار با big</p>
-                    <p>علاقمند به یادگاری تکنیکها و روشهای جدید در حوزه هوش مصنوعی و استخراج دیتا</p>
+                    <p>علاقمند به یادگاری تکنیک ها و روش های جدید در حوزه هوش مصنوعی و استخراج دیتا</p>
                     <p>شرکت در گروه های تحقیق و توسعه و دانش بنیان</p>
 
                 </div>

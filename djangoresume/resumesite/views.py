@@ -23,7 +23,19 @@ def home(request):
 
 
 def fahome(request):
-    return render(request,'fahome.html',{})
+    aboutMeModel=aboutmeModel.objects.all()
+    Workexperience=workexperience.objects.all()
+    AducationModel=aducationModel.objects.all()
+    SkillsModel=skillsModel.objects.all()
+    CoursesModel=coursesModel.objects.all()
+    context={
+        'aboutMeModel':aboutMeModel,
+        'Workexperience':Workexperience,
+        'AducationModel':AducationModel,
+        'SkillsModel':SkillsModel,
+        'CoursesModel':CoursesModel
+    }
+    return render(request,'fahome.html',context)
 
 
 class aboutmeview(viewsets.ModelViewSet):

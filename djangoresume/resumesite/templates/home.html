@@ -57,7 +57,7 @@
                             skype:{{aboutMe.address}}
                             &nbsp;&nbsp;+{{aboutMe.phone_number}}&nbsp;&nbsp;
                         {% endfor%}
-                        <a href="mailto:name@email.com">
+                        <a href="mailto:m.n.irib@gmail.com">
                             {% for aboutMe in aboutMeModel%}
                             {{aboutMe.Email}}
                         {% endfor%}</a>
@@ -68,6 +68,7 @@
                         <a class="social-icon" href="https://github.com/mnwato"><i class="fab fa-github"></i></a>
                       
                     </div>
+                    
                 </div>
             </section>
             <hr class="m-0" />
@@ -86,7 +87,7 @@
                             {% endfor%}
                             </div>
                         </div>
-                        <div class="flex-shrink-0"><span class="text-primary">March 2013 - Present</span></div>
+                        <div class="flex-shrink-0"><span class="text-primary">March 2019 - Present</span></div>
                     </div>
                     <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
                         <div class="flex-grow-1">
@@ -98,7 +99,7 @@
                                 {% endif %}
                             {% endfor%}</div>
                         </div>
-                        <div class="flex-shrink-0"><span class="text-primary">December 2011 - March 2013</span></div>
+                        <div class="flex-shrink-0"><span class="text-primary">March 2019 - Present</span></div>
                     </div>
                    
                 </div>
@@ -108,17 +109,20 @@
             <section class="resume-section" id="education">
                 <div class="resume-section-content">
                     <h2 class="mb-5">Education</h2>
+                    {% for aducationModel in AducationModel %}
                     <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
                         <div class="flex-grow-1">
-                            {% for aducationModel in AducationModel %}
+                            
                                 <br><h3 class="mb-0">{{ aducationModel.university}}</h3>
                                 <div class="subheading mb-3">{{ aducationModel.get_degree_level_display }}</div>
-                                <div>{{ aducationModel.major}}</div>
+                                <div style="font-size: 0.8rem;">{{ aducationModel.major}}</div>
                                 
-                            {% endfor %}
+                                
+                            
                         </div>
-                        <div class="flex-shrink-0"><span class="text-primary">August 2006 - May 2010</span></div>
+                        <div class="flex-shrink-0"><span class="text-primary">{{aducationModel.from_year}} - {{aducationModel.to_year}}</span></div>
                     </div>
+                    {% endfor %}
                 </div>
             </section>
             <hr class="m-0" />
@@ -126,38 +130,41 @@
             <section class="resume-section" id="skills">
                 <div class="resume-section-content">
                     <h2 class="mb-5">Skills</h2>
-                    <div class="subheading mb-3">Programming Languages & Tools</div>
+                    
                     <ul class="list-inline dev-icons">
-                        <li class="list-inline-item"><i class="fab fa-python"></i></li>
-                        <li class="list-inline-item"><i class="fab fa-git"></i></li><br>
-                        <h3 class="mb-2">Python Programming:</h3>
+                        <!-- <li class="list-inline-item"><i class="fab fa-python"></i></li>
+                        <li class="list-inline-item"><i class="fab fa-git"></i></li><br> -->
+                        <h4 class="mb-2">-&nbsp;Python Programming:</h4>
                         <div class="subheading mb-3">
-                            {% for skillsModel in SkillsModel%}
+                           <ul> {% for skillsModel in SkillsModel%}
                             {%if skillsModel.skill_area == "Python Programming"%}
-                                    {{skillsModel.skillname}}<br>
+                            <li style="list-style: circle;"> {{skillsModel.skillname}}<br></li>
                                 {% endif %}
-                            {% endfor%}</div>
+                            {% endfor%}</ul>
+                        </div>
                         
-                        <h3 class="mb-2">
+                        <h4 class="mb-2">
                             {% for skillsModel in SkillsModel%}
                             {%if skillsModel.skill_area == "a"%}
-                                    {{skillsModel.skillname}}<br>
+                                    -&nbsp;{{skillsModel.skillname}}<br>
                                 {% endif %}
-                            {% endfor%}</h3>
-                        <h3 class="mb-2">Web Scraping:</h3>
+                            {% endfor%}</h4>
+                        <h4 class="mb-2">-&nbsp;Web Scraping:</h4>
                         <div class="subheading mb-3">
-                            {% for skillsModel in SkillsModel%}
+                            <ul>{% for skillsModel in SkillsModel%}
                             {%if skillsModel.skill_area == "Web Scraping"%}
-                                    {{skillsModel.skillname}}<br>
+                            <li style="list-style: circle;">{{skillsModel.skillname}}<br></li>
                                 {% endif %}
-                            {% endfor%}</div>
-                        <h3 class="mb-2">Familar with:</h3>
+                            {% endfor%}</ul>
+                        </div>
+                        <h4 class="mb-2">-Familar with:</h4>
                         <div class="subheading mb-3">
-                            {% for skillsModel in SkillsModel%}
+                            <ul>{% for skillsModel in SkillsModel%}
                             {%if skillsModel.skill_area == "Familar with"%}
-                                    {{skillsModel.skillname}}<br>
+                            <li style="list-style: circle;"> {{skillsModel.skillname}}<br></li>
                                 {% endif %}
-                            {% endfor%}</div>
+                            {% endfor%}</ul>
+                        </div>
                         
                        
                     </ul>
@@ -169,8 +176,9 @@
             <section class="resume-section" id="interests">
                 <div class="resume-section-content">
                     <h2 class="mb-5">Interests</h2>
-                    <p>Apart from being a web developer, I enjoy most of my time being outdoors. In the winter, I am an avid skier and novice ice climber. During the warmer months here in Colorado, I enjoy mountain biking, free climbing, and kayaking.</p>
-                    <p class="mb-0">When forced indoors, I follow a number of sci-fi and fantasy genre movies and television shows, I am an aspiring chef, and I spend a large amount of my free time exploring the latest technology advancements in the front-end web development world.</p>
+                    <p>Artificial Intelligence</p>
+                    <p class="mb-0">Data sciense,especially solving the challenges of working with big data</p>
+                    <p class="mb-0">Interested in learning new techniques and methods in the field of artificial intelligence and data mining</p>
                 </div>
             </section>
             <hr class="m-0" />
