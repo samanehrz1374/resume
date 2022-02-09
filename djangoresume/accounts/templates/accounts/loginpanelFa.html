@@ -14,7 +14,9 @@
             <div class="nav-md">
                 <div class="shadoww">
                     <div class="navbar nav_title">
-                        <img src="{% static 'images/profile.jpg'%}" alt="...">
+                        <div class="navbar circular--portrait" >
+                            <img src="{{ profile.ProfileImage.url  }}" alt="...">
+                        </div>
                     </div>
                     
                     <div class="clearfix">
@@ -37,32 +39,6 @@
         </div>
         
         
-            <!-- <div class="box2">
-                <div class="profile">
-                    
-                    <img src="{% static 'images/profile.jpg'%}" alt="...">
-                </div>
-                <div class="navbar">
-                    <div class="navbar1">
-                        <h2>salam</h2>
-
-                    </div>
-                    
-    
-                </div>
-                
-
-
-            </div>
-            
-            <div class="box3">
-                
-
-            </div> -->
-        
-        <!-- <div class="footer">
-            <h1>footer</h1>
-        </div> -->
     </div>
     
     

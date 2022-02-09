@@ -72,6 +72,21 @@ body{
   height: 57px;
 }
 
+.circular--portrait { 
+  position: relative; 
+  width: 55px; 
+  height:55px; 
+  overflow: hidden; 
+  border-radius: 50%;
+  margin: auto;
+ } 
+.circular--portrait img 
+{ width: 100%; /* or any custom size */
+  height: auto; 
+  object-fit: contain; 
+  margin-top: -2px;
+}
+
 bodyy{
   background-color: rgb(4, 83, 125);
 }
@@ -161,6 +176,7 @@ img {
   width: 100%; /* or any custom size */
   height: 100%; 
   object-fit: contain;
+  
 }
 .form {
     width:30%;

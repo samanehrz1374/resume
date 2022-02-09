@@ -43,7 +43,11 @@ def loginVeiw(request):
 
 @login_required
 def loginpanelview(request):
-    return render(request,"accounts/loginpanelFa.html",{})
+    profile=request.user.profile
+    context={
+        "profile":profile
+    }
+    return render(request,"accounts/loginpanelFa.html",context)
 
 def logoutVeiw(request):
     logout(request)

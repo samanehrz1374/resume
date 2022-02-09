@@ -20,7 +20,9 @@
                 <div class="nav-md">
                     <div class="shadoww">
                         <div class="navbar nav_title">
-                            <img src="{% static 'images/profile.jpg'%}" alt="...">
+                            <div class="navbar circular--portrait" >
+                                <img src="{{ ProfileImage.url  }}" alt="...">
+                            </div>
                         </div>
                         
                         <div class="clearfix">
