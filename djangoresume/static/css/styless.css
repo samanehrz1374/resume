@@ -28,6 +28,7 @@
 body{
       font-family: Yekan,IranianSans,Bnazanin;
       font-size: 10px;
+      overflow: hidden;
       }
 
 .container{
@@ -84,6 +85,7 @@ bodyy{
 }
 
 
+
 .sidbarmenu-contain{
   border-bottom: 1px solid rgb(4, 78, 117);
   /* margin: 10px; */
@@ -94,7 +96,7 @@ bodyy{
 .side-menu{
   width: 130px;
   height: 30px;
-  padding: 10px;
+  padding: 5px;
   text-align: center;
   
   /* text-decoration: none; */
@@ -107,6 +109,9 @@ bodyy{
     margin-top: 460px;
     width: 130px;
     background: rgb(4, 61, 92);
+    position: fixed;
+    bottom: 0px;
+   
 }
 
 .boxx {
@@ -116,6 +121,11 @@ bodyy{
   padding-left: 20px;
   text-align: center;
   background-color: rgb(231, 229, 229);
+  position: fixed;
+  bottom: 0px;
+  top: 0px;
+  right: 0px;
+  left: 0px;
 
 }
 .boxxrtl {
@@ -126,13 +136,20 @@ bodyy{
   text-align: center;
   background-color: rgb(231, 229, 229);
   overflow-y: scroll;
+  /* direction: ltr; */
+  position: fixed;
+  bottom: 0px;
+  top: 0px;
+  right: 0px;
+  left: 0px;
 
 }
 
 .shadoww{
   width: 130px;
-  height: 550px;
+  /* height: 550px; */
   box-shadow: 0 10px 45px 0 rgb(0 0 0 / 40%), 0 5px 15px 0 rgb(0 0 0 / 29%);
+  position: fixed;
 }
 
 
@@ -352,6 +369,7 @@ img {
   color:white;
   
   
+  
 }
 .profilchoose {
   /* font-size: 20px;  */
@@ -433,7 +451,7 @@ label.required::after {
   background: rgba(247, 241, 241, 0.233);
   box-shadow: 0 0px 10px rgb(95 95 95 / 10%);
   padding: 20px;
-  height: 350px;
+  height: 340px;
   margin-left: 5%; 
   margin-right: 5%; 
   

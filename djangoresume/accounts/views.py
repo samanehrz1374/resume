@@ -69,18 +69,6 @@ def profileRegisterView(request):
 
             profileModel.save()
             return render(request,"accounts/loginpanelFa.html",{})
-            
-        # else:
-        #     print()
-            # profileRegisterForm=ProfileRegisterForm()
-            # context={
-            # "formData":profileRegisterForm,
-            # "username_err":'این نام کاربری قبلا ساخته شده است',
-            # "email_error":'ایمیل وارد شده صحیح نیست',
-            # "password_error":'رمز عبور باید از 8 کاراکتر بیشتر باشد',
-            # "confirm_err":'تکرار رمز عبور صحیح نیست'
-            # }
-            # return render(request,"accounts/profileregister.html",context)
 
     context={
         "formData":profileRegisterForm
@@ -147,3 +135,7 @@ def ResumeEditView(request):
         "ProfileImage":request.user.profile.ProfileImage,
     }
     return render(request,"accounts/resumeEdit.html",context)
+
+
+def loginen(request):
+    return render(request,"accounts/loginpanelEn.html",{})
