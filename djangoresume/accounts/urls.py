@@ -16,7 +16,6 @@ urlpatterns = [
     path('resumeEdit/',views.ResumeEditView),
     path('loginen/',views.loginen),
     path('password/',views.passwordchangeview),
-    path('password_succes/',views.password_success,name='password_success'),
 ]
 
 if settings.DEBUG:

@@ -147,8 +147,8 @@ def loginen(request):
 #     from_class =PasswordChangingForm
 #     success_url = reverse_lazy('password_success')
 
-def password_success(request):
-    return render(request,"accounts/password_success.html",{})
+# def password_success(request):
+#     return render(request,"accounts/password_success.html",{})
 
 
 def passwordchangeview(request):
