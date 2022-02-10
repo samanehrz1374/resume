@@ -6,6 +6,8 @@ from accounts.models import ProfileModel
 from django.contrib.auth.forms import UserChangeForm
 from jalali_date.fields import JalaliDateField
 from jalali_date.widgets import AdminJalaliDateWidget
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth.models import User
 
 
 
@@ -101,3 +103,11 @@ class ResumeEditForm(forms.ModelForm):
         
 
 
+class PasswordChangingForm(PasswordChangeForm):
+    old_password = forms.CharField(max_length=100,widget=forms.PasswordInput(attrs={'type':'password'}),label="رمز عبور قبلی")
+    new_password1 = forms.CharField(max_length=100,widget=forms.PasswordInput(attrs={'type':'password'}),label="رمز عبور جدید")
+    new_password2 = forms.CharField(max_length=100,widget=forms.PasswordInput(attrs={'type':'password'}),label="تکرار رمز عبور جدید")
+    
+    class Meta:
+        model=User
+        fields=['old_password','new_password1','new_password2']

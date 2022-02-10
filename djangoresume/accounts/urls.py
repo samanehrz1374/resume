@@ -4,6 +4,7 @@ from django.conf import  settings
 from django.conf.urls.static import static
 
 
+
 urlpatterns = [
     path('login/',views.loginVeiw),
     path('loginpanel/',views.loginpanelview),
@@ -14,6 +15,8 @@ urlpatterns = [
     path('resumeprofile/',views.resumeprofileview),
     path('resumeEdit/',views.ResumeEditView),
     path('loginen/',views.loginen),
+    path('password/',views.passwordchangeview),
+    path('password_succes/',views.password_success,name='password_success'),
 ]
 
 if settings.DEBUG:

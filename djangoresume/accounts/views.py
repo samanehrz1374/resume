@@ -1,4 +1,4 @@
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.shortcuts import render
 from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib.auth import authenticate,login,logout
@@ -7,11 +7,10 @@ from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from resumesite import views
 import resumesite
-from accounts.forms import ProfileRegisterForm,ProfileEditForm,UserEditForm,ResumeEditForm
+from accounts.forms import ProfileRegisterForm,ProfileEditForm,UserEditForm,ResumeEditForm,PasswordChangingForm
 from django.contrib.auth.models import User
 from accounts.models import ProfileModel
-
-
+from django.contrib.auth import update_session_auth_hash
 
 
 # Create your views here.
@@ -22,10 +21,6 @@ def loginVeiw(request):
         user=authenticate(request,username=username,password=password)
         if user is not None:
             login(request,user)
-            # if request.GET.get("chk"):
-            #     response=HttpResponse('cokke')
-            #     response.set.Cookie('cid',request.Post["username"])
-            #     response.set.Cookie('cid2',request.Post["password"])
             if request.GET.get('next'):
                 return HttpResponseRedirect(request.GET.get('next'))
             return HttpResponseRedirect(settings.LOGIN_REDIRECT_URL)
@@ -72,7 +67,9 @@ def profileRegisterView(request):
                                        gender=profileRegisterForm.cleaned_data['gender'])
 
             profileModel.save()
-            return render(request,"accounts/login.html",{})
+            # login(request,user)
+            
+            return HttpResponseRedirect(reverse(accounts.views.loginpanelview))
 
     context={
         "formData":profileRegisterForm
@@ -143,3 +140,24 @@ def ResumeEditView(request):
 
 def loginen(request):
     return render(request,"accounts/loginpanelEn.html",{})
+
+
+
+# class passwordchangeview(PasswordChangeView):
+#     from_class =PasswordChangingForm
+#     success_url = reverse_lazy('password_success')
+
+def password_success(request):
+    return render(request,"accounts/password_success.html",{})
+
+
+def passwordchangeview(request):
+    if request.method == 'POST':
+        form = PasswordChangingForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)
+            return HttpResponseRedirect(reverse(accounts.views.loginpanelview))
+    else:
+        form = PasswordChangingForm(request.user)
+    return render(request, 'accounts/passwordchange.html', {'form': form})
