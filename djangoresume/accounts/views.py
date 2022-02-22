@@ -1,5 +1,6 @@
+from email.policy import default
 from django.urls import reverse, reverse_lazy
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib.auth import authenticate,login,logout
 import accounts
@@ -11,6 +12,16 @@ from accounts.forms import ProfileRegisterForm,ProfileEditForm,UserEditForm,Resu
 from django.contrib.auth.models import User
 from accounts.models import ProfileModel
 from django.contrib.auth import update_session_auth_hash
+from django.core.mail import send_mail,BadHeaderError
+from django.contrib.auth.forms import PasswordResetForm
+from django.template.loader import render_to_string
+from django.db.models.query_utils import Q
+from django.contrib.auth.tokens import default_token_generator
+from django.utils.encoding import force_bytes
+from django.utils.http import urlsafe_base64_encode
+
+
+
 
 
 # Create your views here.
@@ -142,15 +153,6 @@ def loginen(request):
     return render(request,"accounts/loginpanelEn.html",{})
 
 
-
-# class passwordchangeview(PasswordChangeView):
-#     from_class =PasswordChangingForm
-#     success_url = reverse_lazy('password_success')
-
-# def password_success(request):
-#     return render(request,"accounts/password_success.html",{})
-
-
 def passwordchangeview(request):
     if request.method == 'POST':
         form = PasswordChangingForm(request.user, request.POST)
@@ -161,3 +163,37 @@ def passwordchangeview(request):
     else:
         form = PasswordChangingForm(request.user)
     return render(request, 'accounts/passwordchange.html', {'form': form})
+
+
+# def passwordreset(request):
+#     if request.method == 'POST':
+#         password_form=PasswordResetForm(request.POST)
+#         if password_form.is_valid():
+#             data = password_form.cleaned_data['email']
+#             user_email = User.objects.filter(Q(email=data))
+#             if user_email.exists():
+#                 for user in user_email:
+#                     subject = 'Password Resquest'
+#                     email_template_name='accounts/massage.txt'
+#                     parameters={
+#                         'email': user.email,
+#                         'domain':'127.0.0.1:8000',
+#                         'site_name':'PostScribers',
+#                         'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+#                         'token':default_token_generator.make_token(user),
+#                         'protocol':'http',
+#                     }
+#                     email = render_to_string(email_template_name,parameters)
+#                     try:
+#                         send_mail(subject,email,'',[user.email],fail_silently=False)
+#                     except:
+#                         return HttpResponse('Invalid Header')
+#                     return  redirect('password_reset_done')  
+#     else:       
+
+
+#         password_form=PasswordResetForm()
+#     context={
+#         'password_form':password_form
+#     }
+#     return render(request,'accounts/password_reset.html', context)

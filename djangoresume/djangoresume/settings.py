@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'admin_honeypot',
     'accounts.apps.AccountsConfig',
     'widget_tweaks',
-    'jalali_date'
+    'jalali_date',
+    
                     ]
 JALALI_DATE_DEFAULTS = {
    'Strftime': {
@@ -168,3 +169,13 @@ LOGIN_REDIRECT_URL='/accounts/loginpanel/'
 
 MEDIA_URL="/media/"
 MEDIA_ROOT=os.path.join(BASE_DIR,"media")
+
+
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'samanehrzaei@gmail.com'
+EMAIL_HOST_PASSWORD = 'homa.qasemi@yahoo'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
