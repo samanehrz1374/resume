@@ -27,6 +27,7 @@
                             <div >
                                <div class="side-menu sidbarmenu-contain"><a href="/accounts/profile"  style="text-decoration: none;color:white;">پروفایل</a></div>
                                <div class="side-menu sidbarmenu-contain"><a href="#" style="text-decoration: none;color:white;">ساخت رزومه</a></div>
+                               <div class="side-menu sidbarmenu-contain"><a href="/accounts/password" style="text-decoration: none;color:white;">تغییر رمز</a></div>
                                <div class="side-menu sidbarmenu-contain sidebar-bottom"><a href="/accounts/logout" style="text-decoration: none;color:white;">خروج</a></div>
                             </div>
                             
@@ -54,20 +55,27 @@
 
                         <p class="resumesectiontitle">سوابق تحصیلی</p> 
                         <div class="formresume">
-                            <p class="profil">مقطع تحصیلی:&nbsp;{{ resumeprofile.get_degree_level_display|default:"" }}</p>
-                            <p class="profil">رشته تحصیلی:&nbsp;{{ resumeprofile.major|default:"" }}</p>
-                            <p class="profil">دانشگاه:&nbsp;{{ resumeprofile.university|default:"" }}</p>
-                            <p class="profil">معدل:&nbsp;{{ resumeprofile.gpa|default:"" }}</p>
-                            <p class="profil">سال شروع:&nbsp;{{ resumeprofile.from_year|default:"" }}</p>
-                            <p class="profil">سال پایان:&nbsp;{{ resumeprofile.to_year |default:""|date:'Y'}}</p>
+                            {% for educations in aducation %}
+                                
+                                <p class="profil">{{ educations.get_degree_level_display|default:"" }}
+                                    <br>{{ educations.university|default:"" }}
+                                    <br>{{ educations.from_year|default:""|date:'Y' }}-{{ educations.to_year |default:""|date:'Y'}}
+                                    <br>{{ educations.gpa|default:"" }}
+                                    
+                                </p>
+                                <!-- <p class="profil">رشته تحصیلی:&nbsp;</p> -->
+                                
+                            {% endfor%}
                         </div>
 
                         <p class="resumesectiontitle">سوابق شغلی</p> 
                         <div class="formresume">
-                            <p class="profil">عنوان شغل:&nbsp;{{ resumeprofile.job_title |default:""}}</p>
-                            <p class="profil">نام شرکت:&nbsp;{{ resumeprofile.company_name |default:""}}</p>
-                            <p class="profil">سال شروع:&nbsp;{{ resumeprofile.start_time |default:""|date:'Y'}}</p>
-                            <p class="profil">سال پایان:&nbsp;{{ resumeprofile.end_time|default:""|date:'Y' }}</p>
+                            {% for workexperiences in workexperience %}
+                                <p class="profil">{{ workexperiences.job_title |default:""}}
+                                <br>{{ workexperiences.company_name |default:""}}
+                                <br>{{ workexperiences.start_time |default:""|date:'Y'}}-{{ workexperiences.end_time|default:""|date:'Y' }}
+                                </p>
+                            {% endfor %}
                         </div>
                     </div> 
                     
@@ -78,38 +86,53 @@
                         
                         <p class="resumesectiontitle">مهارت ها</p>
                         <div class="formresume" > 
-                            <p class="profil">مهارت:&nbsp;{{ resumeprofile.skillname|default:""  }}</p>
-                            <p class="profil">سطح مهارت:&nbsp;{{ resumeprofile.get_levelofskill_display|default:"" }}</p>
+                            {% for skills in skill %}
+                                <p class="skillprofil">{{ skills.skillname|default:""  }}|{{ skills.get_levelofskill_display|default:""  }}</p>
+                            {% endfor %}
+                            <!-- <p class="profil">سطح مهارت:&nbsp;{{ resumeprofile.get_levelofskill_display|default:"" }}</p> -->
                         </div>
 
                         <p class="resumesectiontitle">دوره های آموزشی</p>
                         <div class="formresume"> 
-                            <p class="profil">نام دوره آموزشی:&nbsp;{{ resumeprofile.coursesname|default:"" }}</p>
-                            <p class="profil">نام آموزشگاه:&nbsp;{{ resumeprofile.institute|default:"" }}</p>
+                            {% for courses in course %}
+                                <p class="profil">{{ courses.coursesname|default:"" }}
+                                <br>{{ courses.institute|default:"" }}
+                                </p>
+                            {% endfor %}
                         </div>
 
                         <p class="resumesectiontitle">جوایز و افتخارات</p>
                         <div class="formresume"> 
-                        <p class="profil">عنوان:&nbsp;{{ resumeprofile.award_title |default:""}}</p>
-                        <p class="profil">سال:&nbsp;{{ resumeprofile.dateofaward|default:""|date:'Y' }}</p>
+                            {% for awards in award %}
+                                <p class="profil">{{ awards.award_title |default:""}}
+                                <br>{{ awards.dateofaward|default:""|date:'Y' }}
+                                </p>
+                            {% endfor %}
                         </div>     
 
                         <p class="resumesectiontitle">پروژه ها و تجربیات آکادمیک</p> 
                         <div class="formresume"> 
-                        <p class="profil">عنوان:&nbsp;{{ resumeprofile.project_title |default:""}}</p>
-                        <p class="profil">سال:&nbsp;{{ resumeprofile.dateofproject|default:"" |date:'Y'}}</p>
+                            {% for projects in project %}
+                                <p class="profil">{{ projects.project_title |default:""}}
+                                <br>{{ projects.dateofproject|default:"" |date:'Y'}}
+                                </p>
+                            {% endfor %}
                         </div>
 
                         <p class="resumesectiontitle">کتاب ها و مقالات</p> 
                         <div class="formresume"> 
-                        <p class="profil">عنوان:&nbsp;{{ resumeprofile.article_title |default:""}}</p>
-                        <p class="profil">سال:&nbsp;{{ resumeprofile.dateofarticle|default:"" |date:'Y'}}</p>
+                            {% for articles in article %}
+                                <p class="profil">{{ articles.article_title |default:""}}
+                                <br>{{ articles.dateofarticle|default:"" |date:'Y'}}</p>
+                            {% endfor %}
                         </div> 
                         
                         <p class="resumesectiontitle">زبان ها</p> 
                         <div class="formresume"> 
-                        <p class="profil">زبان:&nbsp;{{ resumeprofile.language|default:"" }}</p>
-                        <p class="profil">سطح مهارت:&nbsp;{{ resumeprofile.get_leveloflanguage_display|default:"" }}</p>
+                            {% for languages in language %}
+                                <p class="profil">{{ languages.language|default:"" }}
+                                <br>{{ languages.get_leveloflanguage_display|default:"" }}</p>
+                            {% endfor %}
                         </div>
                         <div class="clearfix">
                         </div>

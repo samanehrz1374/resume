@@ -8,6 +8,7 @@ from jalali_date.fields import JalaliDateField
 from jalali_date.widgets import AdminJalaliDateWidget
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.models import User
+import string 
 
 
 
@@ -18,7 +19,7 @@ from django.contrib.auth.models import User
 class ProfileRegisterForm(forms.ModelForm):
     first_name = forms.CharField(max_length=10,required=True,label="نام")
     last_name = forms.CharField(max_length=10,required=True,label=" نام خانوادگی")
-    username = forms.CharField(max_length=10,min_length=3,help_text="نام کاربری باید 3 تا 10 کلمه باشد و از علامت های _ @ - استفاده نشود",required=True,label=" نام کاربری")
+    username = forms.CharField(max_length=15,min_length=3,help_text="نام کاربری باید 3 تا 15 کلمه باشد و از علامت استفاده نشود",required=True,label=" نام کاربری")
     password = forms.CharField(widget=forms.PasswordInput,help_text="رمز عبور شامل حروف بزرگ و کوچک و اعداد باشد",required=True,label="رمز عبور")
     confirm_password = forms.CharField(widget=forms.PasswordInput,required=True,label="تکرار رمز عبور") 
     email = forms.CharField(widget=forms.EmailInput,required=True,label="ایمیل")
@@ -28,14 +29,35 @@ class ProfileRegisterForm(forms.ModelForm):
         model=ProfileModel
         fields=['ProfileImage','gender']
     def clean(self,*args, **kwargs):
-        
+        username =self.cleaned_data.get("username")
         password = self.cleaned_data.get("password")
         confirm = self.cleaned_data.get("confirm_password")
-
+        SpecialSym =['$', '@', '#', '%']
         if password != confirm:
-           self.add_error('confirm_password', "!تکرار کلمه عبود با کلمه عبور برابر نیست")
-        
+           self.add_error('confirm_password', "تکرار کلمه عبود با کلمه عبور برابر نیست!")
+            
+        for i in username:
+            if i in string.punctuation:
+                self.add_error('username', "نام کاربری نباید شامل علامت باشد!")
+
+        if not any(char.isdigit() for char in password):
+            self.add_error('password', "رمز عبور باید حداقل شامل یک عدد باشد")
+            
+            
+          
+        if not any(char.isupper() for char in password):
+            self.add_error('password', "رمز عبور باید حداقل شامل یک حرف بزرگ باشد")
            
+          
+        if not any(char.islower() for char in password):
+            self.add_error('password', "رمز عبور باید حداقل شامل یک حرف کوچک باشد")
+            
+          
+        if not any(char in SpecialSym for char in password):
+            self.add_error('password', "رمز عبور باید حداقل شامل یکی از علامت های @، %، $، # باشد")
+            
+                
+            
 
 
 YEAR_CHOICES = range(1400, 1300, -1)
@@ -77,21 +99,13 @@ class ResumeEditForm(forms.ModelForm):
         model=ProfileModel
         # fields = '__all__'
         fields=['ProfileImage','gender','marital_status','city','address','birthday',
-        'intrested_job','degree_level','major','university',
-        'gpa','from_year','to_year','job_title','company_name','start_time','end_time',
-        'skillname','levelofskill','coursesname','institute',
-        'award_title','dateofaward','project_title','dateofproject','article_title','dateofarticle',
-        'language','leveloflanguage']          
+        'intrested_job',]          
     
     def __init__(self, *args, **kwargs):
     
         super(ResumeEditForm, self).__init__(*args, **kwargs)
         nonRequriedFields=['ProfileImage','gender','marital_status','city','address','birthday',
-        'intrested_job','degree_level','major','university',
-        'gpa','from_year','to_year','job_title','company_name','start_time','end_time',
-        'skillname','levelofskill','coursesname','institute',
-        'award_title','dateofaward','project_title','dateofproject','article_title','dateofarticle',
-        'language','leveloflanguage']   
+        'intrested_job',]   
 
         # datefields=['birthday',]
    

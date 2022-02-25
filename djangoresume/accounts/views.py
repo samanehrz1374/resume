@@ -10,15 +10,16 @@ from resumesite import views
 import resumesite
 from accounts.forms import ProfileRegisterForm,ProfileEditForm,UserEditForm,ResumeEditForm,PasswordChangingForm
 from django.contrib.auth.models import User
-from accounts.models import ProfileModel
+from accounts.models import ProfileModel,skillsModel,aducationModel,articlesModel,awardsModel,workexperienceModel,projectsModel,languagesModel,coursesModel
 from django.contrib.auth import update_session_auth_hash
-from django.core.mail import send_mail,BadHeaderError
-from django.contrib.auth.forms import PasswordResetForm
-from django.template.loader import render_to_string
-from django.db.models.query_utils import Q
-from django.contrib.auth.tokens import default_token_generator
-from django.utils.encoding import force_bytes
-from django.utils.http import urlsafe_base64_encode
+
+# from django.core.mail import send_mail,BadHeaderError
+# from django.contrib.auth.forms import PasswordResetForm
+# from django.template.loader import render_to_string
+# from django.db.models.query_utils import Q
+# from django.contrib.auth.tokens import default_token_generator
+# from django.utils.encoding import force_bytes
+# from django.utils.http import urlsafe_base64_encode
 
 
 
@@ -120,9 +121,27 @@ def ProfileEditView(request):
 @login_required
 def resumeprofileview(request):
     resumeprofile=request.user.profile
+    skill=skillsModel.objects.all()
+    aducation=aducationModel.objects.all()
+    award=awardsModel.objects.all()
+    article=articlesModel.objects.all()
+    course=coursesModel.objects.all()
+    language=languagesModel.objects.all()
+    project=projectsModel.objects.all()
+    workexperience=workexperienceModel.objects.all()
+
     
     context={
-        "resumeprofile":resumeprofile
+        "resumeprofile":resumeprofile,
+        "skill":skill,
+        "aducation":aducation,
+        "award":award,
+        "article":article,
+        "course":course,       
+        "language":language,
+        "project":project,
+        "workexperience":workexperience,
+
         
     }
     return render(request,"accounts/resumeprofile.html",context)
