@@ -44,6 +44,7 @@
                         
                         <p class="resumesectiontitle">اطلاعات شخصی</p> 
                         <div class="formresume">
+                            
                             <p class="profil">نام و نام خانوادگی:&nbsp;{{ resumeprofile.user.get_full_name |default:""}}</p>
                             <p class="profil">تاریخ تولد:&nbsp;{{ resumeprofile.birthday|date:'Y/m/d' }}</p>
                             <p class="profil">جنسیت:&nbsp;{{ resumeprofile.get_gender_display |default:""}}</p>
@@ -57,12 +58,13 @@
                         <div class="formresume">
                             {% for educations in aducation %}
                                 
-                                <p class="profil">{{ educations.get_degree_level_display|default:"" }}
-                                    <br>{{ educations.university|default:"" }}
+                                <div class="profil">
+                                    <p class="subtitle1"> {{educations.get_degree_level_display|default:"" }}-{{ educations.major|default:"" }}</p>
+                                    <p class="subtitle2">{{ educations.university|default:"" }}
                                     <br>{{ educations.from_year|default:""|date:'Y' }}-{{ educations.to_year |default:""|date:'Y'}}
-                                    <br>{{ educations.gpa|default:"" }}
+                                    <br>{{ educations.gpa|default:"" }}</p>
                                     
-                                </p>
+                                </div>
                                 <!-- <p class="profil">رشته تحصیلی:&nbsp;</p> -->
                                 
                             {% endfor%}
@@ -71,10 +73,12 @@
                         <p class="resumesectiontitle">سوابق شغلی</p> 
                         <div class="formresume">
                             {% for workexperiences in workexperience %}
-                                <p class="profil">{{ workexperiences.job_title |default:""}}
-                                <br>{{ workexperiences.company_name |default:""}}
-                                <br>{{ workexperiences.start_time |default:""|date:'Y'}}-{{ workexperiences.end_time|default:""|date:'Y' }}
-                                </p>
+                            <div class="profil">
+                                <p class="subtitle1">{{ workexperiences.job_title |default:""}}</p>
+                                    <p class="subtitle2">{{ workexperiences.company_name |default:""}}
+                                    <br>{{ workexperiences.start_time |default:""|date:'Y'}}-{{ workexperiences.end_time|default:""|date:'Y' }}
+                                    </p>
+                            </div>
                             {% endfor %}
                         </div>
                     </div> 
@@ -95,43 +99,52 @@
                         <p class="resumesectiontitle">دوره های آموزشی</p>
                         <div class="formresume"> 
                             {% for courses in course %}
-                                <p class="profil">{{ courses.coursesname|default:"" }}
-                                <br>{{ courses.institute|default:"" }}
-                                </p>
+                                <div class="profil">
+                                    <p class="subtitle1">{{ courses.coursesname|default:"" }}</p>
+                                    <p class="subtitle2">{{ courses.institute|default:"" }}
+                                    </p>
+                                </div>
                             {% endfor %}
                         </div>
 
                         <p class="resumesectiontitle">جوایز و افتخارات</p>
                         <div class="formresume"> 
                             {% for awards in award %}
-                                <p class="profil">{{ awards.award_title |default:""}}
-                                <br>{{ awards.dateofaward|default:""|date:'Y' }}
-                                </p>
+                                <div class="profil">
+                                    <p class="subtitle1">{{ awards.award_title |default:""}}</p>
+                                    <p class="subtitle2">{{ awards.dateofaward|default:""|date:'Y' }}</p>
+                                </div>
                             {% endfor %}
                         </div>     
 
                         <p class="resumesectiontitle">پروژه ها و تجربیات آکادمیک</p> 
                         <div class="formresume"> 
                             {% for projects in project %}
-                                <p class="profil">{{ projects.project_title |default:""}}
-                                <br>{{ projects.dateofproject|default:"" |date:'Y'}}
-                                </p>
+                                <div class="profil">
+                                    <p class="subtitle1">{{ projects.project_title |default:""}}</p>
+                                    <p class="subtitle2">{{ projects.dateofproject|default:"" |date:'Y'}}
+                                    </p>
+                                </div>
                             {% endfor %}
                         </div>
 
                         <p class="resumesectiontitle">کتاب ها و مقالات</p> 
                         <div class="formresume"> 
                             {% for articles in article %}
-                                <p class="profil">{{ articles.article_title |default:""}}
-                                <br>{{ articles.dateofarticle|default:"" |date:'Y'}}</p>
+                                <div class="profil">
+                                    <p class="subtitle1">{{ articles.article_title |default:""}}</p>
+                                    <p class="subtitle2">{{ articles.dateofarticle|default:"" |date:'Y'}}</p>
+                                </div>
                             {% endfor %}
                         </div> 
                         
                         <p class="resumesectiontitle">زبان ها</p> 
                         <div class="formresume"> 
                             {% for languages in language %}
-                                <p class="profil">{{ languages.language|default:"" }}
-                                <br>{{ languages.get_leveloflanguage_display|default:"" }}</p>
+                                <div class="profil">
+                                    <p class="subtitle1">{{ languages.language|default:"" }}</p>
+                                    <p class="subtitle2">{{ languages.get_leveloflanguage_display|default:"" }}</p>
+                                </div>
                             {% endfor %}
                         </div>
                         <div class="clearfix">

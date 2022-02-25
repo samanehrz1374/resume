@@ -107,8 +107,8 @@ class aducationModel(models.Model):
     from_year=models.DateField(verbose_name="سال شروع",null=True)
     to_year=models.DateField(verbose_name="سال پایان",null=True)
 
-    def __str__(self):
-        return self.university
+    # def __str__(self):
+    #     return self.university
 
 
 class workexperienceModel(models.Model):
@@ -122,8 +122,8 @@ class workexperienceModel(models.Model):
     start_time=models.DateField(verbose_name="تاریخ شروع",null=True)
     end_time=models.DateField(verbose_name="تاریخ پایان",null=True)
 
-    def __str__(self):
-        return self.job_title
+    # def __str__(self):
+    #     return self.job_title
 
     
 class skillsModel(models.Model):
@@ -141,8 +141,8 @@ class skillsModel(models.Model):
                     (advanced,"پیشرفته"))
     levelofskill=models.IntegerField(choices=status_choices,verbose_name="سطح مهارت")
 
-    def __str__(self):
-        return self.skillname
+    # def __str__(self):
+    #     return self.skillname
 
 class coursesModel(models.Model):
     class Meta:
@@ -154,8 +154,8 @@ class coursesModel(models.Model):
     certificate=models.URLField(null=True,blank=True)
 
 
-    def __str__(self):
-        return self.coursesname
+    # def __str__(self):
+    #     return self.coursesname
 
 
 
@@ -180,8 +180,8 @@ class languagesModel(models.Model):
                     )
     leveloflanguage=models.IntegerField(choices=status_choices,verbose_name="سطح مهارت")
 
-    def __str__(self):
-        return self.language
+    # def __str__(self):
+    #     return self.language
 
 
 class awardsModel(models.Model):
@@ -190,7 +190,7 @@ class awardsModel(models.Model):
         verbose_name_plural="جوایزو افتخارات"
     awards=models.ForeignKey(ProfileModel, on_delete=models.CASCADE)
     award_title=models.CharField(max_length=300,verbose_name="عنوان")
-    dateofaward=models.TimeField(verbose_name="سال")
+    dateofaward=models.DateField(verbose_name="سال")
 
     def __str__(self):
         return self.award_title
@@ -202,7 +202,7 @@ class projectsModel(models.Model):
         verbose_name_plural="پروژه ها و تجربیات آکادمیک"
     projects=models.ForeignKey(ProfileModel, on_delete=models.CASCADE)
     project_title=models.CharField(max_length=300,verbose_name="عنوان")
-    dateofproject=models.TimeField(verbose_name="سال")
+    dateofproject=models.DateField(verbose_name="سال",null=True)
 
     def __str__(self):
         return self.project_title
@@ -213,7 +213,7 @@ class articlesModel(models.Model):
         verbose_name_plural="کتاب ها و مقالات"
     articles=models.ForeignKey(ProfileModel, on_delete=models.CASCADE)
     article_title=models.CharField(max_length=500,verbose_name="عنوان")
-    dateofarticle=models.TimeField(verbose_name="سال")
+    dateofarticle=models.DateField(verbose_name="سال",null=True)
 
     def __str__(self):
         return self.article_title
