@@ -2,14 +2,14 @@ from calendar import monthrange
 from dataclasses import fields
 from datetime import MINYEAR, datetime
 from django import forms
-from accounts.models import ProfileModel
+from accounts.models import ProfileModel,skillsModel
 from django.contrib.auth.forms import UserChangeForm
 from jalali_date.fields import JalaliDateField
 from jalali_date.widgets import AdminJalaliDateWidget
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.models import User
-import string 
-
+import string
+from django.forms.models import modelformset_factory
 
 
 
@@ -125,3 +125,40 @@ class PasswordChangingForm(PasswordChangeForm):
     class Meta:
         model=User
         fields=['old_password','new_password1','new_password2']
+
+
+
+class skillfrom(forms.ModelForm):
+    class Meta:
+        model = skillsModel
+        fields = (
+            'skillname',
+            'levelofskill'
+        )
+
+
+# skillFormSet = inlineformset_factory(
+#     ProfileModel,
+#     skillsModel,
+#     form=skillfrom,
+#     min_num=1,  # minimum number of forms that must be filled in
+#     extra=0,  # number of empty forms to display
+#     can_delete=False  # show a checkbox in each form to delete the row
+# )
+
+
+skillFormSet = modelformset_factory(
+    skillsModel,
+    fields=('skillname','levelofskill' ),
+    extra=1,
+    # widgets=forms.CharField(attrs={'class':'formedit'})
+    widgets={'skillname': forms.TextInput(attrs={
+             'class': 'formedit',
+             'placeholder': ''
+             }),
+            'levelofskill': forms.Select(attrs={
+                'class': 'formedit',
+                'placeholder': 'Enter Author skillname here'
+            })
+             }
+)

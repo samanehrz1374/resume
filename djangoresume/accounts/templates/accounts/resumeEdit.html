@@ -13,6 +13,14 @@
     <title>Document</title>
 </head>
 <body>
+    <style>
+        .ing-form{
+            border: 1px solid;
+        }
+        .hidden{
+            display: none;
+        }
+    </style>
     
     <body dir="rtl">
         <div class="container bodyy">
@@ -78,17 +86,68 @@
                         </div>
                     </div>
                     <div style="width: 40%; float: right;height: 420px ; margin-left: 5%; margin-right: 5%; padding-top: 3.5%;" >
-                        <!-- <p class="resumesectiontitle">مهارت ها</p>
+                        <p class="resumesectiontitle">مهارت ها</p>
+                        
                         <div class="formresume" > 
-                            <p class="profil">مهارت:</span> {{ resumeeditform.skillname |add_class:"formedit"}}</p>
-                            <p class="profil">سطح مهارت:{{ resumeeditform.levelofskill|add_class:"formedit" }}</p>
-                        </div> -->
+                            {{ formset.management_form }}
+                            {% for form in formset %}
+                            <div class="row form-row spacer">
+                                <div class="col-2">
+                                    <label>{{form.skillname.label}}</label>
+                                    
+                                </div>
+                                
+                                <div class="col-4">
+                                    <div class="input-group">
+                                        {{form.skillname}}
+                                        <div class="input-group-append">
+                                            <!-- <button class="btn btn-success add-form-row">+</button> -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <label>{{form.levelofskill.label}}</label>
+                                    
+                                </div>
+                                <div class="col-4">
+                                    <div class="input-group">
+                                        {{form.levelofskill}}
+                                        <div class="input-group-append">
+                                            <button class="btn btn-success add-form-row">+</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                            <!-- <div class="row spacer">
+                                <div class="col-4 offset-2">
+                                    <button type="submit" class="btn btn-block btn-primary">Create</button>
+                                </div>
+                            </div> -->
+                            <!-- {% if formset %}
+                            {{ formset.management_form }}
+                            <div id="ingridiant-form-list">
+                                {% for form in formset %}
+                                    <div class="ing-form">
+                                        {{ form.as_p }}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            
+                            {% endif %}
+                            <div id="empty-form" class="hidden">{{formset.empty_form.as_p}}</div>
+                            <button id="add-more" type="button">Add more</button>
+                            <button>submit</button> -->
+                        
+                            <!-- <p class="profil">مهارت:</span> {{ resumeeditform.skillname |add_class:"formedit"}}</p>
+                            <p class="profil">سطح مهارت:{{ resumeeditform.levelofskill|add_class:"formedit" }}</p> -->
+                        </div>
 
-                        <!-- <p class="resumesectiontitle">دوره های آموزشی</p>
+                        <p class="resumesectiontitle">دوره های آموزشی</p>
                         <div class="formresume">
                             <p class="profil">نام دوره آموزشی:{{ resumeeditform.coursesname |add_class:"formedit"}}</p>
                             <p class="profil">نام آموزشگاه:</span> {{ resumeeditform.institute |add_class:"formedit"}}</p>
-                        </div> -->
+                        </div>
                         
                         <p class="resumesectiontitle">جوایز و افتخارات</p>
                         <div class="formresume"> 
@@ -132,6 +191,10 @@
             
                
         </div>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+        <script type="text/javascript" src="{% static 'js/addmore.js'%}"></script>
+      
         
         
 </body>

@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from resumesite import views
 import resumesite
-from accounts.forms import ProfileRegisterForm,ProfileEditForm,UserEditForm,ResumeEditForm,PasswordChangingForm
+from accounts.forms import ProfileRegisterForm,ProfileEditForm,UserEditForm,ResumeEditForm,PasswordChangingForm,skillFormSet
 from django.contrib.auth.models import User
 from accounts.models import ProfileModel,skillsModel,aducationModel,articlesModel,awardsModel,workexperienceModel,projectsModel,languagesModel,coursesModel
 from django.contrib.auth import update_session_auth_hash
@@ -148,7 +148,16 @@ def resumeprofileview(request):
 
 @login_required
 def ResumeEditView(request):
+    profile = request.user.profile
+    formset = skillFormSet(queryset=skillsModel.objects.none())
     if request.method=="POST":
+        profile = request.user.profile
+        formset = skillFormSet(request.POST)
+        if  formset.is_valid():
+            for form in formset:
+                author = form.save(commit=False)
+                author.skills = profile 
+                author.save()
         resumeeditform=ResumeEditForm(request.POST,request.FILES,instance=request.user.profile)
         usereditform=UserEditForm(request.POST,instance=request.user)
         if resumeeditform.is_valid() and usereditform.is_valid():
@@ -164,6 +173,8 @@ def ResumeEditView(request):
         "resumeeditform":resumeeditform,
         "usereditform":usereditform,
         "ProfileImage":request.user.profile.ProfileImage,
+        "formset":formset,
+        "author":profile,
     }
     return render(request,"accounts/resumeEdit.html",context)
 
@@ -216,3 +227,30 @@ def passwordchangeview(request):
 #         'password_form':password_form
 #     }
 #     return render(request,'accounts/password_reset.html', context)
+
+
+@login_required
+def create_skill(request):
+    template_name = 'accounts/create_book.html'
+    if request.method == 'GET':
+
+        bookform = request.user.profile
+        formset = skillFormSet(queryset=skillsModel.objects.none())
+    elif request.method == 'POST':
+        bookform = request.user.profile
+        formset = skillFormSet(request.POST)
+        if  formset.is_valid():
+            # first save this book, as its reference will be used in `Author`
+            # book = bookform.save()
+            for form in formset:
+                # so that `book` instance can be attached.
+                author = form.save(commit=False)
+                author.skills = bookform 
+                author.save()
+            return redirect("create_book")
+    return render(request, template_name, {
+        'bookform': bookform,
+        'formset': formset,
+    })
+
+    # return render(request, "accounts/create_book.html", context)
