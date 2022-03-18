@@ -14,7 +14,7 @@ urlpatterns = [
     path('profile/',views.profileView),
     path('profileEdit/',views.ProfileEditView),
     path('resumeprofile/',views.resumeprofileview),
-    path('resumeEdit/',views.ResumeEditView),
+    path('resumeEdit/',views.ResumeEditView,name='index'),
     path('loginen/',views.loginen),
     path('password/',views.passwordchangeview),
     # path('password_reset/', views.passwordreset,

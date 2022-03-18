@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from resumesite import views
 import resumesite
-from accounts.forms import ProfileRegisterForm,ProfileEditForm,UserEditForm,ResumeEditForm,PasswordChangingForm,skillFormSet
+from accounts.forms import ProfileRegisterForm,ProfileEditForm,UserEditForm,ResumeEditForm,PasswordChangingForm,skillFormSet,aducationFormSet,skillFormSetinstance,aducationFormSetinstance
 from django.contrib.auth.models import User
 from accounts.models import ProfileModel,skillsModel,aducationModel,articlesModel,awardsModel,workexperienceModel,projectsModel,languagesModel,coursesModel
 from django.contrib.auth import update_session_auth_hash
@@ -149,32 +149,70 @@ def resumeprofileview(request):
 @login_required
 def ResumeEditView(request):
     profile = request.user.profile
-    formset = skillFormSet(queryset=skillsModel.objects.none())
-    if request.method=="POST":
-        profile = request.user.profile
-        formset = skillFormSet(request.POST)
-        if  formset.is_valid():
-            for form in formset:
-                author = form.save(commit=False)
-                author.skills = profile 
-                author.save()
-        resumeeditform=ResumeEditForm(request.POST,request.FILES,instance=request.user.profile)
-        usereditform=UserEditForm(request.POST,instance=request.user)
-        if resumeeditform.is_valid() and usereditform.is_valid():
-            resumeeditform.save()
-            usereditform.save()
-            return HttpResponseRedirect(reverse(accounts.views.resumeprofileview))
+    skillprofile=skillsModel.objects.all()
+    aducationprofile=aducationModel.objects.all()
+    skillformsetinstance = skillFormSetinstance(skillsModel.objects.all())
+    aducationformSetinstance=aducationFormSetinstance(aducationModel.objects.all())
+    skillformset = skillFormSet(queryset=skillsModel.objects.none())
+    aducationformSet=aducationFormSet(queryset=aducationModel.objects.none())
+    if request.method == 'POST':
+        if 'skilladd' in request.POST:
+            profile = request.user.profile
+            skillformset = skillFormSet(request.POST)
+           
+           
+            
+            if skillformset.is_valid():
+                for skillform in skillformset:
+                    if skillform.cleaned_data != {}:
+                        skill = skillform.save(commit=False)
+                        skill.skills = profile 
+                        skill.save()
+                
+            else:
+                print('o')
+        if 'skilledit' in request.POST:
+            skillformsetinstance = skillFormSetinstance(request.POST,instance=profile)
+            if skillformsetinstance.is_valid() :
+                skillformsetinstance.save()
+        if 'educationadd' in request.POST:
+            aducationformSet=aducationFormSet(request.POST)
+            if aducationformSet.is_valid():
+                for aducationform in aducationformSet:
+                    if aducationform.cleaned_data != {}:
+                        aducation = aducationform.save(commit=False)
+                        aducation.aducations = profile 
+                        aducation.save()
+        if 'aducationedit' in request.POST:
+            aducationformSetinstance = aducationFormSetinstance(request.POST,instance=profile)
+            if aducationformSetinstance.is_valid() :
+                aducationformSetinstance.save()
+        if 'profileedit' in request.POST:
+           resumeeditform=ResumeEditForm(request.POST,request.FILES,instance=request.user.profile)
+           usereditform=UserEditForm(request.POST,instance=request.user)
+           if resumeeditform.is_valid() and usereditform.is_valid():
+               resumeeditform.save()
+               usereditform.save()
+        return HttpResponseRedirect(reverse(accounts.views.resumeprofileview))
 
     else:
         resumeeditform=ResumeEditForm(instance=request.user.profile)
         usereditform=UserEditForm(instance=request.user)
+        skillformsetinstance = skillFormSetinstance(instance=profile)
+        aducationformSetinstance=aducationFormSetinstance(instance=profile)
+
 
     context={
+        "skill":skillprofile,
         "resumeeditform":resumeeditform,
         "usereditform":usereditform,
         "ProfileImage":request.user.profile.ProfileImage,
-        "formset":formset,
+        "skillformset":skillformset,
+        "aducationformSet":aducationformSet,
         "author":profile,
+        "skillformsetinstance":skillformsetinstance,
+        "aducationprofile":aducationprofile,
+        "aducationformSetinstance":aducationformSetinstance
     }
     return render(request,"accounts/resumeEdit.html",context)
 

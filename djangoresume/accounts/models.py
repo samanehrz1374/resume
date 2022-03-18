@@ -6,8 +6,8 @@ from jalali_date import date2jalali
 # Create your models here.
 class ProfileModel(models.Model):
     class Meta:
-        verbose_name="پروفایل"
-        verbose_name_plural="پروفایل"
+        verbose_name="profiles"
+        verbose_name_plural="profiles"
     user=models.OneToOneField(User,on_delete=CASCADE,verbose_name="کاربری",related_name="profile")
     male=1
     female=2
@@ -24,6 +24,7 @@ class ProfileModel(models.Model):
     intrested_job=models.CharField(max_length=100,verbose_name="شغل مورد علاقه",null=True,blank=False)
     ProfileImage=models.ImageField(upload_to='profileimages/',verbose_name="عکس")
 
+  
 
 class aducationModel(models.Model):
     class Meta:
@@ -44,7 +45,6 @@ class aducationModel(models.Model):
     gpa=models.FloatField(verbose_name="معدل",null=True)
     from_year=models.DateField(verbose_name="سال شروع",null=True)
     to_year=models.DateField(verbose_name="سال پایان",null=True)
-
     def __str__(self):
         return self.university
 
@@ -81,6 +81,7 @@ class skillsModel(models.Model):
 
     def __str__(self):
         return self.skillname
+    
 
 class coursesModel(models.Model):
     class Meta:
