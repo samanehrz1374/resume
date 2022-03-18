@@ -2,14 +2,14 @@ from calendar import monthrange
 from dataclasses import fields
 from datetime import MINYEAR, datetime
 from django import forms
-from accounts.models import ProfileModel,skillsModel
+from accounts.models import ProfileModel,skillsModel,aducationModel
 from django.contrib.auth.forms import UserChangeForm
 from jalali_date.fields import JalaliDateField
 from jalali_date.widgets import AdminJalaliDateWidget
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.models import User
 import string
-from django.forms.models import modelformset_factory
+from django.forms.models import modelformset_factory,inlineformset_factory
 
 
 
@@ -128,37 +128,108 @@ class PasswordChangingForm(PasswordChangeForm):
 
 
 
-class skillfrom(forms.ModelForm):
+class skillForm(forms.ModelForm):
     class Meta:
         model = skillsModel
-        fields = (
-            'skillname',
-            'levelofskill'
-        )
+        fields = ['skillname',
+            'levelofskill']
+            
 
-
-# skillFormSet = inlineformset_factory(
-#     ProfileModel,
-#     skillsModel,
-#     form=skillfrom,
-#     min_num=1,  # minimum number of forms that must be filled in
-#     extra=0,  # number of empty forms to display
-#     can_delete=False  # show a checkbox in each form to delete the row
-# )
-
-
-skillFormSet = modelformset_factory(
-    skillsModel,
-    fields=('skillname','levelofskill' ),
-    extra=1,
-    # widgets=forms.CharField(attrs={'class':'formedit'})
+# skillFormSet=inlineformset_factory(ProfileModel, skillsModel, fields=('skillname','levelofskill' ),
+#     extra=1,
+#     widgets={'skillname': forms.TextInput(attrs={
+#              'class': 'formedit ',
+#              'placeholder': ''
+#              }),
+#             'levelofskill': forms.Select(attrs={
+#                 'class': 'formedit',
+#                 'placeholder': ''
+#             })
+#              })
+skillFormSetinstance=inlineformset_factory(ProfileModel, skillsModel, fields=('skillname','levelofskill' ),
+    extra=0,
     widgets={'skillname': forms.TextInput(attrs={
-             'class': 'formedit',
+             'class': 'formedit ',
              'placeholder': ''
              }),
             'levelofskill': forms.Select(attrs={
                 'class': 'formedit',
-                'placeholder': 'Enter Author skillname here'
+                'placeholder': ''
+            })
+             })
+skillFormSet = modelformset_factory(
+    skillsModel,
+    fields=('skillname','levelofskill' ),
+    extra=1,
+    widgets={'skillname': forms.TextInput(attrs={
+             'class': 'formedit ',
+             'placeholder': ''
+             }),
+            'levelofskill': forms.Select(attrs={
+                'class': 'formedit',
+                'placeholder': ''
             })
              }
 )
+
+
+aducationFormSet = modelformset_factory(
+    aducationModel,
+    fields=('degree_level','major','university','gpa','from_year','to_year' ),
+    extra=1,
+    # widgets=forms.CharField(attrs={'class':'formedit'})
+    widgets={'degree_level': forms.Select(attrs={
+             'class': 'formedit',
+             
+             }),
+            'major': forms.TextInput(attrs={
+                'class': 'formedit',
+                
+            }),
+            'university': forms.TextInput(attrs={
+                'class': 'formedit',
+                
+            }),
+            'gpa': forms.TextInput(attrs={
+                'class': 'formedit',
+                
+            }),
+            'from_year': forms.DateInput(attrs={
+                'class': 'formedit',
+                
+            }),
+            'to_year': forms.DateInput(attrs={
+                'class': 'formedit',
+            }),
+             }
+)
+
+aducationFormSetinstance=inlineformset_factory(ProfileModel, aducationModel, 
+    fields=('degree_level','major','university','gpa','from_year','to_year' ),
+    extra=0,
+    widgets={'degree_level': forms.Select(attrs={
+             'class': 'formedit',
+             
+             }),
+            'major': forms.TextInput(attrs={
+                'class': 'formedit',
+                
+            }),
+            'university': forms.TextInput(attrs={
+                'class': 'formedit',
+                
+            }),
+            'gpa': forms.TextInput(attrs={
+                'class': 'formedit',
+                
+            }),
+            'from_year': forms.DateInput(attrs={
+                'class': 'formedit',
+                
+            }),
+            'to_year': forms.DateInput(attrs={
+                'class': 'formedit',
+            }),
+             }
+    )
+
