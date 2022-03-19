@@ -8,7 +8,13 @@ from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from resumesite import views
 import resumesite
-from accounts.forms import ProfileRegisterForm,ProfileEditForm,UserEditForm,ResumeEditForm,PasswordChangingForm,skillFormSet,aducationFormSet,skillFormSetinstance,aducationFormSetinstance
+from accounts.forms import (ProfileRegisterForm,ProfileEditForm,UserEditForm,ResumeEditForm,PasswordChangingForm,
+                            skillFormSet,aducationFormSet,skillFormSetinstance,
+                            aducationFormSetinstance,workexperienceFormSetinstance,
+                            workexperienceFormSet,coursesFormSet,coursesFormSetinstance,
+                            awardFormSet,awardFormSetinstance,projectsFormSet,
+                            projectsFormSetinstance,languagesFormSet,languagesFormSetinstance,
+                            articleFormSetinstance,articleFormSet)
 from django.contrib.auth.models import User
 from accounts.models import ProfileModel,skillsModel,aducationModel,articlesModel,awardsModel,workexperienceModel,projectsModel,languagesModel,coursesModel
 from django.contrib.auth import update_session_auth_hash
@@ -155,22 +161,41 @@ def ResumeEditView(request):
     aducationformSetinstance=aducationFormSetinstance(aducationModel.objects.all())
     skillformset = skillFormSet(queryset=skillsModel.objects.none())
     aducationformSet=aducationFormSet(queryset=aducationModel.objects.none())
+    workexperienceformSetinstance=workexperienceFormSetinstance(aducationModel.objects.all())
+    workexperienceformSet=workexperienceFormSet(queryset=workexperienceModel.objects.none())
+    workexperience=workexperienceModel.objects.all()
+    coursesformSet = coursesFormSet(queryset=coursesModel.objects.none())
+    coursesformSetinstance = coursesFormSetinstance(coursesModel.objects.all())
+    course=coursesModel.objects.all()
+
+    awardformSet = awardFormSet(queryset=awardsModel.objects.none())
+    awardformSetinstance = awardFormSetinstance(awardsModel.objects.all())
+    award=awardsModel.objects.all()
+
+    projectsformSet = projectsFormSet(queryset=projectsModel.objects.none())
+    projectsformSetinstance = projectsFormSetinstance(projectsModel.objects.all())
+    project=projectsModel.objects.all()
+
+    articleformSet = articleFormSet(queryset=articlesModel.objects.none())
+    articleformSetinstance = articleFormSetinstance(articlesModel.objects.all())
+    article=articlesModel.objects.all()
+
+    languagesformSet = languagesFormSet(queryset=languagesModel.objects.none())
+    languagesformSetinstance = languagesFormSetinstance(languagesModel.objects.all())
+    language=languagesModel.objects.all()
+
     if request.method == 'POST':
         if 'skilladd' in request.POST:
             profile = request.user.profile
             skillformset = skillFormSet(request.POST)
-           
-           
-            
+
             if skillformset.is_valid():
                 for skillform in skillformset:
                     if skillform.cleaned_data != {}:
                         skill = skillform.save(commit=False)
                         skill.skills = profile 
                         skill.save()
-                
-            else:
-                print('o')
+
         if 'skilledit' in request.POST:
             skillformsetinstance = skillFormSetinstance(request.POST,instance=profile)
             if skillformsetinstance.is_valid() :
@@ -187,19 +212,115 @@ def ResumeEditView(request):
             aducationformSetinstance = aducationFormSetinstance(request.POST,instance=profile)
             if aducationformSetinstance.is_valid() :
                 aducationformSetinstance.save()
+        if 'workexperienceadd' in request.POST:
+            workexperienceformSet = workexperienceFormSet(request.POST)
+           
+            if workexperienceformSet.is_valid():
+                for workexperienceform in workexperienceformSet:
+                    if workexperienceform.cleaned_data != {}:
+                        workexperience = workexperienceform.save(commit=False)
+                        workexperience.jobs = profile 
+                        workexperience.save()
+            
+        if 'workexperienceedit' in request.POST:
+            workexperienceformSetinstance = workexperienceFormSetinstance(request.POST,instance=profile)
+            if workexperienceformSetinstance.is_valid() :
+                workexperienceformSetinstance.save()
+
+        if 'courcesadd' in request.POST:
+            coursesformSet = coursesFormSet(request.POST)
+            if coursesformSet.is_valid():
+                for coursesform in coursesformSet:
+                    if coursesform.cleaned_data != {}:
+                        courses = coursesform.save(commit=False)
+                        courses.courses = profile 
+                        courses.save()
+            
+        if 'courcessedit' in request.POST:
+            coursesformSetinstance = coursesFormSetinstance(request.POST,instance=profile)
+            if coursesformSetinstance.is_valid() :
+                coursesformSetinstance.save()
+        
+        if 'awardsadd' in request.POST:
+            awardformSet = awardFormSet(request.POST)
+            if awardformSet.is_valid():
+                for awardform in awardformSet:
+                    if awardform.cleaned_data != {}:
+                        award = awardform.save(commit=False)
+                        award.awards = profile 
+                        award.save()
+            
+            
+        if 'awardsedit' in request.POST:
+            awardformSetinstance = awardFormSetinstance(request.POST,instance=profile)
+            if awardformSetinstance.is_valid() :
+                awardformSetinstance.save()
+
+
+        if 'articleadd' in request.POST:
+            articleformSet = articleFormSet(request.POST)
+            if articleformSet.is_valid():
+                for articleform in articleformSet:
+                    if articleform.cleaned_data != {}:
+                        article = articleform.save(commit=False)
+                        article.articles = profile 
+                        article.save()
+            
+            
+        if 'articleedit' in request.POST:
+            articleformSetinstance = articleFormSetinstance(request.POST,instance=profile)
+            if articleformSetinstance.is_valid() :
+                articleformSetinstance.save()
+
+        if 'projectsadd' in request.POST:
+            projectsformSet = projectsFormSet(request.POST)
+            if projectsformSet.is_valid():
+                for projectsform in projectsformSet:
+                    if projectsform.cleaned_data != {}:
+                        project = projectsform.save(commit=False)
+                        project.projects = profile 
+                        project.save()
+            
+            
+        if 'projectsedit' in request.POST:
+            projectsformSetinstance = projectsFormSetinstance(request.POST,instance=profile)
+            if projectsformSetinstance.is_valid() :
+                projectsformSetinstance.save()
+
+        if 'languagesadd' in request.POST:
+            languagesformSet = languagesFormSet(request.POST)
+            if languagesformSet.is_valid():
+                for languagesform in languagesformSet:
+                    if languagesform.cleaned_data != {}:
+                        language = languagesform.save(commit=False)
+                        language.languages = profile 
+                        language.save()
+            
+            
+        if 'languagesedit' in request.POST:
+            languagesformSetinstance = languagesFormSetinstance(request.POST,instance=profile)
+            if languagesformSetinstance.is_valid() :
+                languagesformSetinstance.save()
+
         if 'profileedit' in request.POST:
            resumeeditform=ResumeEditForm(request.POST,request.FILES,instance=request.user.profile)
            usereditform=UserEditForm(request.POST,instance=request.user)
            if resumeeditform.is_valid() and usereditform.is_valid():
                resumeeditform.save()
                usereditform.save()
-        return HttpResponseRedirect(reverse(accounts.views.resumeprofileview))
+        return HttpResponseRedirect(reverse(accounts.views.ResumeEditView))
 
     else:
         resumeeditform=ResumeEditForm(instance=request.user.profile)
         usereditform=UserEditForm(instance=request.user)
         skillformsetinstance = skillFormSetinstance(instance=profile)
         aducationformSetinstance=aducationFormSetinstance(instance=profile)
+        workexperienceformSetinstance=workexperienceFormSetinstance(instance=profile)
+        coursesformSetinstance = coursesFormSetinstance(instance=profile)
+        awardformSetinstance = awardFormSetinstance(instance=profile)
+        projectsformSetinstance = projectsFormSetinstance(instance=profile)
+        articleformSetinstance = articleFormSetinstance(instance=profile)
+        languagesformSetinstance = languagesFormSetinstance(instance=profile)
 
 
     context={
@@ -212,7 +333,29 @@ def ResumeEditView(request):
         "author":profile,
         "skillformsetinstance":skillformsetinstance,
         "aducationprofile":aducationprofile,
-        "aducationformSetinstance":aducationformSetinstance
+        "aducationformSetinstance":aducationformSetinstance,
+        "resumeprofile":profile,
+        "workexperienceformSetinstance":workexperienceformSetinstance,
+        "workexperienceformSet":workexperienceformSet,
+        "workexperience":workexperience,
+        "coursesformSetinstance":coursesformSetinstance,
+        "course":course,
+        "coursesformSet":coursesformSet,
+        "awardformSetinstance":awardformSetinstance,
+        "awardformSet":awardformSet,
+        "award":award,
+        "projectsformSetinstance":projectsformSetinstance,
+        "projectsformSet":projectsformSet,
+        "project":project,
+        "articleformSetinstance":articleformSetinstance,
+        "articleformSet":articleformSet,
+        "article":article,
+        "languagesformSetinstance":languagesformSetinstance,
+        "languagesformSet":languagesformSet,
+        "language":language
+
+
+
     }
     return render(request,"accounts/resumeEdit.html",context)
 

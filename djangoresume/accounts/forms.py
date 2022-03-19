@@ -2,7 +2,7 @@ from calendar import monthrange
 from dataclasses import fields
 from datetime import MINYEAR, datetime
 from django import forms
-from accounts.models import ProfileModel,skillsModel,aducationModel
+from accounts.models import ProfileModel,skillsModel,aducationModel,workexperienceModel,coursesModel,awardsModel,projectsModel,languagesModel,articlesModel
 from django.contrib.auth.forms import UserChangeForm
 from jalali_date.fields import JalaliDateField
 from jalali_date.widgets import AdminJalaliDateWidget
@@ -10,6 +10,10 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.models import User
 import string
 from django.forms.models import modelformset_factory,inlineformset_factory
+
+
+
+
 
 
 
@@ -233,3 +237,192 @@ aducationFormSetinstance=inlineformset_factory(ProfileModel, aducationModel,
              }
     )
 
+
+workexperienceFormSetinstance=inlineformset_factory(ProfileModel, workexperienceModel, fields=('job_title','company_name','start_time','end_time' ),
+    extra=0,
+    widgets={'job_title': forms.TextInput(attrs={
+             'class': 'formedit ',
+             'placeholder': ''
+             }),
+            'company_name': forms.TextInput(attrs={
+                'class': 'formedit',
+                'placeholder': ''
+            }),
+            'start_time': forms.SelectDateWidget(attrs={
+                'class': 'formedit',
+                'placeholder': ''
+            }),
+            'end_time': forms.SelectDateWidget(attrs={
+                'class': 'formedit',
+                'placeholder': ''
+            })
+             })
+workexperienceFormSet = modelformset_factory(
+    workexperienceModel,
+    fields=('job_title','company_name','start_time','end_time' ),
+    extra=1,
+    widgets={'job_title': forms.TextInput(attrs={
+             'class': 'formedit ',
+             'placeholder': ''
+             }),
+            'company_name': forms.TextInput(attrs={
+                'class': 'formedit',
+                'placeholder': ''
+            }),
+            'start_time': forms.SelectDateWidget(attrs={
+                'class': 'formedit',
+                'placeholder': ''
+            }),
+            'end_time': forms.SelectDateWidget(attrs={
+                'class': 'formedit',
+                'placeholder': ''
+            })
+             }
+)
+
+coursesFormSetinstance=inlineformset_factory(ProfileModel, coursesModel, fields=('coursesname','institute', ),
+    extra=0,
+    widgets={'coursesname': forms.TextInput(attrs={
+             'class': 'formedit ',
+             'placeholder': ''
+             }),
+            'institute': forms.TextInput(attrs={
+                'class': 'formedit',
+                'placeholder': ''
+            }),
+            
+             })
+coursesFormSet = modelformset_factory(
+    coursesModel,
+    fields=('coursesname','institute', ),
+    extra=1,
+    widgets={'coursesname': forms.TextInput(attrs={
+             'class': 'formedit ',
+             'placeholder': ''
+             }),
+            'institute': forms.TextInput(attrs={
+                'class': 'formedit',
+                'placeholder': ''
+            }),
+           
+             }
+)
+
+
+
+awardFormSetinstance=inlineformset_factory(ProfileModel, awardsModel, fields=('award_title','dateofaward', ),
+    extra=0,
+    widgets={'award_title': forms.TextInput(attrs={
+             'class': 'formedit ',
+             'placeholder': ''
+             }),
+            'dateofaward': forms.TextInput(attrs={
+                'class': 'formedit',
+                'placeholder': ''
+            }),
+            
+             })
+awardFormSet = modelformset_factory(
+    awardsModel,
+    fields=('award_title','dateofaward', ),
+    extra=1,
+    widgets={'award_title': forms.TextInput(attrs={
+             'class': 'formedit ',
+             'placeholder': ''
+             }),
+            'dateofaward': forms.SelectDateWidget(attrs={
+                'class': 'formedit',
+                'placeholder': ''
+            }),
+            
+             }
+)
+
+
+
+projectsFormSetinstance=inlineformset_factory(ProfileModel, projectsModel, fields=('project_title','dateofproject', ),
+    extra=0,
+    widgets={'project_title': forms.TextInput(attrs={
+             'class': 'formedit ',
+             'placeholder': ''
+             }),
+            'dateofproject': forms.SelectDateWidget(attrs={
+                'class': 'formedit',
+                'placeholder': ''
+            }),
+            
+             })
+projectsFormSet = modelformset_factory(
+    projectsModel,
+    fields=('project_title','dateofproject', ),
+    extra=1,
+    widgets={'project_title': forms.TextInput(attrs={
+             'class': 'formedit ',
+             'placeholder': ''
+             }),
+            'dateofproject': forms.SelectDateWidget(attrs={
+                'class': 'formedit',
+                'placeholder': ''
+            }),
+            
+             }
+)
+
+
+articleFormSetinstance=inlineformset_factory(ProfileModel, articlesModel, fields=('article_title','dateofarticle', ),
+    extra=0,
+    widgets={'article_title': forms.TextInput(attrs={
+             'class': 'formedit ',
+             'placeholder': ''
+             }),
+            'dateofarticle': forms.SelectDateWidget(attrs={
+                'class': 'formedit',
+                'placeholder': ''
+            }),
+            
+             })
+articleFormSet = modelformset_factory(
+    articlesModel,
+    fields=('article_title','dateofarticle', ),
+    extra=1,
+    widgets={'article_title': forms.TextInput(attrs={
+             'class': 'formedit ',
+             'placeholder': ''
+             }),
+            'dateofarticle': forms.SelectDateWidget(attrs={
+                'class': 'formedit',
+                'placeholder': ''
+            }),
+            
+             }
+)
+
+
+
+languagesFormSetinstance=inlineformset_factory(ProfileModel, languagesModel, fields=('language','leveloflanguage', ),
+    extra=0,
+    widgets={'language': forms.TextInput(attrs={
+             'class': 'formedit ',
+             'placeholder': ''
+             }),
+            'leveloflanguage': forms.Select(attrs={
+                'class': 'formedit',
+                'placeholder': ''
+            }),
+            
+             })
+languagesFormSet = modelformset_factory(
+    languagesModel,
+    fields=('language','leveloflanguage', ),
+    extra=1,
+    widgets={'language': forms.TextInput(attrs={
+             'class': 'formedit ',
+             'placeholder': ''
+             }),
+            'leveloflanguage': forms.Select(attrs={
+                'class': 'formedit',
+                'placeholder': ''
+            }),
+            
+             }
+)

@@ -50,27 +50,69 @@
                     </div>
             </div>
             <div class="boxxrtl"  style="min-height: 607px;">
-                <form action="" method="POST" enctype="multipart/form-data">
-                    {% csrf_token %}
+                
                     <div class="imgbox">
                         <img src="{{ ProfileImage.url  }}" style="width: 100%;align-items: right;">
                         
                     </div>
                     <div style="width: 40%;float: right;height: 420px ; margin-left: 5%; margin-right: 5%;" >
                     
-                        {{ resumeeditform.ProfileImage|add_class:"profilchoose" }}
+                        
                         <p class="resumesectiontitle">اطلاعات شخصی</p> 
                         <div class="formresume">
-                            <p class="profil">نام و نام خانوادگی:{{usereditform.first_name|add_class:"formedit"}} {{usereditform.last_name|add_class:"formedit"}}</p>
-                            <p class="profil">تاریخ تولد:{{ resumeeditform.birthday|add_class:"formeditdate" }}</p>
-                            <p class="profil">جنسیت:</span> {{ resumeeditform.gender |add_class:"formedit"}}</p>
-                            <p class="profil">وضعیت تاهل:{{ resumeeditform.marital_status|add_class:"formedit" }}</p>
-                            <p class="profil"> شهر:{{ resumeeditform.city |add_class:"formedit"}}</p>
-                            <p class="profil">آدرس:{{ resumeeditform.address |add_class:"formedit"}}</p>
-                            <p class="profil">شغل مورد علاقه:{{ resumeeditform.intrested_job |add_class:"formedit"}}</p>
+                            <div id="abc">
+                                <div id="popupContact">
+                                    <form action="#" id="form" method="post" class="form1" enctype="multipart/form-data">
+                                        {% csrf_token %}
+                                        <img id="close" src="{% static 'images/close1.png'%}" onclick ="div_hide()">
+                                            <div class="imgbox">
+                                                <img src="{{ ProfileImage.url  }}" style="align-items: center;">
+                                                
+                                            </div>
+                                                {{ resumeeditform.ProfileImage|add_class:"profilchoose" }}
+                                                <div class="bird-form formsetborder">
+                                                    <label class="formsetlable">نام :</label>
+                                                    {{usereditform.first_name|add_class:"formedit"}} 
+                                                    <label class="formsetlable"> نام خانوادگی :</label>
+                                                    {{usereditform.last_name|add_class:"formedit"}}
+                                                    <label class="formsetlable">جنسیت:</label>
+                                                    {{ resumeeditform.gender |add_class:"formedit"}}
+
+                                                    <label class="formsetlable">وضعیت تاهل:</label>
+                                                    {{ resumeeditform.marital_status|add_class:"formedit" }}
+
+                                                    <label class="formsetlable">تاریخ تولد:</label>
+                                                    {{ resumeeditform.birthday|add_class:"formedit" }}
+
+                                                    <label class="formsetlable">شهر:</label>
+                                                    {{ resumeeditform.city |add_class:"formedit"}}
+
+                                                    <label class="formsetlable">آدرس:</label>
+                                                    {{ resumeeditform.address |add_class:"formedit"}}
+
+                                                    <label class="formsetlable">شغل مورد علاقه:</label>
+                                                    {{ resumeeditform.intrested_job |add_class:"formedit"}}
+            
+                                                   
+                                                </div>
+                                                
+                                            
+                                            <button class="profilebtncenter" type="submit" name="profileedit" >ذخیره</button>
+                                    </form>
+                                </div>
+                            </div>
+                            <p class="profil">نام و نام خانوادگی:&nbsp;{{ resumeprofile.user.get_full_name |default:""}}</p>
+                            <p class="profil">تاریخ تولد:&nbsp;{{ resumeprofile.birthday|date:'Y/m/d' }}</p>
+                            <p class="profil">جنسیت:&nbsp;{{ resumeprofile.get_gender_display |default:""}}</p>
+                            <p class="profil">وضعیت تاهل:&nbsp;{{ resumeprofile.get_marital_status_display|default:"" }}</p>
+                            <p class="profil"> شهر:&nbsp;{{ resumeprofile.city |default:""}}</p>
+                            <p class="profil">آدرس:&nbsp;{{ resumeprofile.address|default:"" }}</p>
+                            <p class="profil">شغل مورد علاقه:&nbsp;{{ resumeprofile.intrested_job |default:""}}</p>
+                            
+                            <button type="button" style="display: inline;font-size: 25px;color: rgb(159, 161, 161);margin: 10px 370px 0px 0px;" class='fa fa-edit '  onclick="div_show()"></button>
+                
                         </div>
-                        <button type="submit" class="btn editsubmit" name="profileedit">ذخیره</button>
-                </form>
+                     
 
                         <p class="resumesectiontitle">سوابق تحصیلی</p> 
                         <div class="formresume">
@@ -108,7 +150,7 @@
                                                 
                                             {% endfor %}
                                             
-                                            <button class="popupbtnright" id="add-form1" type="button" >افزودن مهارت</button>
+                                            <button class="popupbtnright" id="add-form1" type="button" >افزودن</button>
                                             <button class="popupbtnleft" type="submit" name="educationadd" >ذخیره</button>
                                     </form>
                                 </div>
@@ -163,10 +205,76 @@
                         </div>
                         <p class="resumesectiontitle">سوابق شغلی</p> 
                         <div class="formresume">
-                            <p class="profil">عنوان شغل:</span> {{ resumeeditform.job_title |add_class:"formedit"}}</p>
-                            <p class="profil">نام شرکت:{{ resumeeditform.company_name |add_class:"formedit"}}</p>
-                            <p class="profil">تاریخ شروع:{{ resumeeditform.start_time|add_class:"formedit" }}</p>
-                            <p class="profil">تاریخ پایان:{{ resumeeditform.end_time |add_class:"formedit"}}</p>
+                            <div id="abc3">
+                                <div id="popupContact">
+                                    <form action="#" id="form3" method="post" class="form1">
+                                        {% csrf_token %}
+                                        <img id="close" src="{% static 'images/close1.png'%}" onclick ="div_hide3()">
+                                        {{workexperienceformSet.management_form}}
+                        
+                                            {% for form in workexperienceformSet %}
+                                            
+                                                <div class="bird-form2 formsetborder">
+                                                    <!-- <label style="display: block;" class="formsetlable">افزودن مهارت</label><br> -->
+                                                    <label class="formsetlable">{{form.job_title.label}}:</label>
+                                                    {{form.job_title}}
+                                                    <label class="formsetlable">{{form.company_name.label}}:</label>
+                                                    {{form.company_name}}
+                                                    <label class="formsetlable">{{form.start_time.label}}:</label>
+                                                    {{form.start_time}}
+                                                    <label class="formsetlable">{{form.end_time.label}}:</label>
+                                                    {{form.end_time}}
+                                                    <!-- {{form.DELETE}} -->
+                                                    {{form.id}}
+                                                    {{form.jobs}}
+                                                </div>
+                                                
+                                            {% endfor %}
+                                            
+                                            <button class="popupbtnright" id="add-form2" type="button" >افزودن</button>
+                                            <button class="popupbtnleft" type="submit" name="workexperienceadd" >ذخیره</button>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <div id="abc4">
+                                <div id="popupContact">
+                                    <form action="#" id="form4" method="post" class="form1">
+                                        {% csrf_token %}
+                                        <img id="close" src="{% static 'images/close1.png'%}" onclick ="div_hide4()">
+                                        {{workexperienceformSetinstance.management_form}}
+                                            {% for forms in workexperienceformSetinstance %}
+                                                <div class="bird-form formsetborder">
+                                                    <label class="formsetlable">{{forms.job_title.label}}:</label>
+                                                    {{forms.job_title}}
+                                                    <label class="formsetlable">{{forms.company_name.label}}:</label>
+                                                    {{forms.company_name}}
+                                                    <label class="formsetlable">{{forms.start_time.label}}:</label>
+                                                    {{forms.start_time}}
+                                                    <label class="formsetlable">{{forms.end_time.label}}:</label>
+                                                    {{forms.end_time}}
+                                                    <p class="formsetlable">حذف :</p> {{forms.DELETE}}
+                                                    {{forms.id}}
+                                                    {{forms.jobs}}
+                                                </div>
+                                                
+                                            {% endfor %}
+                                            
+                                            <button class="profilebtncenter" type="submit" name="workexperienceedit" >ذخیره</button>
+                                    </form>
+                                </div>
+                            </div>
+                            {% for workexperiences in workexperience %}
+                            <div class="profil">
+                                <p class="subtitle1">{{ workexperiences.job_title |default:""}}</p>
+                                    <p class="subtitle2">{{ workexperiences.company_name |default:""}}
+                                    <br>{{ workexperiences.start_time |default:""|date:'Y'}}-{{ workexperiences.end_time|default:""|date:'Y' }}
+                                    </p>
+                            </div>
+                            {% endfor %}
+                            <button type="button" style="display: inline;font-size: 25px;color: rgb(159, 161, 161);margin: 10px 335px 0px 0px;" class='fa fa-edit '  onclick="div_show4()"></button>
+                            <button type="button" class="fa fa-plus" style="font-size: 25px;color: rgb(159, 161, 161);margin: 10px 15px 0px 0px;" aria-hidden="true" onclick="div_show3()"></button>
+            
                         </div>
                     </div>
                     <div style="width: 40%; float: right;height: 420px ; margin-left: 5%; margin-right: 5%; padding-top: 3.5%;" >
@@ -182,7 +290,7 @@
                         
                                             {% for form in skillformset %}
                                             
-                                                <div class="bird-form5 formsetborder">
+                                                <div class="bird-form3 formsetborder">
                                                     <!-- <label style="display: block;" class="formsetlable">افزودن مهارت</label><br> -->
                                                     <label class="formsetlable">{{form.skillname.label}}:</label>
                                                     {{form.skillname}}
@@ -195,7 +303,7 @@
                                                 
                                             {% endfor %}
                                             
-                                            <button class="popupbtnright" id="add-form5" type="button" >افزودن مهارت</button>
+                                            <button class="popupbtnright" id="add-form3" type="button" >افزودن</button>
                                             <button class="popupbtnleft" type="submit" name="skilladd" >ذخیره</button>
                                     </form>
                                 </div>
@@ -234,30 +342,331 @@
 
                         <p class="resumesectiontitle">دوره های آموزشی</p>
                         <div class="formresume">
-                            <p class="profil">نام دوره آموزشی:{{ resumeeditform.coursesname |add_class:"formedit"}}</p>
-                            <p class="profil">نام آموزشگاه:</span> {{ resumeeditform.institute |add_class:"formedit"}}</p>
+                            <div id="abc7">
+                                <div id="popupContact">
+                                    <form action="#" id="form7" method="post" class="form1">
+                                        {% csrf_token %}
+                                        <img id="close" src="{% static 'images/close1.png'%}" onclick ="div_hide7()">
+                                        {{coursesformSet.management_form}}
+                        
+                                            {% for form in coursesformSet %}
+                                            
+                                                <div class="bird-form4 formsetborder">
+                                                    <!-- <label style="display: block;" class="formsetlable">افزودن مهارت</label><br> -->
+                                                    <label class="formsetlable">{{form.coursesname.label}}:</label>
+                                                    {{form.coursesname}}
+                                                    <label class="formsetlable">{{form.institute.label}}:</label>
+                                                    {{form.institute}}
+                                                    <!-- {{form.DELETE}} -->
+                                                    {{form.id}}
+                                                    {{form.courses}}
+                                                </div>
+                                                
+                                            {% endfor %}
+                                            
+                                            <button class="popupbtnright" id="add-form4" type="button" >افزودن</button>
+                                            <button class="popupbtnleft" type="submit" name="courcesadd" >ذخیره</button>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <div id="abc8">
+                                <div id="popupContact">
+                                    <form action="#" id="form8" method="post" class="form1">
+                                        {% csrf_token %}
+                                        <img id="close" src="{% static 'images/close1.png'%}" onclick ="div_hide8()">
+                                        {{coursesformSetinstance.management_form}}
+                                            {% for forms in coursesformSetinstance %}
+                                                <div class="bird-form formsetborder">
+                                                    <label class="formsetlable">{{forms.coursesname.label}}:</label>
+                                                    {{forms.coursesname}}
+                                                    <label class="formsetlable">{{forms.institute.label}}:</label>
+                                                    {{forms.institute}}
+                                                    <p class="formsetlable">حذف :</p> {{forms.DELETE}}
+                                                    {{forms.id}}
+                                                    {{forms.courses}}
+                                                </div>
+                                                
+                                            {% endfor %}
+                                            
+                                            <button class="profilebtncenter" type="submit" name="courcessedit" >ذخیره</button>
+                                    </form>
+                                </div>
+                            </div>
+                            {% for courses in course %}
+                                <div class="profil">
+                                    <p class="subtitle1">{{ courses.coursesname|default:"" }}</p>
+                                    <p class="subtitle2">{{ courses.institute|default:"" }}
+                                    </p>
+                                </div>
+                            {% endfor %}
+
+                            <button type="button" style="display: inline;font-size: 25px;color: rgb(159, 161, 161);margin: 10px 335px 0px 0px;" class='fa fa-edit '  onclick="div_show8()"></button>
+                            <button type="button" class="fa fa-plus" style="font-size: 25px;color: rgb(159, 161, 161);margin: 10px 15px 0px 0px;" aria-hidden="true" onclick="div_show7()"></button>
+                
                         </div>
                         
                         <p class="resumesectiontitle">جوایز و افتخارات</p>
                         <div class="formresume"> 
-                        <p class="profil">عنوان:{{ resumeeditform.award_title |add_class:"formedit"}}</p>
-                        <p class="profil">سال:</span> {{ resumeeditform.dateofaward |add_class:"formedit"}}</p>
+                            <div id="abc9">
+                                <div id="popupContact">
+                                    <form action="#" id="form9" method="post" class="form1">
+                                        {% csrf_token %}
+                                        <img id="close" src="{% static 'images/close1.png'%}" onclick ="div_hide9()">
+                                        {{awardformSet.management_form}}
+                        
+                                            {% for form in awardformSet %}
+                                            
+                                                <div class="bird-form5 formsetborder">
+                                                    <!-- <label style="display: block;" class="formsetlable">افزودن مهارت</label><br> -->
+                                                    <label class="formsetlable">{{form.award_title.label}}:</label>
+                                                    {{form.award_title}}
+                                                    <label class="formsetlable">{{form.dateofaward.label}}:</label>
+                                                    {{form.dateofaward}}
+                                                    <!-- {{form.DELETE}} -->
+                                                    {{form.id}}
+                                                    {{form.awards}}
+                                                </div>
+                                                
+                                            {% endfor %}
+                                            
+                                            <button class="popupbtnright" id="add-form5" type="button" >افزودن</button>
+                                            <button class="popupbtnleft" type="submit" name="awardsadd" >ذخیره</button>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <div id="abc10">
+                                <div id="popupContact">
+                                    <form action="#" id="form10" method="post" class="form1">
+                                        {% csrf_token %}
+                                        <img id="close" src="{% static 'images/close1.png'%}" onclick ="div_hide10()">
+                                        {{awardformSetinstance.management_form}}
+                                            {% for forms in awardformSetinstance %}
+                                                <div class="bird-form formsetborder">
+                                                    <label class="formsetlable">{{forms.award_title.label}}:</label>
+                                                    {{forms.award_title}}
+                                                    <label class="formsetlable">{{forms.dateofaward.label}}:</label>
+                                                    {{forms.dateofaward}}
+                                                    <p class="formsetlable">حذف :</p> {{forms.DELETE}}
+                                                    {{forms.id}}
+                                                    {{forms.awards}}
+                                                </div>
+                                                
+                                            {% endfor %}
+                                            
+                                            <button class="profilebtncenter" type="submit" name="awardsedit" >ذخیره</button>
+                                    </form>
+                                </div>
+                            </div>
+                            {% for awards in award %}
+                                <div class="profil">
+                                    <p class="subtitle1">{{ awards.award_title |default:""}}</p>
+                                    <p class="subtitle2">{{ awards.dateofaward|default:""|date:'Y' }}</p>
+                                </div>
+                            {% endfor %}
+
+                            <button type="button" style="display: inline;font-size: 25px;color: rgb(159, 161, 161);margin: 10px 335px 0px 0px;" class='fa fa-edit '  onclick="div_show10()"></button>
+                            <button type="button" class="fa fa-plus" style="font-size: 25px;color: rgb(159, 161, 161);margin: 10px 15px 0px 0px;" aria-hidden="true" onclick="div_show9()"></button>
+                
+                      
                         </div>
 
                         <p class="resumesectiontitle">پروژه ها و تجربیات آکادمیک</p> 
                         <div class="formresume">
-                            <p class="profil">عنوان:{{ resumeeditform.project_title |add_class:"formedit"}}</p>
-                            <p class="profil">سال:</span> {{ resumeeditform.dateofproject |add_class:"formedit"}}</p>
+                            <div id="abc11">
+                                <div id="popupContact">
+                                    <form action="#" id="form11" method="post" class="form1">
+                                        {% csrf_token %}
+                                        <img id="close" src="{% static 'images/close1.png'%}" onclick ="div_hide11()">
+                                        {{projectsformSet.management_form}}
+                        
+                                            {% for form in projectsformSet %}
+                                            
+                                                <div class="bird-form6 formsetborder">
+                                                    <!-- <label style="display: block;" class="formsetlable">افزودن مهارت</label><br> -->
+                                                    <label class="formsetlable">{{form.project_title.label}}:</label>
+                                                    {{form.project_title}}
+                                                    <label class="formsetlable">{{form.dateofproject.label}}:</label>
+                                                    {{form.dateofproject}}
+                                                    <!-- {{form.DELETE}} -->
+                                                    {{form.id}}
+                                                    {{form.projects}}
+                                                </div>
+                                                
+                                            {% endfor %}
+                                            
+                                            <button class="popupbtnright" id="add-form6" type="button" >افزودن</button>
+                                            <button class="popupbtnleft" type="submit" name="projectsadd" >ذخیره</button>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <div id="abc12">
+                                <div id="popupContact">
+                                    <form action="#" id="form12" method="post" class="form1">
+                                        {% csrf_token %}
+                                        <img id="close" src="{% static 'images/close1.png'%}" onclick ="div_hide12()">
+                                        {{projectsformSetinstance.management_form}}
+                                            {% for forms in projectsformSetinstance %}
+                                                <div class="bird-form formsetborder">
+                                                    <label class="formsetlable">{{forms.project_title.label}}:</label>
+                                                    {{forms.project_title}}
+                                                    <label class="formsetlable">{{forms.dateofproject.label}}:</label>
+                                                    {{forms.dateofproject}}
+                                                    <p class="formsetlable">حذف :</p> {{forms.DELETE}}
+                                                    {{forms.id}}
+                                                    {{forms.projects}}
+                                                </div>
+                                                
+                                            {% endfor %}
+                                            
+                                            <button class="profilebtncenter" type="submit" name="projectsedit" >ذخیره</button>
+                                    </form>
+                                </div>
+                            </div>
+                            {% for projects in project %}
+                                <div class="profil">
+                                    <p class="subtitle1">{{ projects.project_title |default:""}}</p>
+                                    <p class="subtitle2">{{ projects.dateofproject|default:"" |date:'Y'}}
+                                    </p>
+                                </div>
+                            {% endfor %}
+
+                            <button type="button" style="display: inline;font-size: 25px;color: rgb(159, 161, 161);margin: 10px 335px 0px 0px;" class='fa fa-edit '  onclick="div_show12()"></button>
+                            <button type="button" class="fa fa-plus" style="font-size: 25px;color: rgb(159, 161, 161);margin: 10px 15px 0px 0px;" aria-hidden="true" onclick="div_show11()"></button>
+                
+                           
                         </div>
 
                         <p class="resumesectiontitle">کتاب ها و مقالات</p> 
                         <div class="formresume">
-                            <p class="profil">عنوان:{{ resumeeditform.article_title |add_class:"formedit"}}</p>
-                            <p class="profil">سال:</span> {{ resumeeditform.dateofarticle |add_class:"formedit"}}</p>
+                            <div id="abc13">
+                                <div id="popupContact">
+                                    <form action="#" id="form13" method="post" class="form1">
+                                        {% csrf_token %}
+                                        <img id="close" src="{% static 'images/close1.png'%}" onclick ="div_hide13()">
+                                        {{articleformSet.management_form}}
+                        
+                                            {% for form in articleformSet %}
+                                            
+                                                <div class="bird-form7 formsetborder">
+                                                    <!-- <label style="display: block;" class="formsetlable">افزودن مهارت</label><br> -->
+                                                    <label class="formsetlable">{{form.article_title.label}}:</label>
+                                                    {{form.article_title}}
+                                                    <label class="formsetlable">{{form.dateofarticle.label}}:</label>
+                                                    {{form.dateofarticle}}
+                                                    <!-- {{form.DELETE}} -->
+                                                    {{form.id}}
+                                                    {{form.articles}}
+                                                </div>
+                                                
+                                            {% endfor %}
+                                            
+                                            <button class="popupbtnright" id="add-form7" type="button" >افزودن</button>
+                                            <button class="popupbtnleft" type="submit" name="articleadd" >ذخیره</button>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <div id="abc14">
+                                <div id="popupContact">
+                                    <form action="#" id="form14" method="post" class="form1">
+                                        {% csrf_token %}
+                                        <img id="close" src="{% static 'images/close1.png'%}" onclick ="div_hide14()">
+                                        {{articleformSetinstance.management_form}}
+                                            {% for forms in articleformSetinstance %}
+                                                <div class="bird-form formsetborder">
+                                                    <label class="formsetlable">{{forms.article_title.label}}:</label>
+                                                    {{forms.article_title}}
+                                                    <label class="formsetlable">{{forms.dateofarticle.label}}:</label>
+                                                    {{forms.dateofarticle}}
+                                                    <p class="formsetlable">حذف :</p> {{forms.DELETE}}
+                                                    {{forms.id}}
+                                                    {{forms.articles}}
+                                                </div>
+                                                
+                                            {% endfor %}
+                                            
+                                            <button class="profilebtncenter" type="submit" name="articleedit" >ذخیره</button>
+                                    </form>
+                                </div>
+                            </div>
+                            {% for articles in article %}
+                                <div class="profil">
+                                    <p class="subtitle1">{{ articles.article_title |default:""}}</p>
+                                    <p class="subtitle2">{{ articles.dateofarticle|default:"" |date:'Y'}}</p>
+                                </div>
+                            {% endfor %}
+
+                            <button type="button" style="display: inline;font-size: 25px;color: rgb(159, 161, 161);margin: 10px 335px 0px 0px;" class='fa fa-edit '  onclick="div_show14()"></button>
+                            <button type="button" class="fa fa-plus" style="font-size: 25px;color: rgb(159, 161, 161);margin: 10px 15px 0px 0px;" aria-hidden="true" onclick="div_show13()"></button>
+                
                         </div>
 
                         <p class="resumesectiontitle">زبان ها</p> 
                         <div class="formresume"> 
+                            <div id="abc15">
+                                <div id="popupContact">
+                                    <form action="#" id="form15" method="post" class="form1">
+                                        {% csrf_token %}
+                                        <img id="close" src="{% static 'images/close1.png'%}" onclick ="div_hide15()">
+                                        {{languagesformSet.management_form}}
+                        
+                                            {% for form in languagesformSet %}
+                                            
+                                                <div class="bird-form8 formsetborder">
+                                                    <!-- <label style="display: block;" class="formsetlable">افزودن مهارت</label><br> -->
+                                                    <label class="formsetlable">{{form.language.label}}:</label>
+                                                    {{form.language}}
+                                                    <label class="formsetlable">{{form.leveloflanguage.label}}:</label>
+                                                    {{form.leveloflanguage}}
+                                                    <!-- {{form.DELETE}} -->
+                                                    {{form.id}}
+                                                    {{form.languages}}
+                                                </div>
+                                                
+                                            {% endfor %}
+                                            
+                                            <button class="popupbtnright" id="add-form8" type="button" >افزودن</button>
+                                            <button class="popupbtnleft" type="submit" name="languagesadd" >ذخیره</button>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <div id="abc16">
+                                <div id="popupContact">
+                                    <form action="#" id="form16" method="post" class="form1">
+                                        {% csrf_token %}
+                                        <img id="close" src="{% static 'images/close1.png'%}" onclick ="div_hide16()">
+                                        {{languagesformSetinstance.management_form}}
+                                            {% for forms in languagesformSetinstance %}
+                                                <div class="bird-form formsetborder">
+                                                    <label class="formsetlable">{{forms.language.label}}:</label>
+                                                    {{forms.language}}
+                                                    <label class="formsetlable">{{forms.leveloflanguage.label}}:</label>
+                                                    {{forms.leveloflanguage}}
+                                                    <p class="formsetlable">حذف :</p> {{forms.DELETE}}
+                                                    {{forms.id}}
+                                                    {{forms.languages}}
+                                                </div>
+                                                
+                                            {% endfor %}
+                                            
+                                            <button class="profilebtncenter" type="submit" name="languagesedit" >ذخیره</button>
+                                    </form>
+                                </div>
+                            </div>
+                            {% for languages in language %}
+                                <div class="profil">
+                                    <p class="subtitle1">{{ languages.language|default:"" }}</p>
+                                    <p class="subtitle2">{{ languages.get_leveloflanguage_display|default:"" }}</p>
+                                </div>
+                            {% endfor %}
+
+                            <button type="button" style="display: inline;font-size: 25px;color: rgb(159, 161, 161);margin: 10px 335px 0px 0px;" class='fa fa-edit '  onclick="div_show16()"></button>
+                            <button type="button" class="fa fa-plus" style="font-size: 25px;color: rgb(159, 161, 161);margin: 10px 15px 0px 0px;" aria-hidden="true" onclick="div_show15()"></button>
+                
                             <p class="profil">زبان:{{ resumeeditform.language |add_class:"formedit"}}</p>
                             <p class="profil">سطح:</span> {{ resumeeditform.leveloflanguage |add_class:"formedit"}}</p>
                         </div>
@@ -266,8 +675,12 @@
                         </div>
 
                         <div style=" display:block; align-content: center;">
-                            <button type="submit" class="btn editsubmit">ذخیره</button>
+                            <a href="/accounts/resumeprofile" >
+                                <input type="button" value="ذخیره" class="btn editsubmit"   />
+                             </a>
+                
                         </div>
+
 
                     </div>
                     
