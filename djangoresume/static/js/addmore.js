@@ -88,7 +88,7 @@ function check_empty4() {
     
 
 function check_empty5() {
-    if (document.getElementById('name1').value == "" || document.getElementById('email1').value == "" || document.getElementById('msg1').value == "") {
+    if (document.getElementsById('name').value == "" ) {
     alert("Fill All Fields !");
     } else {
     document.getElementById('form5').submit();

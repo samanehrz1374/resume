@@ -37,6 +37,7 @@
                         
                         <div class="clearfix">
                         </div>
+                        
                         <div class="sidebarmenu">
                             <div >
                                <div class="side-menu sidbarmenu-contain"><a href="/accounts/profile"  style="text-decoration: none;color:white;">پروفایل</a></div>
@@ -55,6 +56,7 @@
                         <img src="{{ ProfileImage.url  }}" style="width: 100%;align-items: right;">
                         
                     </div>
+                    
                     <div style="width: 40%;float: right;height: 420px ; margin-left: 5%; margin-right: 5%;" >
                     
                         
@@ -64,6 +66,7 @@
                                 <div id="popupContact">
                                     <form action="#" id="form" method="post" class="form1" enctype="multipart/form-data">
                                         {% csrf_token %}
+                                        
                                         <img id="close" src="{% static 'images/close1.png'%}" onclick ="div_hide()">
                                             <div class="imgbox">
                                                 <img src="{{ ProfileImage.url  }}" style="align-items: center;">
@@ -72,23 +75,23 @@
                                                 {{ resumeeditform.ProfileImage|add_class:"profilchoose" }}
                                                 <div class="bird-form formsetborder">
                                                     <label class="formsetlable">نام :</label>
-                                                    {{usereditform.first_name|add_class:"formedit"}} 
+                                                    {{usereditform.first_name|add_class:"formedit"|attr:'required:true'}} 
                                                     <label class="formsetlable"> نام خانوادگی :</label>
-                                                    {{usereditform.last_name|add_class:"formedit"}}
+                                                    {{usereditform.last_name|add_class:"formedit"|attr:'required:true'}}
                                                     <label class="formsetlable">جنسیت:</label>
-                                                    {{ resumeeditform.gender |add_class:"formedit"}}
+                                                    {{ resumeeditform.gender |add_class:"formedit"|attr:'required:true'}}
 
                                                     <label class="formsetlable">وضعیت تاهل:</label>
-                                                    {{ resumeeditform.marital_status|add_class:"formedit" }}
+                                                    {{ resumeeditform.marital_status|add_class:"formedit"|attr:'required:true' }}
 
                                                     <label class="formsetlable">تاریخ تولد:</label>
-                                                    {{ resumeeditform.birthday|add_class:"formedit" }}
+                                                    {{ resumeeditform.birthday|add_class:"formedit"|attr:'required:true'}}
 
                                                     <label class="formsetlable">شهر:</label>
-                                                    {{ resumeeditform.city |add_class:"formedit"}}
+                                                    {{ resumeeditform.city |add_class:"formedit"|attr:'required:true'}}
 
                                                     <label class="formsetlable">آدرس:</label>
-                                                    {{ resumeeditform.address |add_class:"formedit"}}
+                                                    {{ resumeeditform.address |add_class:"formedit"|attr:'required:true'}}
 
                                                     <label class="formsetlable">شغل مورد علاقه:</label>
                                                     {{ resumeeditform.intrested_job |add_class:"formedit"}}
@@ -122,26 +125,28 @@
                                         {% csrf_token %}
                                         <img id="close" src="{% static 'images/close1.png'%}" onclick ="div_hide1()">
                                         {{ aducationformSet.management_form }}
+                                        
                         
                                             {% for form in aducationformSet %}
                                             
+                                            
                                                 <div class="bird-form1 formsetborder">
                                                     <label class="formsetlable">{{form.degree_level.label}}:</label>
-                                                    {{form.degree_level}}
+                                                    {{form.degree_level|attr:'required:true'}}
                                                     <label class="formsetlable">{{form.major.label}}:</label>
-                                                    {{form.major}}
+                                                    {{form.major|attr:'required:true'}}
 
                                                     <label class="formsetlable">{{form.university.label}}:</label>
-                                                    {{form.university}}
+                                                    {{form.university|attr:'required:true'}}
                                                     
                                                     <label class="formsetlable">{{form.gpa.label}}:</label>
-                                                    {{form.gpa}}
+                                                    {{form.gpa|attr:'required:true'}}
 
                                                     <label class="formsetlable">{{form.from_year.label}}:</label>
-                                                    {{form.from_year}}
+                                                    {{form.from_year|attr:'required:true'|add_class:"formedit"}}
 
                                                     <label class="formsetlable">{{form.to_year.label}}:</label>
-                                                    {{form.to_year}}
+                                                    {{form.to_year|attr:'required:true'|add_class:"formedit"}}
                                                     
 
                                                     {{form.id}}
@@ -165,22 +170,22 @@
                                             {% for forms in aducationformSetinstance %}
                                                 <div class="bird-form formsetborder">
                                                     <label class="formsetlable">{{forms.degree_level.label}}:</label>
-                                                    {{forms.degree_level}}
+                                                    {{forms.degree_level|attr:'required:true'}}
                                                     <label class="formsetlable">{{forms.major.label}}:</label>
-                                                    {{forms.major}}
+                                                    {{forms.major|attr:'required:true'}}
 
                                                     <label class="formsetlable">{{forms.university.label}}:</label>
-                                                    {{forms.university}}
+                                                    {{forms.university|attr:'required:true'}}
                                                     
                                                     <label class="formsetlable">{{forms.gpa.label}}:</label>
-                                                    {{forms.gpa}}
+                                                    {{forms.gpa|attr:'required:true'}}
 
                                                     <label class="formsetlable">{{forms.from_year.label}}:</label>
-                                                    {{forms.from_year}}
+                                                    {{forms.from_year|attr:'required:true'|add_class:"formedit"}}
 
                                                     <label class="formsetlable">{{forms.to_year.label}}:</label>
-                                                    {{forms.to_year}}
-                                                    
+                                                    {{forms.to_year|attr:'required:true'|add_class:"formedit"}}
+                                                    <p class="formsetlable">حذف :</p> {{forms.DELETE}}
                                                     {{forms.id}}
                                                     {{forms.aducations}}
                                                 </div>
@@ -217,13 +222,13 @@
                                                 <div class="bird-form2 formsetborder">
                                                     <!-- <label style="display: block;" class="formsetlable">افزودن مهارت</label><br> -->
                                                     <label class="formsetlable">{{form.job_title.label}}:</label>
-                                                    {{form.job_title}}
+                                                    {{form.job_title|attr:'required:true'}}
                                                     <label class="formsetlable">{{form.company_name.label}}:</label>
-                                                    {{form.company_name}}
+                                                    {{form.company_name|attr:'required:true'}}
                                                     <label class="formsetlable">{{form.start_time.label}}:</label>
-                                                    {{form.start_time}}
+                                                    {{form.start_time|attr:'required:true'|add_class:"formedit"}}
                                                     <label class="formsetlable">{{form.end_time.label}}:</label>
-                                                    {{form.end_time}}
+                                                    {{form.end_time|attr:'required:true'|add_class:"formedit"}}
                                                     <!-- {{form.DELETE}} -->
                                                     {{form.id}}
                                                     {{form.jobs}}
@@ -246,13 +251,13 @@
                                             {% for forms in workexperienceformSetinstance %}
                                                 <div class="bird-form formsetborder">
                                                     <label class="formsetlable">{{forms.job_title.label}}:</label>
-                                                    {{forms.job_title}}
+                                                    {{forms.job_title|attr:'required:true'}}
                                                     <label class="formsetlable">{{forms.company_name.label}}:</label>
-                                                    {{forms.company_name}}
+                                                    {{forms.company_name|attr:'required:true'}}
                                                     <label class="formsetlable">{{forms.start_time.label}}:</label>
-                                                    {{forms.start_time}}
+                                                    {{forms.start_time|attr:'required:true' |add_class:"formedit"}}
                                                     <label class="formsetlable">{{forms.end_time.label}}:</label>
-                                                    {{forms.end_time}}
+                                                    {{forms.end_time|attr:'required:true' |add_class:"formedit"}}
                                                     <p class="formsetlable">حذف :</p> {{forms.DELETE}}
                                                     {{forms.id}}
                                                     {{forms.jobs}}
@@ -289,13 +294,16 @@
                                         {{skillformset.management_form}}
                         
                                             {% for form in skillformset %}
+            
                                             
                                                 <div class="bird-form3 formsetborder">
+                                                    <!-- <input id="name" name="name" placeholder="Name" type="text"> -->
                                                     <!-- <label style="display: block;" class="formsetlable">افزودن مهارت</label><br> -->
-                                                    <label class="formsetlable">{{form.skillname.label}}:</label>
-                                                    {{form.skillname}}
+                                                    <label  class="formsetlable">{{form.skillname.label}}:</label>
+                                                    {{form.skillname|attr:'required:true'}}
+                                                    
                                                     <label class="formsetlable">{{form.levelofskill.label}}:</label>
-                                                    {{form.levelofskill}}
+                                                    {{form.levelofskill|attr:'required:true'}}
                                                     <!-- {{form.DELETE}} -->
                                                     {{form.id}}
                                                     {{form.skills}}
@@ -304,6 +312,7 @@
                                             {% endfor %}
                                             
                                             <button class="popupbtnright" id="add-form3" type="button" >افزودن</button>
+                                            <!-- <a href="javascript:%20check_empty()" id="submit">Send</a> -->
                                             <button class="popupbtnleft" type="submit" name="skilladd" >ذخیره</button>
                                     </form>
                                 </div>
@@ -318,9 +327,9 @@
                                             {% for forms in skillformsetinstance %}
                                                 <div class="bird-form formsetborder">
                                                     <label class="formsetlable">{{forms.skillname.label}}:</label>
-                                                    {{forms.skillname}}
+                                                    {{forms.skillname|attr:'required:true'}}
                                                     <label class="formsetlable">{{forms.levelofskill.label}}:</label>
-                                                    {{forms.levelofskill}}
+                                                    {{forms.levelofskill|attr:'required:true'}}
                                                     <p class="formsetlable">حذف :</p> {{forms.DELETE}}
                                                     {{forms.id}}
                                                     {{forms.skills}}
@@ -354,9 +363,9 @@
                                                 <div class="bird-form4 formsetborder">
                                                     <!-- <label style="display: block;" class="formsetlable">افزودن مهارت</label><br> -->
                                                     <label class="formsetlable">{{form.coursesname.label}}:</label>
-                                                    {{form.coursesname}}
+                                                    {{form.coursesname|attr:'required:true'}}
                                                     <label class="formsetlable">{{form.institute.label}}:</label>
-                                                    {{form.institute}}
+                                                    {{form.institute|attr:'required:true'}}
                                                     <!-- {{form.DELETE}} -->
                                                     {{form.id}}
                                                     {{form.courses}}
@@ -379,9 +388,9 @@
                                             {% for forms in coursesformSetinstance %}
                                                 <div class="bird-form formsetborder">
                                                     <label class="formsetlable">{{forms.coursesname.label}}:</label>
-                                                    {{forms.coursesname}}
+                                                    {{forms.coursesname|attr:'required:true'}}
                                                     <label class="formsetlable">{{forms.institute.label}}:</label>
-                                                    {{forms.institute}}
+                                                    {{forms.institute|attr:'required:true'}}
                                                     <p class="formsetlable">حذف :</p> {{forms.DELETE}}
                                                     {{forms.id}}
                                                     {{forms.courses}}
@@ -420,9 +429,9 @@
                                                 <div class="bird-form5 formsetborder">
                                                     <!-- <label style="display: block;" class="formsetlable">افزودن مهارت</label><br> -->
                                                     <label class="formsetlable">{{form.award_title.label}}:</label>
-                                                    {{form.award_title}}
+                                                    {{form.award_title|attr:'required:true'}}
                                                     <label class="formsetlable">{{form.dateofaward.label}}:</label>
-                                                    {{form.dateofaward}}
+                                                    {{form.dateofaward|attr:'required:true' |add_class:"formedit"}}
                                                     <!-- {{form.DELETE}} -->
                                                     {{form.id}}
                                                     {{form.awards}}
@@ -445,9 +454,9 @@
                                             {% for forms in awardformSetinstance %}
                                                 <div class="bird-form formsetborder">
                                                     <label class="formsetlable">{{forms.award_title.label}}:</label>
-                                                    {{forms.award_title}}
+                                                    {{forms.award_title|attr:'required:true'}}
                                                     <label class="formsetlable">{{forms.dateofaward.label}}:</label>
-                                                    {{forms.dateofaward}}
+                                                    {{forms.dateofaward|attr:'required:true' |add_class:"formedit"}}
                                                     <p class="formsetlable">حذف :</p> {{forms.DELETE}}
                                                     {{forms.id}}
                                                     {{forms.awards}}
@@ -486,9 +495,9 @@
                                                 <div class="bird-form6 formsetborder">
                                                     <!-- <label style="display: block;" class="formsetlable">افزودن مهارت</label><br> -->
                                                     <label class="formsetlable">{{form.project_title.label}}:</label>
-                                                    {{form.project_title}}
+                                                    {{form.project_title|attr:'required:true'}}
                                                     <label class="formsetlable">{{form.dateofproject.label}}:</label>
-                                                    {{form.dateofproject}}
+                                                    {{form.dateofproject|attr:'required:true' |add_class:"formedit"}}
                                                     <!-- {{form.DELETE}} -->
                                                     {{form.id}}
                                                     {{form.projects}}
@@ -511,9 +520,9 @@
                                             {% for forms in projectsformSetinstance %}
                                                 <div class="bird-form formsetborder">
                                                     <label class="formsetlable">{{forms.project_title.label}}:</label>
-                                                    {{forms.project_title}}
+                                                    {{forms.project_title|attr:'required:true'}}
                                                     <label class="formsetlable">{{forms.dateofproject.label}}:</label>
-                                                    {{forms.dateofproject}}
+                                                    {{forms.dateofproject|attr:'required:true'|add_class:"formedit"}}
                                                     <p class="formsetlable">حذف :</p> {{forms.DELETE}}
                                                     {{forms.id}}
                                                     {{forms.projects}}
@@ -553,9 +562,9 @@
                                                 <div class="bird-form7 formsetborder">
                                                     <!-- <label style="display: block;" class="formsetlable">افزودن مهارت</label><br> -->
                                                     <label class="formsetlable">{{form.article_title.label}}:</label>
-                                                    {{form.article_title}}
+                                                    {{form.article_title|attr:'required:true'}}
                                                     <label class="formsetlable">{{form.dateofarticle.label}}:</label>
-                                                    {{form.dateofarticle}}
+                                                    {{form.dateofarticle|attr:'required:true'|add_class:"formedit"}}
                                                     <!-- {{form.DELETE}} -->
                                                     {{form.id}}
                                                     {{form.articles}}
@@ -578,9 +587,9 @@
                                             {% for forms in articleformSetinstance %}
                                                 <div class="bird-form formsetborder">
                                                     <label class="formsetlable">{{forms.article_title.label}}:</label>
-                                                    {{forms.article_title}}
+                                                    {{forms.article_title|attr:'required:true'}}
                                                     <label class="formsetlable">{{forms.dateofarticle.label}}:</label>
-                                                    {{forms.dateofarticle}}
+                                                    {{forms.dateofarticle|attr:'required:true' |add_class:"formedit"}}
                                                     <p class="formsetlable">حذف :</p> {{forms.DELETE}}
                                                     {{forms.id}}
                                                     {{forms.articles}}
@@ -618,9 +627,9 @@
                                                 <div class="bird-form8 formsetborder">
                                                     <!-- <label style="display: block;" class="formsetlable">افزودن مهارت</label><br> -->
                                                     <label class="formsetlable">{{form.language.label}}:</label>
-                                                    {{form.language}}
+                                                    {{form.language|attr:'required:true'}}
                                                     <label class="formsetlable">{{form.leveloflanguage.label}}:</label>
-                                                    {{form.leveloflanguage}}
+                                                    {{form.leveloflanguage|attr:'required:true'}}
                                                     <!-- {{form.DELETE}} -->
                                                     {{form.id}}
                                                     {{form.languages}}
@@ -643,9 +652,9 @@
                                             {% for forms in languagesformSetinstance %}
                                                 <div class="bird-form formsetborder">
                                                     <label class="formsetlable">{{forms.language.label}}:</label>
-                                                    {{forms.language}}
+                                                    {{forms.language|attr:'required:true'}}
                                                     <label class="formsetlable">{{forms.leveloflanguage.label}}:</label>
-                                                    {{forms.leveloflanguage}}
+                                                    {{forms.leveloflanguage|attr:'required:true'}}
                                                     <p class="formsetlable">حذف :</p> {{forms.DELETE}}
                                                     {{forms.id}}
                                                     {{forms.languages}}
@@ -667,8 +676,7 @@
                             <button type="button" style="display: inline;font-size: 25px;color: rgb(159, 161, 161);margin: 10px 335px 0px 0px;" class='fa fa-edit '  onclick="div_show16()"></button>
                             <button type="button" class="fa fa-plus" style="font-size: 25px;color: rgb(159, 161, 161);margin: 10px 15px 0px 0px;" aria-hidden="true" onclick="div_show15()"></button>
                 
-                            <p class="profil">زبان:{{ resumeeditform.language |add_class:"formedit"}}</p>
-                            <p class="profil">سطح:</span> {{ resumeeditform.leveloflanguage |add_class:"formedit"}}</p>
+                        
                         </div>
 
                         <div class="clearfix">

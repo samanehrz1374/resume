@@ -127,14 +127,14 @@ def ProfileEditView(request):
 @login_required
 def resumeprofileview(request):
     resumeprofile=request.user.profile
-    skill=skillsModel.objects.all()
-    aducation=aducationModel.objects.all()
-    award=awardsModel.objects.all()
-    article=articlesModel.objects.all()
-    course=coursesModel.objects.all()
-    language=languagesModel.objects.all()
-    project=projectsModel.objects.all()
-    workexperience=workexperienceModel.objects.all()
+    skill=skillsModel.objects.filter(skills_id=resumeprofile)
+    aducation=aducationModel.objects.filter(aducations_id=resumeprofile)
+    award=awardsModel.objects.filter(awards_id=resumeprofile)
+    article=articlesModel.objects.filter(articles_id=resumeprofile)
+    course=coursesModel.objects.filter(courses_id=resumeprofile)
+    language=languagesModel.objects.filter(languages_id=resumeprofile)
+    project=projectsModel.objects.filter(projects_id=resumeprofile)
+    workexperience=workexperienceModel.objects.filter(jobs_id=resumeprofile)
 
     
     context={
@@ -155,46 +155,50 @@ def resumeprofileview(request):
 @login_required
 def ResumeEditView(request):
     profile = request.user.profile
-    skillprofile=skillsModel.objects.all()
-    aducationprofile=aducationModel.objects.all()
+    skillprofile=skillsModel.objects.filter(skills_id=profile)
+    aducationprofile=aducationModel.objects.filter(aducations_id=profile)
     skillformsetinstance = skillFormSetinstance(skillsModel.objects.all())
     aducationformSetinstance=aducationFormSetinstance(aducationModel.objects.all())
     skillformset = skillFormSet(queryset=skillsModel.objects.none())
     aducationformSet=aducationFormSet(queryset=aducationModel.objects.none())
     workexperienceformSetinstance=workexperienceFormSetinstance(aducationModel.objects.all())
     workexperienceformSet=workexperienceFormSet(queryset=workexperienceModel.objects.none())
-    workexperience=workexperienceModel.objects.all()
+    workexperience=workexperienceModel.objects.filter(jobs_id=profile)
     coursesformSet = coursesFormSet(queryset=coursesModel.objects.none())
     coursesformSetinstance = coursesFormSetinstance(coursesModel.objects.all())
-    course=coursesModel.objects.all()
+    course=coursesModel.objects.filter(courses_id=profile)
 
     awardformSet = awardFormSet(queryset=awardsModel.objects.none())
     awardformSetinstance = awardFormSetinstance(awardsModel.objects.all())
-    award=awardsModel.objects.all()
+    award=awardsModel.objects.filter(awards_id=profile)
 
     projectsformSet = projectsFormSet(queryset=projectsModel.objects.none())
     projectsformSetinstance = projectsFormSetinstance(projectsModel.objects.all())
-    project=projectsModel.objects.all()
+    project=projectsModel.objects.filter(projects_id=profile)
 
     articleformSet = articleFormSet(queryset=articlesModel.objects.none())
     articleformSetinstance = articleFormSetinstance(articlesModel.objects.all())
-    article=articlesModel.objects.all()
+    article=articlesModel.objects.filter(articles_id=profile)
 
     languagesformSet = languagesFormSet(queryset=languagesModel.objects.none())
     languagesformSetinstance = languagesFormSetinstance(languagesModel.objects.all())
-    language=languagesModel.objects.all()
+    language=languagesModel.objects.filter(languages_id=profile)
+    
 
     if request.method == 'POST':
         if 'skilladd' in request.POST:
             profile = request.user.profile
             skillformset = skillFormSet(request.POST)
+            
 
             if skillformset.is_valid():
-                for skillform in skillformset:
-                    if skillform.cleaned_data != {}:
-                        skill = skillform.save(commit=False)
-                        skill.skills = profile 
-                        skill.save()
+                    for skillform in skillformset:
+                        
+                        if skillform.cleaned_data != {}:
+                            skill = skillform.save(commit=False)
+                            skill.skills = profile 
+                            skill.save()
+        
 
         if 'skilledit' in request.POST:
             skillformsetinstance = skillFormSetinstance(request.POST,instance=profile)

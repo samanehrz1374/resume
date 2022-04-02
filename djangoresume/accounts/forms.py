@@ -160,7 +160,8 @@ skillFormSetinstance=inlineformset_factory(ProfileModel, skillsModel, fields=('s
                 'class': 'formedit',
                 'placeholder': ''
             })
-             })
+             },
+             )
 skillFormSet = modelformset_factory(
     skillsModel,
     fields=('skillname','levelofskill' ),
@@ -173,9 +174,17 @@ skillFormSet = modelformset_factory(
                 'class': 'formedit',
                 'placeholder': ''
             })
-             }
+             },
+    error_messages={
+    'skillname': {
+        'required': 'some custom required message',
+    },
+    'levelofskill': {
+        'required': 'some required message',
+    },
+ },
+ 
 )
-
 
 aducationFormSet = modelformset_factory(
     aducationModel,
@@ -198,13 +207,8 @@ aducationFormSet = modelformset_factory(
                 'class': 'formedit',
                 
             }),
-            'from_year': forms.DateInput(attrs={
-                'class': 'formedit',
-                
-            }),
-            'to_year': forms.DateInput(attrs={
-                'class': 'formedit',
-            }),
+            'from_year': forms.SelectDateWidget(empty_label=['سال', 'ماه', 'روز'], years=YEAR_CHOICES, months=MONTH_CHOICES),
+            'to_year': forms.SelectDateWidget(empty_label=['سال', 'ماه', 'روز'], years=YEAR_CHOICES, months=MONTH_CHOICES),
              }
 )
 
@@ -227,13 +231,8 @@ aducationFormSetinstance=inlineformset_factory(ProfileModel, aducationModel,
                 'class': 'formedit',
                 
             }),
-            'from_year': forms.DateInput(attrs={
-                'class': 'formedit',
-                
-            }),
-            'to_year': forms.DateInput(attrs={
-                'class': 'formedit',
-            }),
+            'from_year': forms.SelectDateWidget(empty_label=['سال', 'ماه', 'روز'], years=YEAR_CHOICES, months=MONTH_CHOICES),
+            'to_year': forms.SelectDateWidget(empty_label=['سال', 'ماه', 'روز'], years=YEAR_CHOICES, months=MONTH_CHOICES),
              }
     )
 
@@ -248,14 +247,9 @@ workexperienceFormSetinstance=inlineformset_factory(ProfileModel, workexperience
                 'class': 'formedit',
                 'placeholder': ''
             }),
-            'start_time': forms.SelectDateWidget(attrs={
-                'class': 'formedit',
-                'placeholder': ''
-            }),
-            'end_time': forms.SelectDateWidget(attrs={
-                'class': 'formedit',
-                'placeholder': ''
-            })
+            
+            'start_time': forms.SelectDateWidget(empty_label=['سال', 'ماه', 'روز'], years=YEAR_CHOICES, months=MONTH_CHOICES),
+            'end_time': forms.SelectDateWidget(empty_label=['سال', 'ماه', 'روز'], years=YEAR_CHOICES, months=MONTH_CHOICES),
              })
 workexperienceFormSet = modelformset_factory(
     workexperienceModel,
@@ -269,14 +263,8 @@ workexperienceFormSet = modelformset_factory(
                 'class': 'formedit',
                 'placeholder': ''
             }),
-            'start_time': forms.SelectDateWidget(attrs={
-                'class': 'formedit',
-                'placeholder': ''
-            }),
-            'end_time': forms.SelectDateWidget(attrs={
-                'class': 'formedit',
-                'placeholder': ''
-            })
+            'start_time': forms.SelectDateWidget(empty_label=['سال', 'ماه', 'روز'], years=YEAR_CHOICES, months=MONTH_CHOICES),
+            'end_time': forms.SelectDateWidget(empty_label=['سال', 'ماه', 'روز'], years=YEAR_CHOICES, months=MONTH_CHOICES),
              }
 )
 
@@ -316,10 +304,7 @@ awardFormSetinstance=inlineformset_factory(ProfileModel, awardsModel, fields=('a
              'class': 'formedit ',
              'placeholder': ''
              }),
-            'dateofaward': forms.TextInput(attrs={
-                'class': 'formedit',
-                'placeholder': ''
-            }),
+            'dateofaward': forms.SelectDateWidget(empty_label=['سال', 'ماه', 'روز'], years=YEAR_CHOICES, months=MONTH_CHOICES),
             
              })
 awardFormSet = modelformset_factory(
@@ -330,10 +315,7 @@ awardFormSet = modelformset_factory(
              'class': 'formedit ',
              'placeholder': ''
              }),
-            'dateofaward': forms.SelectDateWidget(attrs={
-                'class': 'formedit',
-                'placeholder': ''
-            }),
+            'dateofaward': forms.SelectDateWidget(empty_label=['سال', 'ماه', 'روز'], years=YEAR_CHOICES, months=MONTH_CHOICES),
             
              }
 )
@@ -346,10 +328,7 @@ projectsFormSetinstance=inlineformset_factory(ProfileModel, projectsModel, field
              'class': 'formedit ',
              'placeholder': ''
              }),
-            'dateofproject': forms.SelectDateWidget(attrs={
-                'class': 'formedit',
-                'placeholder': ''
-            }),
+            'dateofproject': forms.SelectDateWidget(empty_label=['سال', 'ماه', 'روز'], years=YEAR_CHOICES, months=MONTH_CHOICES),
             
              })
 projectsFormSet = modelformset_factory(
@@ -360,10 +339,7 @@ projectsFormSet = modelformset_factory(
              'class': 'formedit ',
              'placeholder': ''
              }),
-            'dateofproject': forms.SelectDateWidget(attrs={
-                'class': 'formedit',
-                'placeholder': ''
-            }),
+            'dateofproject': forms.SelectDateWidget(empty_label=['سال', 'ماه', 'روز'], years=YEAR_CHOICES, months=MONTH_CHOICES),
             
              }
 )
@@ -375,10 +351,7 @@ articleFormSetinstance=inlineformset_factory(ProfileModel, articlesModel, fields
              'class': 'formedit ',
              'placeholder': ''
              }),
-            'dateofarticle': forms.SelectDateWidget(attrs={
-                'class': 'formedit',
-                'placeholder': ''
-            }),
+            'dateofarticle': forms.SelectDateWidget(empty_label=['سال', 'ماه', 'روز'], years=YEAR_CHOICES, months=MONTH_CHOICES),
             
              })
 articleFormSet = modelformset_factory(
@@ -389,10 +362,7 @@ articleFormSet = modelformset_factory(
              'class': 'formedit ',
              'placeholder': ''
              }),
-            'dateofarticle': forms.SelectDateWidget(attrs={
-                'class': 'formedit',
-                'placeholder': ''
-            }),
+            'dateofarticle': forms.SelectDateWidget(empty_label=['سال', 'ماه', 'روز'], years=YEAR_CHOICES, months=MONTH_CHOICES),
             
              }
 )
