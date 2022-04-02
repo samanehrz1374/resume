@@ -8,7 +8,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', include('admin_honeypot.urls', namespace='admin_honeypot')),
     path('mnresumeadmin/', admin.site.urls),
-    path('resumesite/',include('resumesite.urls')),
+    path('',include('resumesite.urls')),
     path('accounts/',include('accounts.urls'))
 ]
 if settings.DEBUG:
