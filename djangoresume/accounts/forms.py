@@ -27,7 +27,7 @@ class ProfileRegisterForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput,help_text="رمز عبور شامل حروف بزرگ و کوچک و اعداد باشد",required=True,label="رمز عبور")
     confirm_password = forms.CharField(widget=forms.PasswordInput,required=True,label="تکرار رمز عبور") 
     email = forms.CharField(widget=forms.EmailInput,required=True,label="ایمیل")
-    ProfileImage=forms.ImageField(required=False, label="تصویر پروفایل")
+    ProfileImage=forms.ImageField(required=True, label="تصویر پروفایل")
     required_css_class = 'required'
     class Meta:
         model=ProfileModel
