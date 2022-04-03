@@ -418,29 +418,3 @@ def passwordchangeview(request):
 #     }
 #     return render(request,'accounts/password_reset.html', context)
 
-
-@login_required
-def create_skill(request):
-    template_name = 'accounts/create_book.html'
-    if request.method == 'GET':
-
-        bookform = request.user.profile
-        formset = skillFormSet(queryset=skillsModel.objects.none())
-    elif request.method == 'POST':
-        bookform = request.user.profile
-        formset = skillFormSet(request.POST)
-        if  formset.is_valid():
-            # first save this book, as its reference will be used in `Author`
-            # book = bookform.save()
-            for form in formset:
-                # so that `book` instance can be attached.
-                author = form.save(commit=False)
-                author.skills = bookform 
-                author.save()
-            return redirect("create_book")
-    return render(request, template_name, {
-        'bookform': bookform,
-        'formset': formset,
-    })
-
-    # return render(request, "accounts/create_book.html", context)
