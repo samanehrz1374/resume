@@ -1,0 +1,53 @@
+
+   {% load static %}
+   {% load widget_tweaks %}
+   <!DOCTYPE html>
+   <html lang="en">
+   <head>
+       <meta charset="UTF-8">
+       <meta http-equiv="X-UA-Compatible" content="IE=edge">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <link href="{% static 'css/styless.css'%}" rel="stylesheet" />
+       <title>Document</title>
+   </head>
+   <body dir="rtl">
+       <div class="container">
+           <div class="box1" >
+               <h1>ثبت نام</h1>
+           </div>
+           
+               <div class="form">
+                   <div style="color:#055160;background-color:#cff4fc;border-color:#b6effb" class="alert alert-info">
+                       
+                    {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                    
+               </div>
+               <a href="/accounts/login">
+                <input type="button" value="ورود" class="profilebtn" />
+               </a>
+           
+               
+            
+           
+           
+   
+       </div>
+       <div>
+           
+       </div>
+       
+   </body>
+   </html>
+   
+   
+   
+   
+   
+   
+   

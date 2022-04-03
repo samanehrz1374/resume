@@ -248,8 +248,13 @@ img {
     padding: auto;
     text-align: center;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    
 
 }
+.profilebtn:hover{
+  background-color: cadetblue;
+}
+
 .profilebtncenter{
   width: 95%;
   background-color: #1997a0f6 ;

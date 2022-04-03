@@ -18,6 +18,7 @@ from accounts.forms import (ProfileRegisterForm,ProfileEditForm,UserEditForm,Res
 from django.contrib.auth.models import User
 from accounts.models import ProfileModel,skillsModel,aducationModel,articlesModel,awardsModel,workexperienceModel,projectsModel,languagesModel,coursesModel
 from django.contrib.auth import update_session_auth_hash
+from django.contrib import messages
 
 # from django.core.mail import send_mail,BadHeaderError
 # from django.contrib.auth.forms import PasswordResetForm
@@ -86,8 +87,12 @@ def profileRegisterView(request):
 
             profileModel.save()
             # login(request,user)
+            messages.success(request, 'ثبت نام شما انجام شد. برای ورود کلیک کنید.')
+            return render(request, 'accounts/registrationsuccess.html', {'form': profileRegisterForm})
             
-            return HttpResponseRedirect(reverse(accounts.views.loginpanelview))
+            
+            
+            # return HttpResponseRedirect(reverse(accounts.views.loginpanelview))
 
     context={
         "formData":profileRegisterForm
