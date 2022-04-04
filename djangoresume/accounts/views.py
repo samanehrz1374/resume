@@ -164,53 +164,50 @@ def ResumeEditView(request):
     aducationprofile=aducationModel.objects.filter(aducations_id=profile)
     skillformsetinstance = skillFormSetinstance(skillsModel.objects.all())
     aducationformSetinstance=aducationFormSetinstance(aducationModel.objects.all())
-    skillformset = skillFormSet(queryset=skillsModel.objects.none())
-    aducationformSet=aducationFormSet(queryset=aducationModel.objects.none())
+    skillformset = skillFormSet(queryset=skillsModel.objects.none(),prefix='form5')
+    aducationformSet=aducationFormSet(queryset=aducationModel.objects.none(),prefix='form1')
     workexperienceformSetinstance=workexperienceFormSetinstance(aducationModel.objects.all())
-    workexperienceformSet=workexperienceFormSet(queryset=workexperienceModel.objects.none())
+    workexperienceformSet=workexperienceFormSet(queryset=workexperienceModel.objects.none(),prefix='form3')
     workexperience=workexperienceModel.objects.filter(jobs_id=profile)
-    coursesformSet = coursesFormSet(queryset=coursesModel.objects.none())
+    coursesformSet = coursesFormSet(queryset=coursesModel.objects.none(),prefix='form7')
     coursesformSetinstance = coursesFormSetinstance(coursesModel.objects.all())
     course=coursesModel.objects.filter(courses_id=profile)
 
-    awardformSet = awardFormSet(queryset=awardsModel.objects.none())
+    awardformSet = awardFormSet(queryset=awardsModel.objects.none(),prefix='form9')
     awardformSetinstance = awardFormSetinstance(awardsModel.objects.all())
     award=awardsModel.objects.filter(awards_id=profile)
 
-    projectsformSet = projectsFormSet(queryset=projectsModel.objects.none())
+    projectsformSet = projectsFormSet(queryset=projectsModel.objects.none(),prefix='form11')
     projectsformSetinstance = projectsFormSetinstance(projectsModel.objects.all())
     project=projectsModel.objects.filter(projects_id=profile)
 
-    articleformSet = articleFormSet(queryset=articlesModel.objects.none())
+    articleformSet = articleFormSet(queryset=articlesModel.objects.none(),prefix='form13')
     articleformSetinstance = articleFormSetinstance(articlesModel.objects.all())
     article=articlesModel.objects.filter(articles_id=profile)
 
-    languagesformSet = languagesFormSet(queryset=languagesModel.objects.none())
+    languagesformSet = languagesFormSet(queryset=languagesModel.objects.none(),prefix='form15')
     languagesformSetinstance = languagesFormSetinstance(languagesModel.objects.all())
     language=languagesModel.objects.filter(languages_id=profile)
     
 
     if request.method == 'POST':
         if 'skilladd' in request.POST:
-            profile = request.user.profile
-            skillformset = skillFormSet(request.POST)
-            
-
+            skillformset = skillFormSet(request.POST,prefix='form5')
             if skillformset.is_valid():
-                    for skillform in skillformset:
-                        
-                        if skillform.cleaned_data != {}:
-                            skill = skillform.save(commit=False)
-                            skill.skills = profile 
-                            skill.save()
-        
+                for skillform in skillformset:
+                    if skillform.cleaned_data != {}:
+                        skill = skillform.save(commit=False)
+                        skill.skills = profile 
+                        skill.save()
+            
 
         if 'skilledit' in request.POST:
             skillformsetinstance = skillFormSetinstance(request.POST,instance=profile)
             if skillformsetinstance.is_valid() :
                 skillformsetinstance.save()
+                
         if 'educationadd' in request.POST:
-            aducationformSet=aducationFormSet(request.POST)
+            aducationformSet=aducationFormSet(request.POST,prefix='form1')
             if aducationformSet.is_valid():
                 for aducationform in aducationformSet:
                     if aducationform.cleaned_data != {}:
@@ -222,7 +219,7 @@ def ResumeEditView(request):
             if aducationformSetinstance.is_valid() :
                 aducationformSetinstance.save()
         if 'workexperienceadd' in request.POST:
-            workexperienceformSet = workexperienceFormSet(request.POST)
+            workexperienceformSet = workexperienceFormSet(request.POST,prefix='form3')
            
             if workexperienceformSet.is_valid():
                 for workexperienceform in workexperienceformSet:
@@ -237,7 +234,7 @@ def ResumeEditView(request):
                 workexperienceformSetinstance.save()
 
         if 'courcesadd' in request.POST:
-            coursesformSet = coursesFormSet(request.POST)
+            coursesformSet = coursesFormSet(request.POST,prefix='form7')
             if coursesformSet.is_valid():
                 for coursesform in coursesformSet:
                     if coursesform.cleaned_data != {}:
@@ -251,7 +248,7 @@ def ResumeEditView(request):
                 coursesformSetinstance.save()
         
         if 'awardsadd' in request.POST:
-            awardformSet = awardFormSet(request.POST)
+            awardformSet = awardFormSet(request.POST,prefix='form9')
             if awardformSet.is_valid():
                 for awardform in awardformSet:
                     if awardform.cleaned_data != {}:
@@ -267,7 +264,7 @@ def ResumeEditView(request):
 
 
         if 'articleadd' in request.POST:
-            articleformSet = articleFormSet(request.POST)
+            articleformSet = articleFormSet(request.POST,prefix='form13')
             if articleformSet.is_valid():
                 for articleform in articleformSet:
                     if articleform.cleaned_data != {}:
@@ -282,7 +279,7 @@ def ResumeEditView(request):
                 articleformSetinstance.save()
 
         if 'projectsadd' in request.POST:
-            projectsformSet = projectsFormSet(request.POST)
+            projectsformSet = projectsFormSet(request.POST,prefix='form11')
             if projectsformSet.is_valid():
                 for projectsform in projectsformSet:
                     if projectsform.cleaned_data != {}:
@@ -297,7 +294,7 @@ def ResumeEditView(request):
                 projectsformSetinstance.save()
 
         if 'languagesadd' in request.POST:
-            languagesformSet = languagesFormSet(request.POST)
+            languagesformSet = languagesFormSet(request.POST,prefix='form15')
             if languagesformSet.is_valid():
                 for languagesform in languagesformSet:
                     if languagesform.cleaned_data != {}:
@@ -362,9 +359,6 @@ def ResumeEditView(request):
         "languagesformSetinstance":languagesformSetinstance,
         "languagesformSet":languagesformSet,
         "language":language
-
-
-
     }
     return render(request,"accounts/resumeEdit.html",context)
 

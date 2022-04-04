@@ -703,27 +703,54 @@
         </div>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <!-- <script>
-            let birdForm = document.querySelectorAll(".bird-form")
-            let container = document.querySelector("#form1")
-            let addButton = document.querySelector("#add-form")
-            let totalForms = document.querySelector("#id_form-TOTAL_FORMS")
-        
-            let formNum = birdForm.length-1
-            addButton.addEventListener('click', addForm)
-        
-            function addForm(e){
+                    
+            let birdForm3 = document.querySelectorAll(".bird-form3")
+            let container3 = document.querySelector("#form5")
+            let addButton3 = document.querySelector("#add-form3")
+            let totalForms3 = document.querySelector("#id_form5-TOTAL_FORMS")
+
+            let formNum3 = birdForm3.length-1
+            addButton3.addEventListener('click', addForm3)
+
+            function addForm3(e){
                 e.preventDefault()
-        
-                let newForm = birdForm[0].cloneNode(true)
-                let formRegex = RegExp(`form-(\\d){1}-`,'g')
-        
-                formNum++
-                newForm.innerHTML = newForm.innerHTML.replace(formRegex, `form-${formNum}-`)
-                container.insertBefore(newForm, addButton)
+
+                let newForm = birdForm3[0].cloneNode(true)
+                let formRegex = RegExp(`form5-(\\d){1}-`,'g')
+
+                formNum3++
+                newForm.innerHTML = newForm.innerHTML.replace(formRegex, `form5-${formNum3}-`)
+                container3.insertBefore(newForm, addButton3)
                 
-                totalForms.setAttribute('value', `${formNum+1}`)
+                totalForms3.setAttribute('value', `${formNum3+1}`)
             }
+
+
             
+        </script>
+
+        <script>
+            let birdForm4 = document.querySelectorAll(".bird-form4")
+            let container4 = document.querySelector("#form7")
+            let addButton4 = document.querySelector("#add-form4")
+            let totalForms4 = document.querySelector("#id_form7-TOTAL_FORMS")
+
+            let formNum4 = birdForm4.length-1
+            addButton4.addEventListener('click', addForm4)
+
+            function addForm4(e){
+                e.preventDefault()
+
+                let newForm = birdForm4[0].cloneNode(true)
+                let formRegex = RegExp(`form7-(\\d){1}-`,'g')
+
+                formNum4++
+                newForm.innerHTML = newForm.innerHTML.replace(formRegex, `form7-${formNum4}-`)
+                container4.insertBefore(newForm, addButton4)
+                
+                totalForms4.setAttribute('value', `${formNum4+1}`)
+            }
+
         </script> -->
         
         
