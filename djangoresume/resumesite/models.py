@@ -45,7 +45,7 @@ class workexperience(models.Model):
         verbose_name="سوابق شغلی"
         verbose_name_plural="سوابق شغلی"
     job_area=models.CharField(max_length=100,null=True,blank=True)
-    job_title=models.CharField(max_length=100,verbose_name="عنوان شغل")
+    job_title=models.CharField(max_length=300,verbose_name="عنوان شغل")
     company_name=models.CharField(max_length=100,verbose_name="نام شرکت")
     start_time=models.TimeField(verbose_name="تاریخ شروع")
     end_time=models.TimeField(verbose_name="تاریخ پایان")
@@ -111,7 +111,7 @@ class awardsModel(models.Model):
         verbose_name="جوایزو افتخارات"
         verbose_name_plural="جوایزو افتخارات"
     award_title=models.CharField(max_length=300,verbose_name="عنوان")
-    dateofaward=models.TimeField(verbose_name="سال")
+    dateofaward=models.DateField(verbose_name="سال")
 
     def __str__(self):
         return self.award_title
@@ -132,7 +132,7 @@ class articlesModel(models.Model):
         verbose_name="کتاب ها و مقالات"
         verbose_name_plural="کتاب ها و مقالات"
     article_title=models.CharField(max_length=500,verbose_name="عنوان")
-    dateofarticle=models.TimeField(verbose_name="سال")
+    dateofarticle=models.DateField(verbose_name="سال")
 
     def __str__(self):
         return self.article_title

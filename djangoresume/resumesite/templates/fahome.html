@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Resume - Mostafa Najmi</title>
+        <title>رزومه سمانه رضائی</title>
         <link rel="icon" type="image/x-icon" href="{%static 'images/icon.ico'%}" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
@@ -23,7 +23,7 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav"  >
             <a class="navbar-brand js-scroll-trigger" href="#page-top">
                 <span class="d-block d-lg-none">Mostafa Najmi</span>
-                <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="{% static 'images/profile1.jpg'%}" alt="..." /></span>
+                <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="{% static 'images/profile2.jpg'%}" alt="..." /></span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarResponsive" >
@@ -33,7 +33,8 @@
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#education">تحصیلات</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#skills">مهارت ها</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#interests">علاقه مندی ها</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#awards">دوره های آموزشی</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#awards">جوایز و افتخارات</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#articles">مقالات</a></li>
                     <li class="nav-item" ><a class="nav-link js-scroll-trigger" href="/resumesite">انگلیسی/فارسی</a></li>
                     <li class="nav-item" ><a class="nav-link js-scroll-trigger" href="/accounts/login">ورود</a></li>
                 </ul>
@@ -44,19 +45,25 @@
             <!-- About-->
             <section class="resume-section" id="about">
                 <div class="resume-section-content">
-                    <h1 class="mb-1">
-                        مصطفی
-                        <span class="text-primary">نجمی</span>
+                    <h1 class="mb-2">
+                        سمانه
+                        <span class="text-primary">رضائی</span>
                     </h1>
                     <div class="subheading mb-5">
-                         متولد  1374تهران -ساکن کرج<br> 
-                         وضعیت نظام وظیفه: معافیت تحصیلی     
-                        <a style="font-family: serif;" href="mailto: samaneh.rezaie74@gmail.com">m.n.irib@gmail.com</a>
+                         متولد  1374 زنجان -ساکن زنجان<br> 
+                         {% for aboutMe in aboutMeModel%}
+                         <!-- skype:{{aboutMe.address}} -->
+                         &nbsp;&nbsp;+{{aboutMe.phone_number}}&nbsp;&nbsp;
+                        {% endfor%}
+                        <a href="mailto:samaneh.rezaie74@gmail.com">
+                            {% for aboutMe in aboutMeModel%}
+                            {{aboutMe.Email}}
+                        {% endfor%}</a>
                     </div>
-                    <p class="lead mb-5">کارشناس ارشد الکترونیک دیجیتال و علاقه مند به حوزه هوش مصنوعی به خصوص در زمینه پردازش زبان طبیعی(NLP) و برنامه نویسی با پایتون</p>
+                    <p class="lead mb-5">کارشناس ارشد برق الکترونیک گرایش سیستم های دیجیتال. علاقه‌مند به حوزه کامپیوتر به خصوص برنامه‌نویسی وب و پایتون و جنگو</p>
                     <div class="social-icons">
-                        <a class="social-icon" href="https://www.linkedin.com/in/mostafa-najmi/"><i class="fab fa-linkedin-in"></i></a>
-                        <a class="social-icon" href="https://github.com/mnwato"><i class="fab fa-github"></i></a>
+                        <a class="social-icon" href="https://www.linkedin.com/in/samaneh-rezaie-7562b7102/"><i class="fab fa-linkedin-in"></i></a>
+                        <a class="social-icon" href="https://github.com/samanehrz1374"><i class="fab fa-github"></i></a>
                       
                     </div>
                 </div>
@@ -67,63 +74,59 @@
                 <div class="resume-section-content">
                     <h2 class="mb-5">تجارب و دوره های آموزشی</h2>
                         <div class="mb-3">
-                            <p>موسس و مدیر گروه برنامه نویسی بورس ترند، فعال در حوزه ساخت نرم افزارهای بازار سرمایه
-                                (1399 از سال)(bourse-trend.ir)</p>
+                            <p>•	طراح و برنامه نویس بردهای الکترونیکی ARM و AVR در مرکز خدمات تخصصی (ICT) جهاد دانشگاهی زنجان به مدت 1 سال</p>
                         </div>
                         <div class=" mb-3">
                             <p>آشنایی با لینوکس</p>
                         </div>
                         <div class=" mb-3">
-                            <p>تجربه انجام پروژه با MySQL</p>
+                            <p>•	طراحی بردهای الکترونیکی (PCB Designing) به صورت پروژه ای در مرکز خدمات تخصصی (ICT) جهاد دانشگاهی زنجان</p>
                         </div>
 
                         <div class=" mb-3">
-                            <p> مسلط به Web scraping </p>
+                            <p> </p>
                         </div>
 
                 
                         <div class="mb-3">
-                            <p >مسلط به شبکه های عصبی عمیق در حوزهNLP (RNN – Bert -GPT)</p>
+                            <p ></p>
                         </div>
 
                    
                         <div class="mb-3">
-                            <p>پیاده سازی پروژه تشخیص احساسات متون فارسی (به عنوان پروژه پایان ترم درس هوش مصنوعی کارشناسی ارشد)</p>
+                            <p></p>
                         </div>
                        
 
                     
                         <div class="mb-3">
-                            <p>پیاده سازی پروژه تشخیص پهپاد در تصاویر، توسط ( YOLO3بعنوان پروژه میان ترم درس هوش مصنوعی کارشناسی
-                                ارشد)</p>
+                            <p></p>
                         </div>
                        
 
                         <div class=" mb-3">
-                            <p>طراحی برنامه ( NobitexMarketWatch در ارتباط با بازار کریپتوکارنسی) به زبان پایتون دارای رابط کاربری مبتنی بر
-                                PyQt5 </p>
+                            <p> </p>
                         </div>
 
                         <div class=" mb-3">
-                            <p>فعالیت در ساخت ربات های سرخطی کارگزاری های مبتنی بر رایان هم افزا و تدبیرپرداز در سال 1399</p>
+                            <p></p>
                         </div>
 
                     
                         <div class="mb-3">
-                            <p>ساخت وب سرویس (API)و نرم افزار پردازش داده های معاملاتی شرکت های عضو بورس اوراق بهادار تهران به
-                                زبان پایتون</p>
+                            <p> </p>
                         </div>
                         
 
                     
                         <div class="mb-3">
-                            <p>ساخت ربات استخراج اطلاعات سایت https://tradingview.com</p>
+                            <p></p>
                         </div>
                       
 
                     
                         <div class="mb-3">
-                            <p> ترجمه کتاب (Engineering Economics and Project Management) به زبان فارسی(سال 1393)    </p>
+                            <p></p>
                         </div>
                        
                 </div>
@@ -135,7 +138,7 @@
                     <h2 class="mb-5">تحصیلات</h2>
                     <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
                         <div class="flex-grow-1">
-                            <h3 class="mb-0">دانشگاه آزاد کرج</h3>
+                            <h3 class="mb-0">دانشگاه روزبه زنجان</h3>
                             <div class="subheading mb-3">کارشناسی</div>
                             <div>مهندسی برق الکترونیک</div>
                             
@@ -149,7 +152,7 @@
                             <div >برق الکترونیک گرایش سیستم های الکترونیک دیجیتال</div>
                             
                         </div>
-                        <div class="flex-shrink-0"><span class="text-primary">1397-در حین دفاع</span></div>
+                        <div class="flex-shrink-0"><span class="text-primary">1397-1400</span></div>
                     </div>
                 </div>
             </section>
@@ -161,7 +164,7 @@
                     
                     <div class="subheading mb-3">نرم افزار ها</div>
                     <ul class="fa-ul mb-0" dir="ltr">
-                        <h4 class="mb-2">-&nbsp; Python Programming:</h4>
+                        <!-- <h4 class="mb-2">-&nbsp; Python Programming:</h4> -->
                         <li>
                            <ul> {% for skillsModel in SkillsModel%}
                             {%if skillsModel.skill_area == "Python Programming"%}
@@ -176,14 +179,14 @@
                                     -&nbsp;{{skillsModel.skillname}}<br>
                                 {% endif %}
                             {% endfor%}</h4>
-                        <h4 class="mb-2">-&nbsp;Web Scraping:</h4>
-                        <li >
+                        <!-- <h4 class="mb-2">-&nbsp;Web Scraping:</h4> -->
+                        <!-- <li >
                             <ul>{% for skillsModel in SkillsModel%}
                             {%if skillsModel.skill_area == "Web Scraping"%}
                             <li style="list-style: circle;">{{skillsModel.skillname}}<br></li>
                                 {% endif %}
                             {% endfor%}</ul>
-                        </li>
+                        </li> -->
                         <h4 class="mb-2">-Familar with:</h4>
                         <li >
                             <ul>{% for skillsModel in SkillsModel%}
@@ -201,10 +204,10 @@
             <section class="resume-section" id="interests">
                 <div class="resume-section-content">
                     <h2 class="mb-5">علاقه مندی ها</h2>
-                    <p>فعالیت در حوزه هوش مصنوعی</p>
-                    <p>استخراج و کار با داده ها مخصوصا حل چالش های کار با big</p>
-                    <p>علاقمند به یادگاری تکنیک ها و روش های جدید در حوزه هوش مصنوعی و استخراج دیتا</p>
-                    <p>شرکت در گروه های تحقیق و توسعه و دانش بنیان</p>
+                    <p>•	طراحی وب سایت با استفاده از جنگو</p>
+                    <p>•	برنامه نویسی پایتون</p>
+                    <p>•	هوش مصنوعی</p>
+                    <p>•	فعالیت در گروه‌های دانش بنیان</p>
 
                 </div>
             </section>
@@ -212,26 +215,33 @@
             <!-- Awards-->
             <section class="resume-section" id="awards">
                 <div class="resume-section-content">
-                    <h2 class="mb-5">تجارب و دوره های آموزشی</h2>
+                    <h2 class="mb-5">جوایز وافتخارات</h2>
                     <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
                         <div class="flex-grow-1">
-                            <h3 class="mb-0">مدرک دیپلم و  FCE زبان انگلیسی</h3>
-                            <div class="subheading mb-3">موسسه زبان سرای کرج</div>
+                            <h3 class="mb-0">فارغ التحصیل و رتبه اول دوره کارشناسی </h3>
+                            <div class="subheading mb-3">دانشگاه روزبه زنجان با معدل 18/24</div>
                         </div>
                     </div>
                     <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
                         <div class="flex-grow-1">
-                            <h3 class="mb-0">دوره ی اویونیک هواپیما (E2)</h3>
-                            <div class="subheading mb-3">هواپیمایی ایران ایر</div>
+                            <h3 class="mb-0">فارغ التحصیل و رتبه اول دوره کارشناسی ارشد دانشکده مهندسی برق-کامپیوتر </h3>
+                            <div class="subheading mb-3">دانشگاه زنجان با معدل 18/25</div>
                         </div>
                     </div>
-                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-                        <div class="flex-grow-1">
-                            <h3 class="mb-0">دوره ی پیشرفته پردازش زبان طبیعی در شبکه های عمیق(NLP)</h3>
-                            <div class="subheading mb-3">همراه آکادمی</div>
-                        </div>
-                        <div class="flex-shrink-0"><span class="text-primary"></span></div>
-                    </div>
+                   
+                </div>
+            </section>
+            <!-- articles -->
+            <section class="resume-section" id="articles">
+                <div class="resume-section-content">
+                    <h2 class="mb-5">مقالات</h2>
+                    {% for articlesModel in ArticlesModel %}
+                                <br><h3 class="mb-0">{{ articlesModel.article_title}}</h3>
+                                <div class="subheading mb-3">{{ articlesModel.dateofarticle}}</div> 
+                    {% endfor %}
+                    <!-- <a href="https://storage.hamrah.academy/certificates/e601312f29be49009d50c7168df82d_certificates_T8YAC.jpg" class="subheading mb-3">(Certification)</a> -->
+
+                    
                 </div>
             </section>
         </div>

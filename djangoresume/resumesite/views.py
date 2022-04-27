@@ -4,7 +4,7 @@ from django.shortcuts import render
 from rest_framework import serializers, viewsets, permissions
 from .models import aboutmeModel
 from .serializers import aboutmeModelSerializers
-from .models import aboutmeModel,skillsModel,aducationModel,workexperience,coursesModel
+from .models import aboutmeModel,skillsModel,aducationModel,workexperience,coursesModel,awardsModel,articlesModel
 # Create your views here.
 def home(request):
     aboutMeModel=aboutmeModel.objects.all()
@@ -12,12 +12,17 @@ def home(request):
     AducationModel=aducationModel.objects.all()
     SkillsModel=skillsModel.objects.all()
     CoursesModel=coursesModel.objects.all()
+    AwardsModel=awardsModel.objects.all()
+    ArticlesModel=articlesModel.objects.all()
+    
     context={
         'aboutMeModel':aboutMeModel,
         'Workexperience':Workexperience,
         'AducationModel':AducationModel,
         'SkillsModel':SkillsModel,
-        'CoursesModel':CoursesModel
+        'CoursesModel':CoursesModel,
+        'AwardsModel':AwardsModel,
+        'ArticlesModel':ArticlesModel
     }
     return render(request,'home.html',context)
 
@@ -28,12 +33,14 @@ def fahome(request):
     AducationModel=aducationModel.objects.all()
     SkillsModel=skillsModel.objects.all()
     CoursesModel=coursesModel.objects.all()
+    ArticlesModel=articlesModel.objects.all()
     context={
         'aboutMeModel':aboutMeModel,
         'Workexperience':Workexperience,
         'AducationModel':AducationModel,
         'SkillsModel':SkillsModel,
-        'CoursesModel':CoursesModel
+        'CoursesModel':CoursesModel,
+        'ArticlesModel':ArticlesModel
     }
     return render(request,'fahome.html',context)
 

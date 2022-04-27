@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Resume - Mostafa Najmi</title>
+        <title>Resume -Samaneh Rezaie</title>
         <link rel="icon" type="image/x-icon" href="{%static 'images/icon.ico'%}" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
@@ -20,8 +20,8 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
             <a class="navbar-brand js-scroll-trigger" href="#page-top">
-                <span class="d-block d-lg-none">Mostafa Najmi</span>
-                <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="{% static 'images/profile1.jpg'%}" alt="..." /></span>
+                <span class="d-block d-lg-none">Samaneh Rezaie</span>
+                <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="{% static 'images/profile2.jpg'%}" alt="..." /></span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -31,7 +31,8 @@
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#education">Education</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#skills">Skills</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#interests">Interests</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#awards">Courses</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#awards">Awards</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#articles">articles</a></li>
                     <li class="nav-item" ><a class="nav-link js-scroll-trigger" href="/resumesite/fa">En/Fa</a></li>
                     <li class="nav-item" ><a class="nav-link js-scroll-trigger" href="/accounts/login">Login</a></li>
 
@@ -54,18 +55,18 @@
                     </h1>
                     <div class="subheading mb-5">
                         {% for aboutMe in aboutMeModel%}
-                            skype:{{aboutMe.address}}
+                            <!-- skype:{{aboutMe.address}} -->
                             &nbsp;&nbsp;+{{aboutMe.phone_number}}&nbsp;&nbsp;
                         {% endfor%}
-                        <a href="mailto:m.n.irib@gmail.com">
+                        <a href="mailto:samaneh.rezaie74@gmail.com">
                             {% for aboutMe in aboutMeModel%}
                             {{aboutMe.Email}}
                         {% endfor%}</a>
                     </div>
-                    <p class="lead mb-5">I aim to attain an internship position in the field of data sciene.</p>
+                    <p class="lead mb-5">I aim to attain a senior position in web developering using Django.</p>
                     <div class="social-icons">
-                        <a class="social-icon" href="https://www.linkedin.com/in/mostafa-najmi/"><i class="fab fa-linkedin-in"></i></a>
-                        <a class="social-icon" href="https://github.com/mnwato"><i class="fab fa-github"></i></a>
+                        <a class="social-icon" href="https://www.linkedin.com/in/samaneh-rezaie-7562b7102/"><i class="fab fa-linkedin-in"></i></a>
+                        <a class="social-icon" href="https://github.com/samanehrz1374"><i class="fab fa-github"></i></a>
                       
                     </div>
                     
@@ -78,10 +79,10 @@
                     <h2 class="mb-5">Work Experience</h2>
                     <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
                         <div class="flex-grow-1">
-                            <h3 class="mb-0">Artificail Inteligent</h3>
+                            <h3 class="mb-0">Electronic</h3>
                             <div class="subheading mb-3">
                             {% for workexperience in Workexperience%}
-                                {%if workexperience.job_area == "Artificail"%}
+                                {%if workexperience.job_area == "Electronic"%}
                                     <br>{{workexperience.job_title}}
                                 {% endif %}
                             {% endfor%}
@@ -134,14 +135,14 @@
                     <ul class="list-inline dev-icons">
                         <!-- <li class="list-inline-item"><i class="fab fa-python"></i></li>
                         <li class="list-inline-item"><i class="fab fa-git"></i></li><br> -->
-                        <h4 class="mb-2">-&nbsp;Python Programming:</h4>
+                        <!-- <h4 class="mb-2">-&nbsp;Python Programming:</h4>
                         <div class="subheading mb-3">
                            <ul> {% for skillsModel in SkillsModel%}
                             {%if skillsModel.skill_area == "Python Programming"%}
                             <li style="list-style: circle;"> {{skillsModel.skillname}}<br></li>
                                 {% endif %}
                             {% endfor%}</ul>
-                        </div>
+                        </div> -->
                         
                         <h4 class="mb-2">
                             {% for skillsModel in SkillsModel%}
@@ -149,14 +150,14 @@
                                     -&nbsp;{{skillsModel.skillname}}<br>
                                 {% endif %}
                             {% endfor%}</h4>
-                        <h4 class="mb-2">-&nbsp;Web Scraping:</h4>
+                        <!-- <h4 class="mb-2">-&nbsp;Web Scraping:</h4>
                         <div class="subheading mb-3">
                             <ul>{% for skillsModel in SkillsModel%}
                             {%if skillsModel.skill_area == "Web Scraping"%}
                             <li style="list-style: circle;">{{skillsModel.skillname}}<br></li>
                                 {% endif %}
                             {% endfor%}</ul>
-                        </div>
+                        </div> -->
                         <h4 class="mb-2">-Familar with:</h4>
                         <div class="subheading mb-3">
                             <ul>{% for skillsModel in SkillsModel%}
@@ -176,21 +177,35 @@
             <section class="resume-section" id="interests">
                 <div class="resume-section-content">
                     <h2 class="mb-5">Interests</h2>
-                    <p>Artificial Intelligence</p>
-                    <p class="mb-0">Data sciense,especially solving the challenges of working with big data</p>
-                    <p class="mb-0">Interested in learning new techniques and methods in the field of artificial intelligence and data mining</p>
+                    <p>•	Web developing with Django</p>
+                    <p>•	Python programming</p>
+                    <p>•	artificial intelligence</p>
+                    <p>•	Activity in knowledge-based groups</p>
                 </div>
             </section>
             <hr class="m-0" />
             <!-- Awards-->
             <section class="resume-section" id="awards">
                 <div class="resume-section-content">
-                    <h2 class="mb-5">Courses</h2>
-                    {% for coursesModel in CoursesModel %}
-                                <br><h3 class="mb-0">{{ coursesModel.coursesname}}</h3>
-                                <div class="subheading mb-3">{{ coursesModel.institute}}</div> 
+                    <h2 class="mb-5">Awards</h2>
+                    {% for awardsModel in AwardsModel %}
+                                <br><h3 class="mb-0">{{ awardsModel.award_title}}</h3>
+                                <div class="subheading mb-3">{{ awardsModel.dateofaward}}</div> 
                     {% endfor %}
-                    <a href="https://storage.hamrah.academy/certificates/e601312f29be49009d50c7168df82d_certificates_T8YAC.jpg" class="subheading mb-3">(Certification)</a>
+                    <!-- <a href="https://storage.hamrah.academy/certificates/e601312f29be49009d50c7168df82d_certificates_T8YAC.jpg" class="subheading mb-3">(Certification)</a> -->
+
+                    
+                </div>
+            </section>
+            <!-- articles -->
+            <section class="resume-section" id="articles">
+                <div class="resume-section-content">
+                    <h2 class="mb-5">Articles</h2>
+                    {% for articlesModel in ArticlesModel %}
+                                <br><h3 class="mb-0">{{ articlesModel.article_title}}</h3>
+                                <div class="subheading mb-3">{{ articlesModel.dateofarticle}}</div> 
+                    {% endfor %}
+                    <!-- <a href="https://storage.hamrah.academy/certificates/e601312f29be49009d50c7168df82d_certificates_T8YAC.jpg" class="subheading mb-3">(Certification)</a> -->
 
                     
                 </div>
