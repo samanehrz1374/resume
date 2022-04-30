@@ -53,14 +53,14 @@
                          متولد  1374 زنجان -ساکن زنجان<br> 
                          {% for aboutMe in aboutMeModel%}
                          <!-- skype:{{aboutMe.address}} -->
-                         &nbsp;&nbsp;+{{aboutMe.phone_number}}&nbsp;&nbsp;
+                         &nbsp;&nbsp;{{aboutMe.phone_number}}+&nbsp;&nbsp;
                         {% endfor%}
                         <a href="mailto:samaneh.rezaie74@gmail.com">
                             {% for aboutMe in aboutMeModel%}
                             {{aboutMe.Email}}
                         {% endfor%}</a>
                     </div>
-                    <p class="lead mb-5">کارشناس ارشد برق الکترونیک گرایش سیستم های دیجیتال. علاقه‌مند به حوزه کامپیوتر به خصوص برنامه‌نویسی وب و پایتون و جنگو</p>
+                    <p class="lead mb-5">کارشناس ارشد برق الکترونیک گرایش سیستم های دیجیتال. علاقه‌مند به حوزه کامپیوتر و فعال به عنوان برنامه نویس بک اند وب تحت فریم ورک جنگو </p>
                     <div class="social-icons">
                         <a class="social-icon" href="https://www.linkedin.com/in/samaneh-rezaie-7562b7102/"><i class="fab fa-linkedin-in"></i></a>
                         <a class="social-icon" href="https://github.com/samanehrz1374"><i class="fab fa-github"></i></a>
@@ -72,62 +72,29 @@
             <!-- Experience-->
             <section class="resume-section" id="experience">
                 <div class="resume-section-content">
-                    <h2 class="mb-5">تجارب و دوره های آموزشی</h2>
+                    <h2 class="mb-5">تجارب و پروژه ها </h2>
+                    <h3 class="mb-0">پایتون</h3>
+                        <div class=" mb-3">
+                            <p> •	طراحی سایت رزومه با جنگو به آدرس(<a href="https://rzdjango.pythonanywhere.com/resumesite/">https://rzdjango.pythonanywhere.com/resumesite/</a>)</p>
+                        </div>
+                    <h3 class="mb-0">الکترونیک</h3>
                         <div class="mb-3">
                             <p>•	طراح و برنامه نویس بردهای الکترونیکی ARM و AVR در مرکز خدمات تخصصی (ICT) جهاد دانشگاهی زنجان به مدت 1 سال</p>
                         </div>
                         <div class=" mb-3">
-                            <p>آشنایی با لینوکس</p>
-                        </div>
-                        <div class=" mb-3">
                             <p>•	طراحی بردهای الکترونیکی (PCB Designing) به صورت پروژه ای در مرکز خدمات تخصصی (ICT) جهاد دانشگاهی زنجان</p>
                         </div>
-
                         <div class=" mb-3">
-                            <p> </p>
+                            <p>•	طراحی ضرب کننده ممیز شناور تقریبی به زبان VHDL به عنوان پروژه کارشناسی ارشد</p>
                         </div>
-
-                
-                        <div class="mb-3">
-                            <p ></p>
-                        </div>
-
-                   
-                        <div class="mb-3">
-                            <p></p>
-                        </div>
-                       
-
-                    
-                        <div class="mb-3">
-                            <p></p>
-                        </div>
-                       
-
                         <div class=" mb-3">
-                            <p> </p>
+                            <p>•	طراحی و ساخت دماسنج با ارتباط بی سیم Wifi با قابلیت نمایش در گوشی اندروید </p>
                         </div>
-
                         <div class=" mb-3">
-                            <p></p>
-                        </div>
-
-                    
-                        <div class="mb-3">
-                            <p> </p>
+                            <p>•	طراحی شبکه های WSN با نرم افزار متلب </p>
                         </div>
                         
 
-                    
-                        <div class="mb-3">
-                            <p></p>
-                        </div>
-                      
-
-                    
-                        <div class="mb-3">
-                            <p></p>
-                        </div>
                        
                 </div>
             </section>
@@ -179,6 +146,14 @@
                                     -&nbsp;{{skillsModel.skillname}}<br>
                                 {% endif %}
                             {% endfor%}</h4>
+                            <h4 class="mb-2">-Electronic:</h4>
+                            <li>
+                                <ul>{% for skillsModel in SkillsModel%}
+                                {%if skillsModel.skill_area == "Electronic"%}
+                                <li style="list-style: circle;"> {{skillsModel.skillname}}<br></li>
+                                    {% endif %}
+                                {% endfor%}</ul>
+                                </li>
                         <!-- <h4 class="mb-2">-&nbsp;Web Scraping:</h4> -->
                         <!-- <li >
                             <ul>{% for skillsModel in SkillsModel%}
@@ -204,7 +179,7 @@
             <section class="resume-section" id="interests">
                 <div class="resume-section-content">
                     <h2 class="mb-5">علاقه مندی ها</h2>
-                    <p>•	طراحی وب سایت با استفاده از جنگو</p>
+                    <p>•	برنامه نویسی وب سایت با استفاده از فریم‌ورک جنگو</p>
                     <p>•	برنامه نویسی پایتون</p>
                     <p>•	هوش مصنوعی</p>
                     <p>•	فعالیت در گروه‌های دانش بنیان</p>
