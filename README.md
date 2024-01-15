@@ -25,3 +25,17 @@ A dynamic resume maker site built with Django, where users can easily create and
 
    ```bash
    git clone https://github.com/samanehrz1374/resume.git
+2. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+3. Run migrations:
+   ```bash
+   python manage.py migrate
+4. Start the development server:
+   ```bash
+   python manage.py runserver
+
+
+
+
+  
